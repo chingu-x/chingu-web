@@ -46,7 +46,7 @@ const requestLink = new ApolloLink((operation, forward) =>
 );
 
 const httpLink = new HttpLink({
-  uri: 'https://w5xlvm3vzz.lp.gql.zone/graphql',
+  uri: 'https://chingu.appspot.com/graphql',
   credentials: 'same-origin'
 });
 

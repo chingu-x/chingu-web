@@ -18,7 +18,7 @@ const GET_CURRENT_USER = gql`
 export const CurrentUserProvider: React.FC = ({ children }) => (
   <Query query={GET_CURRENT_USER} fetchPolicy="cache-first">
     {({ data }: QueryResult) => {
-      const currentUser = data && data.me || null;
+      const currentUser = data ? data.me : null;
 
       return (
         <UserContext.Provider value={currentUser}>{children}</UserContext.Provider>

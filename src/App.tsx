@@ -3,6 +3,7 @@ import { ApolloProvider } from "react-apollo";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import client from "./apollo";
 import { CurrentUserProvider } from './contexts/User';
+import Home from "./views/Home";
 import './App.css';
 
 const App: React.FC = () => {
@@ -12,9 +13,9 @@ const App: React.FC = () => {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />"
-            <Route exact path="/signUp" component={SignUp} />
+            {/* <Route exact path="/signUp" component={SignUp} />
             <Route exact path="/signIn" component={SignIn} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile" component={Profile} /> */}
           </Switch>
         </Router>
       </CurrentUserProvider>

@@ -21,7 +21,7 @@ export default function Header(): React.ReactElement {
         </Button>
       )}
       
-      {isAuthenticated && <Button onClick={() => logout()}>Log out</Button>}
+      {isAuthenticated && <Button onClick={() => logout({ returnTo: `${window.location.origin}/?loggedOut=true` })}>Log out</Button>}
     </HeaderUIComponent>
   );
 }

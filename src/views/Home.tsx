@@ -1,12 +1,11 @@
 import React from "react";
 import { Layout } from 'antd';
-
-const { Header } = Layout;
+import Header from "../components/Header";
 
 export default function Home(): React.ReactElement {
   return (
     <Layout>
-      <Header>Header</Header>
+      <Header />
     </Layout>
   );
 }

@@ -1,9 +1,12 @@
+import React from "react";
+import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink, Observable, Operation } from 'apollo-link';
+import { useAuth0 } from "./auth";
 
 const errorLink: ApolloLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -15,17 +18,30 @@ const errorLink: ApolloLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const request = async (operation: Operation) => {
-  // TODO: Get Auth Token
-  // const token = await AsyncStorage.getItem('token');
-  operation.setContext({
-    headers: {
-      // authorization: token
-    }
-  });
-};
+const httpLink = new HttpLink({
+  uri: 'https://chingu.appspot.com/graphql',
+  credentials: 'same-origin'
+});
 
-const requestLink = new ApolloLink((operation, forward) =>
+const cache = new InMemoryCache();
+
+export default function ChinguAPIProvider({ children }: React.PropsWithChildren<any>) {
+  const { isAuthenticated, getTokenSilently } = useAuth0();
+
+  const request = async (operation: Operation) => {
+    if(!isAuthenticated) {
+      return operation;
+    }
+
+    const token = await getTokenSilently();
+    operation.setContext({
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    });
+  };
+
+  const requestLink = new ApolloLink((operation, forward) =>
   new Observable(observer => {
     let handle: ZenObservable.Subscription | undefined;
     Promise.resolve(operation)
@@ -45,25 +61,19 @@ const requestLink = new ApolloLink((operation, forward) =>
   })
 );
 
-const httpLink = new HttpLink({
-  uri: 'https://chingu.appspot.com/graphql',
-  credentials: 'same-origin'
-});
-
-const cache = new InMemoryCache();
-
-const client = new ApolloClient({
-  link: ApolloLink.from([
-    errorLink,
-    requestLink,
-    withClientState({
-      defaults: {},
-      resolvers: {},
-      cache
-    }),
-    httpLink
-  ]),
-  cache
-});
-
-export default client;
+  const client = new ApolloClient({
+    link: ApolloLink.from([
+      errorLink,
+      requestLink,
+      withClientState({
+        defaults: {},
+        resolvers: {},
+        cache
+      }),
+      httpLink
+    ]),
+    cache
+  });
+  
+  return <ApolloProvider client={client}>{children}</ApolloProvider>
+};

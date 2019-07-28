@@ -33,7 +33,7 @@ const App: React.FC = () => {
         <CurrentUserProvider>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home} />"
+              <Route exact path="/" component={Home} />
               <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </Router>

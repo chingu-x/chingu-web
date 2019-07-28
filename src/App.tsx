@@ -5,6 +5,7 @@ import { CurrentUserProvider } from './contexts/user';
 import { Auth0Provider } from "./contexts/auth";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./views/Home";
+import Profile from "./views/Profile";
 import config from "./config/auth.json";
 import './App.css';
 
@@ -33,9 +34,7 @@ const App: React.FC = () => {
           <Router>
             <Switch>
               <Route exact path="/" component={Home} />"
-              {/* <Route exact path="/signUp" component={SignUp} />
-              <Route exact path="/signIn" component={SignIn} />
-              <PrivateRoute exact path="/profile" component={Profile} /> */}
+              <PrivateRoute exact path="/profile" component={Profile} />
             </Switch>
           </Router>
         </CurrentUserProvider>

@@ -1,0 +1,16 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > .spinner {
+    color: #15df89;
+    font-size: 80px;
+  }
+}

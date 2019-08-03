@@ -6,6 +6,7 @@ import Landing from "./views/Landing";
 import Home from "./views/Home";
 import Login from "./views/Login";
 import Logout from "./views/Logout";
+import CompleteSignUp from "./views/CompleteSignUp";
 import NotFound from "./views/NotFound";
 import "./App.css";
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/logout" component={Logout} />
+          <PrivateRoute exact path="/completeSignUp" skipSignupCheck component={CompleteSignUp} />
           <PrivateRoute component={NotFound} />
         </Switch>
       </Router>

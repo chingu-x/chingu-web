@@ -5,8 +5,8 @@ import LoadingView from "./LoadingView";
 
 interface PrivateRouteProps {
   component: React.JSXElementConstructor<any>;
-  exact: boolean;
-  path: string;
+  exact?: boolean;
+  path?: string;
 }
 
 const PrivateRoute = ({

@@ -4,7 +4,8 @@ import { Query, QueryResult } from "react-apollo";
 import UserInfo from "../fragments/UserInfo";
 import { useAuth0 } from "./auth";
 
-const UserContext = React.createContext(null);
+export const UserContext = React.createContext<null | any>(null);
+export const useUser = () => React.useContext(UserContext);
 
 const GET_CURRENT_USER = gql`
   ${UserInfo}
@@ -16,7 +17,7 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-export const CurrentUserProvider: React.FC = ({ children }) => {
+export default function CurrentUserProvider({ children }: React.PropsWithChildren<any>) {
   const { isAuthenticated } = useAuth0();
 
   if(!isAuthenticated) {
@@ -37,5 +38,3 @@ export const CurrentUserProvider: React.FC = ({ children }) => {
     </Query>
   );
 };
-
-export default UserContext;

@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { Query, QueryResult } from "react-apollo";
-import UserInfo from "../fragments/UserInfo";
+import { UserInfo } from "../fragments";
 import { useAuth0 } from "./auth";
 
 export const UserContext = React.createContext<null | any>(null);

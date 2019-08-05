@@ -28,7 +28,7 @@ const PrivateRoute = ({
             appState: { targetUrl: path }
           });
         }
-        if (!skipSignupCheck && (!user || !user.isSignUpComplete)) {
+        if (!skipSignupCheck && !user) {
           window.location.assign("/completeSignUp");
         }
       }

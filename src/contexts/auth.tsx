@@ -11,6 +11,7 @@ interface Auth0ProviderProps {
   onRedirectCallback: any
   children: React.ReactNode
   domain: string
+  audience: string
   client_id: string
   redirect_uri: string
 }
@@ -28,7 +29,7 @@ export function Auth0Provider ({
 
   useEffect(() => {
     const initAuth0 = async () => {
-      const clientOptions: Auth0ClientOptions = initOptions;
+      const clientOptions = initOptions;
       const auth0FromHook = await createAuth0Client(clientOptions);
       setAuth0(auth0FromHook);
 

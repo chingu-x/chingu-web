@@ -4,6 +4,8 @@ export default gql`
   fragment UserInfo on User {
     id
     email
-    name
+    username
+    firstName
+    lastName
   }
 `;

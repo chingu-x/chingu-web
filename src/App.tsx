@@ -15,8 +15,7 @@ const App = () => {
     <Shell>
       <Router>
         <Switch>
-          <PrivateRoute exact path="/" component={Home} />
-          <Route exact path="/" component={Landing} />
+          <PrivateRoute exact path="/" component={Home} fallback={Landing} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/logout" component={Logout} />
           <PrivateRoute exact path="/completeSignUp" skipSignupCheck component={CompleteSignUp} />

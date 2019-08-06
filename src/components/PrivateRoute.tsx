@@ -6,6 +6,7 @@ import LoadingView from "./LoadingView";
 
 interface PrivateRouteProps {
   component: React.JSXElementConstructor<any>;
+  fallback?: React.JSXElementConstructor<any>;
   exact?: boolean;
   path?: string;
   skipSignupCheck?: boolean;
@@ -13,8 +14,9 @@ interface PrivateRouteProps {
 
 const PrivateRoute = ({
   component: Component,
+  fallback: FallbackComponent,
   path,
-  skipSignupCheck = false,
+  skipSignupCheck = !!FallbackComponent,
   ...rest
 }: PrivateRouteProps) => {
   const { isAuthenticated, loginWithRedirect, loading } = useAuth0();
@@ -23,7 +25,8 @@ const PrivateRoute = ({
   useEffect(() => {
     const fn = async () => {
       if (!loading) {
-        if (!isAuthenticated) {
+        console.log(FallbackComponent);
+        if (!isAuthenticated && !FallbackComponent) {
           await loginWithRedirect({
             appState: { targetUrl: path }
           });
@@ -48,6 +51,8 @@ const PrivateRoute = ({
       <LoadingView />
     ) : isAuthenticated === true ? (
       <Component {...props} />
+    ) : FallbackComponent ? (
+      <FallbackComponent {...props} />
     ) : null;
 
   return <Route path={path} render={render} {...rest} />;

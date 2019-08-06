@@ -40,6 +40,7 @@ const PrivateRoute = ({
   }, [
     loading,
     isAuthenticated,
+    FallbackComponent,
     skipSignupCheck,
     user,
     loginWithRedirect,

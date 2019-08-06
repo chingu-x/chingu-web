@@ -4,23 +4,14 @@ import createAuth0Client from "@auth0/auth0-spa-js";
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
-export const Auth0Context = React.createContext<null | any>(null);
+export const Auth0Context = React.createContext(null);
 export const useAuth0 = () => useContext(Auth0Context);
-
-interface Auth0ProviderProps {
-  onRedirectCallback: any
-  children: React.ReactNode
-  domain: string
-  audience: string
-  client_id: string
-  redirect_uri: string
-}
 
 export function Auth0Provider ({
   children,
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
   ...initOptions
-}: Auth0ProviderProps) {
+}) {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [user, setUser] = useState();
   const [auth0Client, setAuth0] = useState();
@@ -84,11 +75,11 @@ export function Auth0Provider ({
         popupOpen,
         loginWithPopup,
         handleRedirectCallback,
-        getIdTokenClaims: (...p: any) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (...p: any) => auth0Client.loginWithRedirect(...p),
-        getTokenSilently: (...p: any) => auth0Client.getTokenSilently(...p),
-        getTokenWithPopup: (...p: any) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p: any) => auth0Client.logout(...p)
+        getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
+        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+        getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+        getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
+        logout: (...p) => auth0Client.logout(...p)
       }}
     >
       {children}

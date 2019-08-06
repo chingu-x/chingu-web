@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Shell from "./components/Shell";
+import Shell from "./Shell";
 import PrivateRoute from "./components/PrivateRoute";
 import Landing from "./views/Landing";
 import Home from "./views/Home";

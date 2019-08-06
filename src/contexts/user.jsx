@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { UserInfo } from "../fragments";
 import { useAuth0 } from "./auth";
 
-export const UserContext = React.createContext<null | any>(null);
+export const UserContext = React.createContext(null);
 export const useUser = () => React.useContext(UserContext);
 
 const GET_CURRENT_USER = gql`
@@ -17,12 +17,11 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-export default function CurrentUserProvider({
-  children
-}: React.PropsWithChildren<any>) {
+export default function CurrentUserProvider({ children }) {
   const { isAuthenticated } = useAuth0();
   const { data } = useQuery(GET_CURRENT_USER, {
-    fetchPolicy: "cache-first"
+    fetchPolicy: "cache-first",
+    skip: !isAuthenticated
   });
 
   if (!isAuthenticated) {

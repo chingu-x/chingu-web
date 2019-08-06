@@ -5,10 +5,10 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
 import { withClientState } from "apollo-link-state";
-import { ApolloLink, Observable, Operation } from "apollo-link";
+import { ApolloLink, Observable } from "apollo-link";
 import { useAuth0 } from "./auth";
 
-const errorLink: ApolloLink = onError(({ graphQLErrors, networkError }) => {
+const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path }) =>
       console.log(
@@ -25,12 +25,10 @@ const httpLink = new HttpLink({
 
 const cache = new InMemoryCache();
 
-export default function ChinguAPIProvider({
-  children
-}: React.PropsWithChildren<any>) {
+export default function ChinguAPIProvider({ children }) {
   const { isAuthenticated, getTokenSilently } = useAuth0();
 
-  const request = async (operation: Operation) => {
+  const request = async (operation) => {
     if (!isAuthenticated) {
       return operation;
     }
@@ -46,7 +44,7 @@ export default function ChinguAPIProvider({
   const requestLink = new ApolloLink(
     (operation, forward) =>
       new Observable(observer => {
-        let handle: ZenObservable.Subscription | undefined;
+        let handle;
         Promise.resolve(operation)
           .then(oper => request(oper))
           .then(() => {

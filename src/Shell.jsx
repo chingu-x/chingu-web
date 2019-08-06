@@ -1,11 +1,12 @@
 import React from 'react';
-import ChinguAPIProvider from "../contexts/apollo";
-import CurrentUserProvider from '../contexts/user';
-import { Auth0Provider } from "../contexts/auth";
-import config from "../config/auth.json";
+import ChinguAPIProvider from "./contexts/apollo";
+import ChinguStripeProvider from "./contexts/stripe";
+import CurrentUserProvider from './contexts/user';
+import { Auth0Provider } from "./contexts/auth";
+import config from "./config/auth.json";
 
 // A function that routes the user to the right place after login
-const onRedirectCallback = (appState: any) => {
+const onRedirectCallback = (appState) => {
   window.history.replaceState(
     {},
     document.title,
@@ -15,7 +16,7 @@ const onRedirectCallback = (appState: any) => {
   );
 };
 
-const Shell = ({ children }: React.PropsWithChildren<any>) => {
+const Shell = ({ children }) => {
   return (
     <Auth0Provider
       domain={config.domain}
@@ -25,9 +26,11 @@ const Shell = ({ children }: React.PropsWithChildren<any>) => {
       onRedirectCallback={onRedirectCallback}
     >
       <ChinguAPIProvider>
-        <CurrentUserProvider>
-          {children}
-        </CurrentUserProvider>
+        <ChinguStripeProvider>
+          <CurrentUserProvider>
+            {children}
+          </CurrentUserProvider>
+        </ChinguStripeProvider>
       </ChinguAPIProvider>
     </Auth0Provider>
   );

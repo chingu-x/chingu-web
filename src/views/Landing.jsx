@@ -1,8 +1,8 @@
 import React from "react";
-import { Layout } from 'antd';
+import { Layout } from "antd";
 import Header from "../components/Header";
 
-export default function Landing(): React.ReactElement {
+export default function Landing(){
   return (
     <Layout>
       <Header />

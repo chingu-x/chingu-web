@@ -21,14 +21,13 @@ export default function CurrentUserProvider({
   children
 }: React.PropsWithChildren<any>) {
   const { isAuthenticated } = useAuth0();
+  const { data } = useQuery(GET_CURRENT_USER, {
+    fetchPolicy: "cache-first"
+  });
 
   if (!isAuthenticated) {
     return <UserContext.Provider value={null}>{children}</UserContext.Provider>;
   }
-
-  const { data } = useQuery(GET_CURRENT_USER, {
-    fetchPolicy: "cache-first"
-  });
 
   const currentUser = data ? data.me : null;
 

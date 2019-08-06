@@ -1,6 +1,6 @@
-import React from "react";
-import { Layout, Button } from "antd";
-import { useAuth0 } from "../../contexts/auth";
+import React from 'react';
+import { Layout, Button } from 'antd';
+import { useAuth0 } from '../../contexts/auth';
 
 const { Header: HeaderUIComponent } = Layout;
 
@@ -10,10 +10,7 @@ export default function Header() {
   return (
     <HeaderUIComponent>
       Chingu
-      {!isAuthenticated && (
-        <Button onClick={() => loginWithRedirect({})}>Log in or Sign Up</Button>
-      )}
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <Button
           onClick={() =>
             logout({ returnTo: `${window.location.origin}/?loggedOut=true` })
@@ -21,6 +18,8 @@ export default function Header() {
         >
           Log out
         </Button>
+      ) : (
+        <Button onClick={() => loginWithRedirect({})}>Log in or Sign Up</Button>
       )}
     </HeaderUIComponent>
   );

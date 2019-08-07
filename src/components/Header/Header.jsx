@@ -6,18 +6,12 @@ const { Header: HeaderUIComponent } = Layout;
 
 export default function Header() {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-
+  const returnTo = `${window.location.origin}/?loggedOut=true`;
   return (
     <HeaderUIComponent>
       Chingu
       {isAuthenticated ? (
-        <Button
-          onClick={() =>
-            logout({ returnTo: `${window.location.origin}/?loggedOut=true` })
-          }
-        >
-          Log out
-        </Button>
+        <Button onClick={() => logout({ returnTo })}>Log out</Button>
       ) : (
         <Button onClick={() => loginWithRedirect({})}>Log in or Sign Up</Button>
       )}

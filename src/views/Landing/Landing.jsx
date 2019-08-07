@@ -3,7 +3,7 @@ import { Layout, Typography, Row, Col, Button } from 'antd';
 import Logo from './Logo.png';
 import styles from './Landing.module.scss';
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 const wrapper = {

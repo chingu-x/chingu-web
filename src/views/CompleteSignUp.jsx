@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import CompleteSignUpForm from '../components/CompleteSignUpForm';
 
 export default function CompleteSignUp() {
-  const user = useUser();
+  const { user } = useUser();
 
   if (user) {
     return <Redirect to="/" />;

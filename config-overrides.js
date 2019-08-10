@@ -10,7 +10,6 @@ module.exports = override(
     javascriptEnabled: true,
     modifyVars: {
       "@primary-color": "#15cf89",
-      "@link-color": "#15cf89"
     }
   })
 );

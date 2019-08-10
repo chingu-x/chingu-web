@@ -1,8 +1,8 @@
-import React from "react";
-import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
-import { UserInfo } from "../fragments";
-import { useAuth0 } from "./auth";
+import React from 'react';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
+import { UserInfo } from '../fragments';
+import { useAuth0 } from './auth';
 
 export const UserContext = React.createContext(null);
 export const useUser = () => React.useContext(UserContext);
@@ -19,18 +19,24 @@ const GET_CURRENT_USER = gql`
 
 export default function CurrentUserProvider({ children }) {
   const { isAuthenticated } = useAuth0();
-  const { data } = useQuery(GET_CURRENT_USER, {
-    fetchPolicy: "cache-first",
+  const { data, loading } = useQuery(GET_CURRENT_USER, {
+    fetchPolicy: 'cache-first',
     skip: !isAuthenticated
   });
 
   if (!isAuthenticated) {
-    return <UserContext.Provider value={null}>{children}</UserContext.Provider>;
+    return (
+      <UserContext.Provider value={{ user: null, loading }}>
+        {children}
+      </UserContext.Provider>
+    );
   }
 
-  const currentUser = data ? data.me : null;
+  const user = data ? data.me : null;
 
   return (
-    <UserContext.Provider value={currentUser}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, loading }}>
+      {children}
+    </UserContext.Provider>
   );
 }

@@ -1,23 +1,23 @@
 import React from 'react';
-import { Redirect } from "react-router-dom";
-import { useAuth0 } from "../contexts/auth";
+import { Redirect } from 'react-router-dom';
+import { useAuth0 } from '../contexts/auth';
 import LoadingView from '../components/LoadingView';
 
 function Login() {
-  const { loginWithRedirect, loading } = useAuth0();
-  
+  const { loginWithRedirect, loading, isAuthenticated } = useAuth0();
+
   React.useEffect(() => {
     const fn = async () => {
-      if (!loading) {
+      if (!loading && !isAuthenticated) {
         await loginWithRedirect({
-          appState: { targetUrl: "/" }
+          redirect_uri: `${window.location.origin}/voyageSignUp`
         });
       }
     };
     fn();
-  }, [loading, loginWithRedirect]);
+  }, [loading, isAuthenticated, loginWithRedirect]);
 
-  return loading ? <LoadingView /> : <Redirect to="/" />;
+  return loading ? <LoadingView /> : <Redirect to="/voyageSignUp" />;
 }
 
 export default Login;

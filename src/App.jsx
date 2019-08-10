@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Shell from './Shell';
-import PrivateRoute from './components/PrivateRoute';
+import Route from './components/Route';
 import Landing from './views/Landing';
-import Dashboard from './views/Dashboard';
+import VoyageSignUp from './views/VoyageSignUp';
 import Login from './views/Login';
 import Logout from './views/Logout';
 import CompleteSignUp from './views/CompleteSignUp';
@@ -11,23 +11,24 @@ import NotFound from './views/NotFound';
 
 const App = () => {
   return (
-    <Shell>
-      <Router>
+    <Router>
+      <Shell>
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/logout" component={Logout} />
-          <PrivateRoute
+          <Route secure path="/voyageSignUp" component={VoyageSignUp} />
+          <Route secure exact path="/logout" component={Logout} />
+          <Route
+            secure
             exact
             path="/completeSignUp"
             component={CompleteSignUp}
             skipSignupCheck
           />
-          <PrivateRoute component={NotFound} />
+          <Route secure component={NotFound} />
         </Switch>
-      </Router>
-    </Shell>
+      </Shell>
+    </Router>
   );
 };
 

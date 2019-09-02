@@ -16,15 +16,9 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={Login} />
-          <Route secure path="/voyageSignUp" component={VoyageSignUp} />
           <Route secure exact path="/logout" component={Logout} />
-          <Route
-            secure
-            exact
-            path="/completeSignUp"
-            component={CompleteSignUp}
-            skipSignupCheck
-          />
+          <Route secure path="/completeSignUp" component={CompleteSignUp} />
+          <Route secure path="/voyageSignUp" component={VoyageSignUp} />
           <Route secure component={NotFound} />
         </Switch>
       </Shell>

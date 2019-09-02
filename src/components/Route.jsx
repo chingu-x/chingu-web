@@ -4,13 +4,7 @@ import { Route as RouterRoute } from 'react-router-dom';
 import { useAuth0 } from '../contexts/auth';
 import LoadingView from './LoadingView';
 
-const Route = ({
-  component: Component,
-  secure = false,
-  path,
-  skipSignupCheck = false,
-  ...rest
-}) => {
+const Route = ({ component: Component, secure = false, path, ...rest }) => {
   const { isAuthenticated, loginWithRedirect, loading } = useAuth0();
 
   useEffect(() => {
@@ -22,14 +16,7 @@ const Route = ({
       }
     };
     fn();
-  }, [
-    loading,
-    secure,
-    isAuthenticated,
-    skipSignupCheck,
-    loginWithRedirect,
-    path
-  ]);
+  }, [loading, secure, isAuthenticated, loginWithRedirect, path]);
 
   return (
     <RouterRoute

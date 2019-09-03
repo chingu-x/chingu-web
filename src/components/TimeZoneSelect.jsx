@@ -25,7 +25,8 @@ export default function TimeZoneSelect({ countryCode, ...rest }) {
 
   return (
     <Select
-      placeholder="Select a timezone"
+      style={{ display: 'block' }}
+      placeholder="Timezone"
       filterOption={(input, option) =>
         option.props.children.toLowerCase().includes(input.toLowerCase())
       }

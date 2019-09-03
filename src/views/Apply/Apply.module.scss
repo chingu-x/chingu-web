@@ -1,0 +1,55 @@
+.top {
+  // background: rgb(30, 32, 122);
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(30, 32, 122, 1) 0%,
+  //   rgba(115, 116, 213, 1) 100%
+  // );
+  background: #fff;
+  padding: 40px 0;
+  color: #000;
+
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .headerLink {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .headerButton {
+    margin: 0 16px;
+    color: #000;
+    font-weight: bold;
+    border-color: #000;
+    border-radius: 0;
+    border-width: 2px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    line-height: 46px;
+  }
+}
+
+span {
+  color: #000;
+}
+
+.middleTop {
+  h3.midTitle {
+    color: #000;
+    font-size: 26px;
+  }
+}
+
+.textInput {
+  border: 1px solid #000;
+  border-radius: 0;
+}

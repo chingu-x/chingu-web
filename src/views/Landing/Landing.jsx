@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Typography, Row, Col, Button } from 'antd';
 import Wrapper from '../../components/Wrapper';
+import Footer from '../../components/Footer';
 import Logo from './Logo.png';
 import styles from './Landing.module.scss';
 
 const { Content } = Layout;
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 export default function Landing() {
   return (
@@ -161,30 +162,7 @@ export default function Landing() {
           </Row>
         </Wrapper>
       </Content>
-      <Row className={styles.footer} type="flex" justify="center">
-        <Col span={24}>
-          <Wrapper>
-            <Row>
-              <Col span={12}>
-                <p className={styles.footerTitle}>Contact Us</p>
-                <a
-                  href="mailto:support@chingu.io"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  support@chingu.io
-                </a>
-              </Col>
-              <Col span={6}>
-                <p className={styles.footerTitle}>Company</p>
-                <p>Our Team</p>
-                <p>Privacy Policy</p>
-              </Col>
-              <Col span={6}></Col>
-            </Row>
-          </Wrapper>
-        </Col>
-      </Row>
+      <Footer />
     </Layout>
   );
 }

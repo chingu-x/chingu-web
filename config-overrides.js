@@ -9,7 +9,16 @@ module.exports = override(
   addLessLoader({
     javascriptEnabled: true,
     modifyVars: {
-      "@primary-color": "#15cf89",
+      "@primary-color": "#000",
+      "@border-radius-base": 0,
+      "@border-color-base": "#000",
+      "@font-size-base": "16px"
     }
   })
 );
+
+// CHINGU: #15cf89
+// @link-color: #1890ff; // link color
+// @success-color: #52c41a; // success state color
+// @warning-color: #faad14; // warning state color
+// @error-color: #f5222d; // error state color

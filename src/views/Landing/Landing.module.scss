@@ -17,6 +17,7 @@
   .headerLink {
     color: #000;
     font-weight: bold;
+    font-size: 14px;
   }
 
   .headerButton {
@@ -26,12 +27,13 @@
     border-color: #000;
     border-radius: 0;
     border-width: 2px;
+    font-size: 14px;
   }
 
   h1 {
     font-size: 36px;
     font-weight: bold;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.02em;
     line-height: 46px;
   }
 
@@ -46,12 +48,12 @@
     border: none;
     width: 280px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .applySubtext {
     width: 280px;
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin-top: 10px;
   }
 
@@ -65,7 +67,7 @@
 
 .middle {
   background: #efefef;
-  padding: 60px 0;
+  padding: 50px 0;
 
   .middleTop {
     text-align: center;
@@ -73,7 +75,6 @@
 
     h3.midTitle {
       margin: 0;
-      margin-top: 0.5em;
       color: #000;
       font-size: 28px;
       font-weight: bold;
@@ -90,19 +91,19 @@
     background-color: #fff;
     width: 90%;
     margin: 0 auto;
-    height: 350px;
+    height: 380px;
     color: #000;
-    padding-top: 170px; // image placeholder
+    padding-top: 190px; // image placeholder
 
     h4 {
-      text-align: center;
       font-weight: bold;
       font-size: 20px;
-      padding: 0 24px;
+      line-height: 1.45em;
+      padding: 0 16px;
     }
 
     p {
-      padding: 0 32px;
+      padding: 0 16px;
     }
   }
 }

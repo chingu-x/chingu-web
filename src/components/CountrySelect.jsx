@@ -21,7 +21,8 @@ export default function CountrySelect({ ...rest }) {
 
   return (
     <Select
-      placeholder="Select a country"
+      style={{ display: 'block' }}
+      placeholder="Country"
       filterOption={(input, option) =>
         option.props.children.toLowerCase().includes(input.toLowerCase())
       }

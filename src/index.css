@@ -1,3 +1,8 @@
 body {
   margin: 0;
 }
+
+li[role='option']:hover,
+li.ant-select-dropdown-menu-item-active {
+  color: #fff !important;
+}

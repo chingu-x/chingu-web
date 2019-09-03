@@ -146,8 +146,12 @@ export default function Apply() {
                 value={isPreviousMember}
                 onChange={e => setIsPreviousMember(e.target.value)}
               >
-                <Radio value={false}>No</Radio>
-                <Radio value={true}>Yes</Radio>
+                <Radio style={blockRadioStyle} value={true}>
+                  Yes
+                </Radio>
+                <Radio style={blockRadioStyle} value={false}>
+                  No
+                </Radio>
               </Radio.Group>
             </Col>
           </Row>

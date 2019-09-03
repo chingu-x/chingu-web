@@ -75,7 +75,7 @@ export default function Apply() {
             <Col xs={24}>
               <h1>
                 Apply to join the{' '}
-                <span style={{ color: '#15cf89' }}>October</span> Cohort!
+                <span style={{ color: '#15cf89' }}>October</span> cohort!
               </h1>
             </Col>
           </Row>

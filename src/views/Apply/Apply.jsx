@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 import { Layout, Typography, Row, Col, Button, Input, Radio } from 'antd';
 import { useAuth0 } from '../../contexts/auth';
 import Wrapper from '../../components/Wrapper';
@@ -13,22 +15,61 @@ const { Title } = Typography;
 
 const QUESTION_GAP = 45;
 
+const CREATE_APPLICATION = gql`
+  mutation createApplication($application: CohortApplicationInput!) {
+    createCohortApplication(application: $application)
+  }
+`;
+
 export default function Apply() {
   const { loginWithRedirect, loading, isAuthenticated } = useAuth0();
-  const [role, setRole] = useState('DEVELOPER');
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [desiredRole, setDesiredRole] = useState('DEVELOPER');
   const [countryCode, setCountryCode] = useState();
+  const [city, setCity] = useState();
   const [timeZone, setTimeZone] = useState();
   const [isPreviousMember, setIsPreviousMember] = useState(false);
+  const [excitedTo, setExcitedTo] = useState();
   const [gender, setGender] = useState();
+  const [otherGender, setOtherGender] = useState();
   const [source, setSource] = useState();
-  const [opportunity, setOpportunity] = useState();
   const [tier, setTier] = useState();
+
+  const [
+    createApplication,
+    { loading: creatingApplication, error, data }
+  ] = useMutation(CREATE_APPLICATION);
 
   const blockRadioStyle = {
     display: 'block',
     height: '32px',
     lineHeight: '32px'
   };
+
+  async function submitApplication() {
+    if (!loading && !isAuthenticated) {
+      await loginWithRedirect({
+        redirect_uri: `${window.location.origin}/`
+      });
+    } else {
+      createApplication({
+        variables: {
+          application: {
+            firstName,
+            lastName,
+            gender,
+            otherGender,
+            isPreviousMember,
+            excitedTo,
+            desiredRole,
+            countryCode,
+            city
+          }
+        }
+      });
+    }
+  }
 
   return (
     <Layout>
@@ -91,20 +132,20 @@ export default function Apply() {
                   <Input
                     className={styles.textInput}
                     placeholder="First Name"
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                     autoFocus
                   />
                 </Col>
                 <Col span={12}>
-                  <Input className={styles.textInput} placeholder="Last Name" />
+                  <Input
+                    className={styles.textInput}
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}
+                  />
                 </Col>
               </Row>
-              {/* <p className={styles.midSubtitle}>
-                Here is what we do: put motivated people with similar goals
-                together in a structured
-                <br />
-                environment that gives them the opportunity to level-up in a way
-                they couldn't otherwise.
-              </p> */}
             </Col>
           </Row>
           <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
@@ -129,6 +170,8 @@ export default function Apply() {
                     <Input
                       placeholder="Please specify"
                       style={{ width: 159, marginLeft: 10 }}
+                      value={otherGender}
+                      onChange={e => setOtherGender(e.target.value)}
                     />
                   )}
                 </Radio>
@@ -165,8 +208,8 @@ export default function Apply() {
               </Title>
               <Radio.Group
                 name="opportunity"
-                value={opportunity}
-                onChange={e => setOpportunity(e.target.value)}
+                value={excitedTo}
+                onChange={e => setExcitedTo(e.target.value)}
               >
                 <Radio
                   style={blockRadioStyle}
@@ -189,7 +232,7 @@ export default function Apply() {
                 </Radio>
                 <Radio style={blockRadioStyle} value="OTHER">
                   Other{' '}
-                  {opportunity === 'OTHER' && (
+                  {excitedTo === 'OTHER' && (
                     <Input
                       placeholder="Please specify"
                       style={{ width: 400, marginLeft: 10 }}
@@ -207,8 +250,8 @@ export default function Apply() {
               <Radio.Group
                 name="role"
                 defaultValue="DEVELOPER"
-                value={role}
-                onChange={e => setRole(e.target.value)}
+                value={desiredRole}
+                onChange={e => setDesiredRole(e.target.value)}
               >
                 <Radio style={blockRadioStyle} value="DEVELOPER">
                   Developer
@@ -237,7 +280,12 @@ export default function Apply() {
               </Row>
               <Row type="flex" style={{ marginBottom: 16 }}>
                 <Col span={12}>
-                  <Input className={styles.textInput} placeholder="City" />
+                  <Input
+                    className={styles.textInput}
+                    placeholder="City"
+                    value={city}
+                    onChange={e => setCity(e.target.value)}
+                  />
                 </Col>
               </Row>
               <Row type="flex">
@@ -263,7 +311,7 @@ export default function Apply() {
               </Row>
             </Col>
           </Row>
-          {role === 'DEVELOPER' && (
+          {desiredRole === 'DEVELOPER' && (
             <>
               <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
                 <Col className={styles.middleTop} span={12}>
@@ -345,11 +393,14 @@ export default function Apply() {
           )}
           <Row type="flex">
             <Col className={styles.middleTop} span={12}>
-              <Link to="/login">
-                <Button type="primary" ghost>
-                  Submit
-                </Button>
-              </Link>
+              <Button
+                type="primary"
+                onClick={submitApplication}
+                disabled={creatingApplication}
+                ghost
+              >
+                Submit
+              </Button>
             </Col>
           </Row>
         </Wrapper>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 import { useAuth0 } from '../contexts/auth';
 import LoadingView from '../components/LoadingView';
 
@@ -17,7 +16,7 @@ function Login() {
     fn();
   }, [loading, isAuthenticated, loginWithRedirect]);
 
-  return loading ? <LoadingView /> : <Redirect to="/" />;
+  return <LoadingView />;
 }
 
 export default Login;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Typography, Row, Col, Button, Input, Radio } from 'antd';
+import { useAuth0 } from '../../contexts/auth';
 import Wrapper from '../../components/Wrapper';
 import Footer from '../../components/Footer';
 import CountrySelect from '../../components/CountrySelect';
@@ -13,6 +14,7 @@ const { Title } = Typography;
 const QUESTION_GAP = 45;
 
 export default function Apply() {
+  const { loginWithRedirect, loading, isAuthenticated } = useAuth0();
   const [role, setRole] = useState('DEVELOPER');
   const [countryCode, setCountryCode] = useState();
   const [timeZone, setTimeZone] = useState();
@@ -55,12 +57,12 @@ export default function Apply() {
                 </Button>
               </Link>
               <Link to="/signin">
-                <Button className={styles.headerButton} type="default" ghost>
+                <Button className={styles.headerButton} type="primary" ghost>
                   Sign in
                 </Button>
               </Link>
               <Link to="/apply">
-                <Button className={styles.headerButton} type="default" ghost>
+                <Button className={styles.headerButton} type="primary" ghost>
                   Apply
                 </Button>
               </Link>
@@ -89,6 +91,7 @@ export default function Apply() {
                   <Input
                     className={styles.textInput}
                     placeholder="First Name"
+                    autoFocus
                   />
                 </Col>
                 <Col span={12}>
@@ -248,6 +251,18 @@ export default function Apply() {
               </Row>
             </Col>
           </Row>
+          <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
+            <Col className={styles.middleTop} span={12}>
+              <Title className={styles.midTitle} level={3}>
+                What's your email?
+              </Title>
+              <Row type="flex">
+                <Col span={12}>
+                  <Input className={styles.textInput} placeholder="Email" />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
           {role === 'DEVELOPER' && (
             <>
               <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
@@ -328,6 +343,15 @@ export default function Apply() {
               </Col>
             </Row>
           )}
+          <Row type="flex">
+            <Col className={styles.middleTop} span={12}>
+              <Link to="/login">
+                <Button type="primary" ghost>
+                  Submit
+                </Button>
+              </Link>
+            </Col>
+          </Row>
         </Wrapper>
       </Content>
       <Footer />

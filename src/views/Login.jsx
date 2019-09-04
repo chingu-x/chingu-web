@@ -10,14 +10,14 @@ function Login() {
     const fn = async () => {
       if (!loading && !isAuthenticated) {
         await loginWithRedirect({
-          redirect_uri: `${window.location.origin}/voyageSignUp`
+          redirect_uri: `${window.location.origin}/`
         });
       }
     };
     fn();
   }, [loading, isAuthenticated, loginWithRedirect]);
 
-  return loading ? <LoadingView /> : <Redirect to="/voyageSignUp" />;
+  return loading ? <LoadingView /> : <Redirect to="/" />;
 }
 
 export default Login;

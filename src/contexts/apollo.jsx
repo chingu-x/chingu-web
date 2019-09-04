@@ -1,12 +1,12 @@
-import React from "react";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { onError } from "apollo-link-error";
-import { withClientState } from "apollo-link-state";
-import { ApolloLink, Observable } from "apollo-link";
-import { useAuth0 } from "./auth";
+import React from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { onError } from 'apollo-link-error';
+import { withClientState } from 'apollo-link-state';
+import { ApolloLink, Observable } from 'apollo-link';
+import { useAuth0 } from './auth';
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -19,8 +19,8 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: "https://chingu.appspot.com/graphql",
-  credentials: "same-origin"
+  uri: 'https://api.chingu.io/graphql',
+  credentials: 'same-origin'
 });
 
 const cache = new InMemoryCache();
@@ -28,7 +28,7 @@ const cache = new InMemoryCache();
 export default function ChinguAPIProvider({ children }) {
   const { isAuthenticated, getTokenSilently } = useAuth0();
 
-  const request = async (operation) => {
+  const request = async operation => {
     if (!isAuthenticated) {
       return operation;
     }

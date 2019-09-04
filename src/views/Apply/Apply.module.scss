@@ -22,9 +22,7 @@
 
   .headerButton {
     margin: 0 16px;
-    color: #000;
     font-weight: bold;
-    border-color: #000;
     border-radius: 0;
     border-width: 2px;
     font-size: 14px;
@@ -46,6 +44,11 @@ span {
   h3.midTitle {
     color: #000;
     font-size: 26px;
+  }
+
+  button {
+    font-weight: bold;
+    border-width: 2px;
   }
 }
 

@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5d8d8554-b8dc-48c1-8c9d-5c3fe8da981c/deploy-status)](https://app.netlify.com/sites/chingu-web/deploys)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

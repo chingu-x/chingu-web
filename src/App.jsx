@@ -4,10 +4,8 @@ import Shell from './Shell';
 import Route from './components/Route';
 import Landing from './views/Landing';
 import Apply from './views/Apply';
-import VoyageSignUp from './views/VoyageSignUp';
 import Login from './views/Login';
 import Logout from './views/Logout';
-import CompleteSignUp from './views/CompleteSignUp';
 import NotFound from './views/NotFound';
 
 const App = () => {
@@ -19,8 +17,6 @@ const App = () => {
           <Route exact path="/apply" component={Apply} />
           <Route exact path="/login" component={Login} />
           <Route secure exact path="/logout" component={Logout} />
-          <Route secure path="/completeSignUp" component={CompleteSignUp} />
-          <Route secure path="/voyageSignUp" component={VoyageSignUp} />
           <Route secure component={NotFound} />
         </Switch>
       </Shell>

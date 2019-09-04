@@ -6,3 +6,23 @@ li[role='option']:hover,
 li.ant-select-dropdown-menu-item-active {
   color: #fff !important;
 }
+
+input.ant-radio-input:focus + span.ant-radio-inner,
+.ant-input:focus,
+.ant-select-focused .ant-select-selection,
+.ant-select-selection:focus,
+.ant-select-selection:active {
+  -webkit-box-shadow: 0 0 0 2px rgb(21, 207, 127, 0.5) !important;
+  box-shadow: 0 0 0 2px rgb(21, 207, 137, 0.5) !important;
+}
+
+input::selection {
+  color: initial;
+  background: rgb(21, 207, 137, 0.5);
+}
+
+.ant-btn.ant-btn-primary::after,
+.ant-click-animating-node {
+  -webkit-box-shadow: 0 0 0 0 #15cf89 !important;
+  box-shadow: 0 0 0 0 #15cf89 !important;
+}

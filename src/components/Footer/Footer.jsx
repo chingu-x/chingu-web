@@ -8,8 +8,8 @@ export default function Footer() {
     <Row className={styles.footer} type="flex" justify="center">
       <Col span={24}>
         <Wrapper>
-          <Row>
-            <Col span={12}>
+          <Row gutter={16}>
+            <Col span={12} style={{ textAlign: 'right' }}>
               <p className={styles.footerTitle}>Contact Us</p>
               <a
                 href="mailto:support@chingu.io"

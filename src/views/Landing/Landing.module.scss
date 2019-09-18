@@ -1,3 +1,5 @@
+@import '../../styles/base';
+
 div.racoonSection {
   display: flex;
   justify-content: center;
@@ -30,7 +32,7 @@ div.racoonSection {
 }
 
 .features {
-  background: #f8f8f8;
+  background: $light-grey-background;
   text-align: center;
   padding: 40px 0;
 
@@ -89,7 +91,7 @@ div.racoonSection {
 
 .numbers {
   padding: 50px 0;
-  background-color: #f8f8f8;
+  background-color: $light-grey-background;
 
   .numberBlocks {
     display: flex;

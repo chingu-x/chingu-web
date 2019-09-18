@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
 import { Button } from '../../components/Button';
@@ -8,9 +9,6 @@ import { ExampleProject } from '../../components/ExampleProject';
 import { NumberStatBlock } from '../../components/NumberStatBlock';
 import { LandingViewFeatureCard } from '../../components/LandingViewFeatureCard';
 import { LandingViewChinguProcessStep } from '../../components/LandingViewChinguProcessStep';
-
-import { Wrapper } from '../../components/Wrapper';
-
 import RacoonWithLaptop from './assets/RacoonWithLaptop.png';
 import SquigglyLine from './assets/SquigglyLine.png';
 import RacoonYesPlease from './assets/RacoonYesPlease.png';

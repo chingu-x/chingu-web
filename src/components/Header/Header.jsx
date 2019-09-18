@@ -9,8 +9,10 @@ export default function Header() {
   return (
     <Wrapper contentAttributes={{ className: header }}>
       <div className={logo}>
-        <img src={Logo} alt="Chingu logo" />
-        Chingu
+        <Link to="/">
+          <img src={Logo} alt="Chingu logo" />
+          Chingu
+        </Link>
       </div>
       <div className={links}>
         <Link to="/howitworks">

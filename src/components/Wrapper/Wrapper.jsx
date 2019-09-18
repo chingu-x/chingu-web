@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { Row, Col } from 'antd';
-import styles from './Wrapper.module.scss';
+import { wrapper } from './Wrapper.module.scss';
 
 export default function Wrapper(props) {
-  const { children, rowClassName, rowStyle, colClassName, colStyle } = props;
+  const {
+    children,
+    rowStyle,
+    colClassName,
+    colStyle,
+    contentAttributes = {},
+    ...rest
+  } = props;
+
+  const contentClass = useMemo(
+    () => classnames(wrapper, contentAttributes.className),
+    [contentAttributes.className]
+  );
 
   return (
-    <Row className={rowClassName} style={rowStyle} type="flex" justify="center">
-      <Col
-        className={classnames(styles.wrapper, colClassName)}
-        style={colStyle}
-        md={24}
-        lg={18}
-        xxl={16}
-      >
+    <div {...rest} ype="flex" justify="center">
+      <div {...contentAttributes} className={contentClass}>
         {children}
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 }

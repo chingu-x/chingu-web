@@ -4,6 +4,8 @@ import ChinguAPIProvider from './contexts/apollo';
 import ChinguStripeProvider from './contexts/stripe';
 import CurrentUserProvider from './contexts/user';
 import { Auth0Provider } from './contexts/auth';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import config from './config/auth.json';
 
 const Shell = ({ children, history }) => {
@@ -26,7 +28,11 @@ const Shell = ({ children, history }) => {
     >
       <ChinguAPIProvider>
         <ChinguStripeProvider>
-          <CurrentUserProvider>{children}</CurrentUserProvider>
+          <CurrentUserProvider>
+            <Header />
+            {children}
+            <Footer />
+          </CurrentUserProvider>
         </ChinguStripeProvider>
       </ChinguAPIProvider>
     </Auth0Provider>

@@ -1,0 +1,36 @@
+@import '../../styles/base';
+
+.paragraph {
+  color: #000;
+  font-size: 16px;
+  margin: 0;
+
+  &.small {
+    font-size: 14px;
+  }
+
+  &.large {
+    font-size: 20px;
+  }
+
+  b,
+  em,
+  &.bold {
+    font-weight: 700;
+  }
+
+  q,
+  i,
+  &.italic {
+    font-style: italic;
+  }
+
+  em {
+    color: $chingu-green;
+    font-style: normal;
+  }
+
+  & + p {
+    margin-top: 16px;
+  }
+}

@@ -54,27 +54,6 @@ div.racoonSection {
   .featureCards {
     display: flex;
     justify-content: space-between;
-
-    .featureCard {
-      flex: 1;
-      padding: 20px;
-      margin: 0 16px;
-      height: 420px;
-      background-color: #fff;
-
-      .featureCardImgArea {
-        height: 180px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        margin-bottom: 10px;
-
-        img {
-          max-width: 90%;
-          max-height: 100%;
-        }
-      }
-    }
   }
 }
 
@@ -89,37 +68,6 @@ div.racoonSection {
   .steps {
     width: 720px;
     margin: 35px auto;
-
-    .step {
-      display: flex;
-      align-items: center;
-
-      .stepImgArea {
-        width: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px 0px;
-
-        img {
-          height: 50px;
-        }
-      }
-
-      .stepText {
-        padding: 15px 0px;
-        border-left: 4px solid #000;
-        padding-left: 25px;
-
-        p {
-          margin: 0;
-        }
-
-        .stepTitle {
-          text-transform: uppercase;
-        }
-      }
-    }
   }
 }
 
@@ -136,20 +84,6 @@ div.racoonSection {
   .projectExamples {
     display: flex;
     margin-top: 30px;
-
-    .project {
-      padding: 10px;
-      text-align: center;
-      position: relative;
-
-      .projectTitle {
-        margin-top: 15px;
-      }
-
-      .projectTitle + p {
-        margin: 0;
-      }
-    }
   }
 }
 
@@ -159,17 +93,6 @@ div.racoonSection {
 
   .numberBlocks {
     display: flex;
-
-    & > div {
-      padding: 0 35px;
-      border-left: 3px solid #000;
-      position: relative;
-
-      span {
-        font-weight: 900;
-        font-size: 48px;
-      }
-    }
   }
 }
 
@@ -182,15 +105,6 @@ div.racoonSection {
   .quoteBlocks {
     margin-top: 30px;
     margin-bottom: 60px;
-
-    .quoteBlock {
-      padding: 16px;
-      position: relative;
-
-      p:nth-of-type(2) {
-        margin: 0;
-      }
-    }
   }
 
   .bottomApply {

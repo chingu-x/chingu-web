@@ -3,7 +3,14 @@ import { Link } from 'react-router-dom';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
 import { Button } from '../../components/Button';
+import { QuoteBlock } from '../../components/QuoteBlock';
+import { ExampleProject } from '../../components/ExampleProject';
+import { NumberStatBlock } from '../../components/NumberStatBlock';
+import { LandingViewFeatureCard } from '../../components/LandingViewFeatureCard';
+import { LandingViewChinguProcessStep } from '../../components/LandingViewChinguProcessStep';
+
 import Wrapper from '../../components/Wrapper';
+
 import RacoonWithLaptop from './assets/RacoonWithLaptop.png';
 import SquigglyLine from './assets/SquigglyLine.png';
 import RacoonYesPlease from './assets/RacoonYesPlease.png';
@@ -18,82 +25,8 @@ import ProcessStep6 from './assets/ProcessStep6.png';
 import JobbaticalProject from './assets/JobbaticalProject.png';
 import BudgetBoardProject from './assets/BudgetBoardProject.png';
 import VolunteerAppProject from './assets/VolunteerAppProject.png';
+import quotes from './quotes.json';
 import styles from './Landing.module.scss';
-
-function FeatureCard({ img, imgAlt, imgStyle, title, body }) {
-  return (
-    <div className={styles.featureCard}>
-      <div className={styles.featureCardImgArea}>
-        <img src={img} alt={imgAlt} style={imgStyle} />
-      </div>
-      <Paragraph bold size="large">
-        {title}
-      </Paragraph>
-      <Paragraph>{body}</Paragraph>
-    </div>
-  );
-}
-
-function ChinguProcessStep({ icon, iconAlt, title, description }) {
-  return (
-    <div className={styles.step}>
-      <div className={styles.stepImgArea}>
-        <img src={icon} alt={iconAlt} />
-      </div>
-      <div className={styles.stepText}>
-        <Paragraph bold size="large" className={styles.stepTitle}>
-          {title}
-        </Paragraph>
-        <Paragraph>{description}</Paragraph>
-      </div>
-    </div>
-  );
-}
-
-function ExampleProject({ img, imgAlt, title, description, tier, tech }) {
-  return (
-    <div className={styles.project}>
-      <img src={img} alt={imgAlt} />
-      <Paragraph className={styles.projectTitle} bold size="large">
-        {title}
-      </Paragraph>
-      <Paragraph>
-        {description}
-        <br />
-        <br />
-        <b>{tier}</b>
-        <br />
-        {tech}
-      </Paragraph>
-    </div>
-  );
-}
-
-function NumberStat({ number, subject, description }) {
-  return (
-    <div>
-      <Paragraph size="large" bold>
-        <span>{new Intl.NumberFormat().format(number)}+</span>
-        <br />
-        {subject}
-      </Paragraph>
-      <Paragraph>{description}</Paragraph>
-    </div>
-  );
-}
-
-function QuoteBlock({ quote, author, location }) {
-  return (
-    <div className={styles.quoteBlock}>
-      <Paragraph size="large" bold>
-        <q>{quote}</q>
-      </Paragraph>
-      <Paragraph size="small" italic>
-        {author}, {location}
-      </Paragraph>
-    </div>
-  );
-}
 
 export default function Landing() {
   return (
@@ -143,21 +76,21 @@ export default function Landing() {
           couldn't otherwise.
         </Paragraph>
         <div className={styles.featureCards}>
-          <FeatureCard
+          <LandingViewFeatureCard
             img={ThreeAnimalsTogether}
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -12 }}
             title="Build real projects in remote teams"
             body="70% of entry-level developer jobs now ask for 3 years or more of experience. Chingu provides you a way to get that experience."
           />
-          <FeatureCard
+          <LandingViewFeatureCard
             img={RacoonYesPlease}
             imgAlt="Racoon holding up sign that says 'Yes, please'"
             title="Get out of tutorial purgatory, finish projects"
             body="Sick of doing tutorial after tutorial with nothing to show for
             them? Chingu helps you deliver real projects."
           />
-          <FeatureCard
+          <LandingViewFeatureCard
             img={TwoAnimalsTogether}
             imgAlt="A cat and a dog hugging each other"
             title="Join a global community who share your goals"
@@ -170,37 +103,37 @@ export default function Landing() {
       <Wrapper className={styles.process}>
         <Title level={2}>The Chingu process</Title>
         <div className={styles.steps}>
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep1}
             iconAlt="Form icon"
             title="1. Apply"
             description="Your learning adventure starts the moment you decide to join Chingu."
           />
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep2}
             iconAlt="Toolset icon"
             title="2. Build the pre-work project"
             description="Finish a solo project to make sure you're prepared for the program."
           />
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep3}
             iconAlt="Connections icon"
             title="3. Be placed in a team"
             description="Get placed in a remote team of Chingus eager to learn."
           />
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep4}
             iconAlt="Collaboration icon"
             title="4. Build, build, build"
             description="Decide on a project and build it together. Practice critical team workflow."
           />
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep5}
             iconAlt="Thinking icon"
             title="5. Overcome obstacles"
             description="Overcome obstacles real developers face. Level up as a human."
           />
-          <ChinguProcessStep
+          <LandingViewChinguProcessStep
             icon={ProcessStep6}
             iconAlt="Application icon"
             title="6. Succeed & repeat"
@@ -246,17 +179,17 @@ export default function Landing() {
         className={styles.numbers}
         contentAttributes={{ className: styles.numberBlocks }}
       >
-        <NumberStat
+        <NumberStatBlock
           number={8570}
           subject="Coders & Designers"
           description="Chingu has helped thousands of people learning in-demand skills accelerate their learning through collaboration and project-building."
         />
-        <NumberStat
+        <NumberStatBlock
           number={3200}
           subject="Pair-programming hours"
           description="We love to optimally match learners from around the world. Whether in a team setting or for a one-time meeting to complete a challenge."
         />
-        <NumberStat
+        <NumberStatBlock
           number={1320}
           subject="Developer Teams"
           description="We launch remote developer teams from all skill levels, from all timezones, and from most web dev languages & frameworks."
@@ -274,53 +207,9 @@ export default function Landing() {
           The good news? Chingu solves them.
         </Paragraph>
         <div className={styles.quoteBlocks}>
-          <QuoteBlock
-            quote="I got my first developer job at the age of 35 largely due to the technical AND soft skills I gained through Chingu."
-            author="Eric Zumwalt"
-            location="USA"
-          />
-          <QuoteBlock
-            quote="I realized pretty quickly that I was learning more from the
-            Voyage project than from everything I did in the entire rest of
-            the year put together."
-            author="Sarah Schneider"
-            location="USA"
-          />
-          <QuoteBlock
-            quote="Thanks again for all that you do. I was about to look for a huge loan just to go to bootcamp to get this exact style of learning."
-            author="Tim Mondell"
-            location="USA"
-          />
-          <QuoteBlock
-            quote="Participating in the Chingu Cohorts bridged the gap in my experience that I needed to enter the tech industry. The remote team skills I learned here are the perfect polish to a brand new developer resumé!"
-            author="Vik Williamson"
-            location="USA"
-          />
-          <QuoteBlock
-            quote="The Chingu Cohorts have it all: a place to grow as a developer, receive support, meet people from different countries, and work on fun projects."
-            author="Alecia Hodges"
-            location="USA"
-          />
-          <QuoteBlock
-            quote="Chingu is an awesome and must-try platform for every programmer."
-            author="Debasree Samadder"
-            location="India"
-          />
-          <QuoteBlock
-            quote="Great Teams? Check. Great friendships? Check. Great Projects? Check. Awesome learning experience? Check. For me, Chingu is like the placement drive phase of Ivy League colleges I never had. Provided you rise up to the challenge of couse."
-            author="Tanmoy Panda"
-            location="India"
-          />
-          <QuoteBlock
-            quote="I am eternally grateful for the opportunity to participate and experience the Voyage and community. Chingu inspires and connects motivated developers who are passionate about and commited to learning and growing while building together in a fully distributed team environment."
-            author="NAME_MISSING"
-            location="LOCATION_MISSING"
-          />
-          <QuoteBlock
-            quote="Together my Chingu coding partner and I spent over 200 hours pair programming. Despite the long hours and lack of sleep at times, each session was enjoyable and left both parties having learned something."
-            author="Kathy Lambert"
-            location="USA"
-          />
+          {quotes.map(quote => (
+            <QuoteBlock key={quote.author} {...quote} />
+          ))}
         </div>
         <Title level={2}>Ready to level-up?</Title>
         <Link to="/apply">

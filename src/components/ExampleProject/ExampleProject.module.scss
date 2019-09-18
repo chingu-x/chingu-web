@@ -1,0 +1,17 @@
+.project {
+  padding: 10px;
+  text-align: center;
+  position: relative;
+
+  img {
+    min-height: 222px;
+  }
+
+  .title {
+    margin-top: 15px;
+  }
+
+  .title + p {
+    margin: 0;
+  }
+}

@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { Typography, Row, Col, Button, Input, Radio } from 'antd';
 import { useAuth0 } from '../../contexts/auth';
-import Wrapper from '../../components/Wrapper';
+import { Wrapper } from '../../components/Wrapper';
 import CountrySelect from '../../components/CountrySelect';
 import TimeZoneSelect from '../../components/TimeZoneSelect';
 import styles from './Apply.module.scss';

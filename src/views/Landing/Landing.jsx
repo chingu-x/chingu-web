@@ -9,7 +9,7 @@ import { NumberStatBlock } from '../../components/NumberStatBlock';
 import { LandingViewFeatureCard } from '../../components/LandingViewFeatureCard';
 import { LandingViewChinguProcessStep } from '../../components/LandingViewChinguProcessStep';
 
-import Wrapper from '../../components/Wrapper';
+import { Wrapper } from '../../components/Wrapper';
 
 import RacoonWithLaptop from './assets/RacoonWithLaptop.png';
 import SquigglyLine from './assets/SquigglyLine.png';

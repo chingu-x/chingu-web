@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Wrapper from '../Wrapper';
+import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
 import { header, logo, links } from './Header.module.scss';
 import Logo from './Logo.png';

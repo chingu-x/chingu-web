@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import Wrapper from '../Wrapper';
+import { Wrapper } from '../Wrapper';
 import styles from './Footer.module.scss';
 
 export default function Footer() {

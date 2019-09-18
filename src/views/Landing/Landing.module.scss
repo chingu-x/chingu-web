@@ -140,6 +140,10 @@ div.racoonSection {
       .projectTitle {
         margin-top: 15px;
       }
+
+      .projectTitle + p {
+        margin: 0;
+      }
     }
   }
 }

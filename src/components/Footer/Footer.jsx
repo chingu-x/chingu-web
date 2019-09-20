@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { Wrapper } from '../Wrapper';
 import styles from './Footer.module.scss';
@@ -21,8 +22,9 @@ export default function Footer() {
             </Col>
             <Col span={6}>
               <p className={styles.footerTitle}>Company</p>
-              <p>Our Team</p>
-              <p>Privacy Policy</p>
+              <Link to="/privacy">
+                <p>Privacy Policy</p>
+              </Link>
             </Col>
             <Col span={6}></Col>
           </Row>

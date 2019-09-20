@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import { Typography, Row, Col, Button, Input, Radio } from 'antd';
+import { Row, Col, Button, Input, Radio } from 'antd';
 import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
+import { Title } from '../../components/Title';
 import CountrySelect from '../../components/CountrySelect';
 import TimeZoneSelect from '../../components/TimeZoneSelect';
 import styles from './Apply.module.scss';
-
-const { Title } = Typography;
 
 const QUESTION_GAP = 45;
 
@@ -34,10 +32,9 @@ export default function Apply() {
   const [source, setSource] = useState();
   const [tier, setTier] = useState();
 
-  const [
-    createApplication,
-    { loading: creatingApplication, error, data }
-  ] = useMutation(CREATE_APPLICATION);
+  const [createApplication, { loading: creatingApplication }] = useMutation(
+    CREATE_APPLICATION
+  );
 
   const blockRadioStyle = {
     display: 'block',
@@ -71,40 +68,6 @@ export default function Apply() {
 
   return (
     <Wrapper className={styles.top}>
-      <Row type="flex" justify="space-between" align="middle">
-        <Col>
-          <Link to="/">
-            <span className={styles.title}>Chingu</span>
-          </Link>
-        </Col>
-        <Col>
-          <Link to="/howitworks">
-            <Button className={styles.headerLink} type="link">
-              How it works
-            </Button>
-          </Link>
-          <Link to="/pricing">
-            <Button className={styles.headerLink} type="link">
-              Pricing
-            </Button>
-          </Link>
-          <Link to="/faq">
-            <Button className={styles.headerLink} type="link">
-              FAQ
-            </Button>
-          </Link>
-          <Link to="/signin">
-            <Button className={styles.headerButton} type="primary" ghost>
-              Sign in
-            </Button>
-          </Link>
-          <Link to="/apply">
-            <Button className={styles.headerButton} type="primary" ghost>
-              Apply
-            </Button>
-          </Link>
-        </Col>
-      </Row>
       <Row
         style={{ marginTop: 75, marginBottom: 30 }}
         type="flex"

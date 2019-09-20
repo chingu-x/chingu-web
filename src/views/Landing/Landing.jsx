@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
@@ -42,11 +42,17 @@ export default function Landing() {
             skills required in a professional software job.
           </Paragraph>
           <div className={styles.applyArea}>
-            <Link to="/apply">
-              <Button type="primary" size="large" className={styles.apply}>
-                Apply to Chingu now
-              </Button>
-            </Link>
+            {/* <Link to="/apply"> */}
+            <Button
+              type="primary"
+              size="large"
+              className={styles.apply}
+              data-token="89f71a471de6a750cfa385e1ba4ffd00"
+              onClick={e => window.mjOpenPopin(e, e.target)}
+            >
+              Register Now
+            </Button>
+            {/* </Link> */}
             <Paragraph size="small" className={styles.applySubtext}>
               (23,374 Github activity notifications
               <span role="img" aria-label="Fire emoji">
@@ -210,11 +216,17 @@ export default function Landing() {
           ))}
         </div>
         <Title level={2}>Ready to level-up?</Title>
-        <Link to="/apply">
-          <Button type="primary" size="large" className={styles.bottomApply}>
-            Apply now
-          </Button>
-        </Link>
+        {/* <Link to="/apply"> */}
+        <Button
+          type="primary"
+          size="large"
+          className={styles.bottomApply}
+          data-token="89f71a471de6a750cfa385e1ba4ffd00"
+          onClick={e => window.mjOpenPopin(e, e.target)}
+        >
+          Register Now
+        </Button>
+        {/* </Link> */}
       </Wrapper>
     </>
   );

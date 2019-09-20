@@ -18,18 +18,24 @@ export default function Header() {
         <Link to="/howitworks">
           <Button type="link">How it works</Button>
         </Link>
-        <Link to="/pricing">
+        {/* <Link to="/pricing">
           <Button type="link">Pricing</Button>
-        </Link>
+        </Link> */}
         <Link to="/faq">
           <Button type="link">FAQ</Button>
         </Link>
-        <Link to="/signin">
+        {/* <Link to="/signin">
           <Button>Sign in</Button>
-        </Link>
-        <Link to="/apply">
-          <Button type="primary">Apply</Button>
-        </Link>
+        </Link> */}
+        {/* <Link to="/apply"> */}
+        <Button
+          type="primary"
+          data-token="89f71a471de6a750cfa385e1ba4ffd00"
+          onClick={e => window.mjOpenPopin(e, e.target)}
+        >
+          Register Now
+        </Button>
+        {/* </Link> */}
       </div>
     </Wrapper>
   );

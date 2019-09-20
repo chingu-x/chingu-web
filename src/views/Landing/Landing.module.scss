@@ -7,11 +7,11 @@ div.racoonSection {
 
   div.racoonText {
     width: 480px;
-    padding-top: 80px;
+    padding-top: 100px;
 
     div.applyArea {
-      text-align: center;
-      padding-top: 25px;
+      // text-align: center;
+      padding-top: 15px;
 
       button.apply {
         width: 340px;
@@ -19,7 +19,7 @@ div.racoonSection {
 
       p.applySubtext {
         margin-top: 10px;
-        width: 320px;
+        width: 340px;
         display: inline-block;
       }
     }

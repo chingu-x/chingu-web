@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
@@ -6,10 +6,13 @@ import { Paragraph } from '../../components/Paragraph';
 import { policy } from './Privacy.module.scss';
 
 export default function Privacy() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Wrapper>
       <div className={policy}>
-        <Title>Privacy Policy</Title>
+        <Title id="policy">Privacy Policy</Title>
         <br />
         <Title level={3}>Privacy Notice</Title>
         <Paragraph>

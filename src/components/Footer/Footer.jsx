@@ -22,7 +22,7 @@ export default function Footer() {
             </Col>
             <Col span={6}>
               <p className={styles.footerTitle}>Company</p>
-              <Link to="/privacy">
+              <Link to="/privacy#policy">
                 <p>Privacy Policy</p>
               </Link>
             </Col>

@@ -37,7 +37,7 @@ export default function Landing() {
             gain the skills you need.
           </Title>
           <Paragraph>
-            Chingu is a remote 6-week program for web developers. You will build
+            Chingu is a remote 8-week program for web developers. You will build
             a project in a remote team and level-up with the technical and soft
             skills required in a professional software job.
           </Paragraph>
@@ -53,13 +53,13 @@ export default function Landing() {
               Register Now
             </Button>
             {/* </Link> */}
-            <Paragraph size="small" className={styles.applySubtext}>
+            {/* <Paragraph size="small" className={styles.applySubtext}>
               (23,374 Github activity notifications
               <span role="img" aria-label="Fire emoji">
                 🔥
               </span>
               from 560 Chingu teams in the past 5 months!)
-            </Paragraph>
+            </Paragraph> */}
           </div>
         </div>
         <img src={RacoonWithLaptop} alt="Chingu RacoonWithLaptop" />
@@ -73,11 +73,14 @@ export default function Landing() {
           </span>
         </Title>
         <Paragraph className={styles.featuresSubtitle}>
-          Here is what we do: put motivated people with similar goals together
+          {/* Here is what we do: put motivated people with similar goals together
           in a structured
           <br />
           environment that gives them the opportunity to level-up in a way they
-          couldn't otherwise.
+          couldn't otherwise. */}
+          We place motivated people with similar goals together in project teams
+          <br />
+          which allows them level-up in ways they couldn't otherwise
         </Paragraph>
         <div className={styles.featureCards}>
           <LandingViewFeatureCard
@@ -85,7 +88,7 @@ export default function Landing() {
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -12 }}
             title="Build real projects in remote teams"
-            body="70% of entry-level developer jobs now ask for 3 years or more of experience. Chingu provides you a way to get that experience."
+            body="61% of full-time entry-level jobs now ask for 3 years or more of experience. Chingu provides you a way to get that experience."
           />
           <LandingViewFeatureCard
             img={RacoonYesPlease}

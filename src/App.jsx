@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Shell from './Shell';
 import Route from './components/Route';
 import Landing from './views/Landing';
+import Privacy from './views/Privacy';
 // import Pricing from './views/Pricing';
 // import Apply from './views/Apply';
 // import Login from './views/Login';
@@ -15,6 +16,7 @@ const App = () => {
       <Shell>
         <Switch>
           <Route exact path="/" component={Landing} />
+          <Route exact path="/privacy" component={Privacy} />
           {/* <Route exact path="/pricing" component={Pricing} /> */}
           {/* <Route exact path="/apply" component={Apply} /> */}
           {/* <Route exact path="/login" component={Login} /> */}

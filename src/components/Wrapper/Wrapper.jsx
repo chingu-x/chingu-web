@@ -18,7 +18,7 @@ export default function Wrapper(props) {
   );
 
   return (
-    <div {...rest} ype="flex" justify="center">
+    <div {...rest}>
       <div {...contentAttributes} className={contentClass}>
         {children}
       </div>

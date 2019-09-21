@@ -1,22 +1,35 @@
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #000;
-  padding-top: 30px;
+.container {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 100;
 
-  div.logo {
+  .header {
     display: flex;
     align-items: center;
-    font-weight: bold;
+    justify-content: space-between;
+    color: #000;
+    padding: 15px 0;
 
-    img {
-      margin-right: 5px;
-      height: 25px;
+    div.logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+
+      img {
+        margin-right: 5px;
+        height: 25px;
+      }
+    }
+
+    div.links > * {
+      margin-left: 25px;
     }
   }
+}
 
-  div.links > * {
-    margin-left: 25px;
-  }
+.offset {
+  position: relative;
+  height: 58px;
 }

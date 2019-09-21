@@ -37,6 +37,7 @@ export default function Privacy() {
             <li>How you can correct any inaccuracies in the information.</li>
           </ol>
         </Paragraph>
+        <br />
         <Title level={3}>Information Collection, Use, and Sharing</Title>
         <Paragraph>
           We are the sole owners of the information collected on this site. We
@@ -49,6 +50,7 @@ export default function Privacy() {
           party outside of our organization, other than as necessary to fulfill
           requests from you, and we will not sell your information to anyone.
         </Paragraph>
+        <br />
         <Title level={3}>Your Access to and Control Over Information</Title>
         <Paragraph>
           You may opt out of any future contacts from us at any time by
@@ -62,6 +64,7 @@ export default function Privacy() {
             <li>Express any concern you have about our use of your data.</li>
           </ul>
         </Paragraph>
+        <br />
         <Title level={3}>Security</Title>
         <Paragraph>
           We take precautions to protect your information. When you submit

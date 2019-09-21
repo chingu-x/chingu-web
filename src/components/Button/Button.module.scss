@@ -7,11 +7,17 @@
   border: 2px solid #000;
   border-radius: 0;
   margin: 0;
+  cursor: pointer;
 
   &.primary {
     background-color: $chingu-green;
     border-color: $chingu-green;
     color: #fff;
+
+    &:hover {
+      background-color: #3aeca1;
+      border-color: #3aeca1;
+    }
   }
 
   &.link {

@@ -3,9 +3,9 @@
   "name": "Chingu is a remote 8-week program for web developers. You will build a project in a remote team and level-up with the technical and soft skills required in a professional software job.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     }
   ],
   "start_url": ".",

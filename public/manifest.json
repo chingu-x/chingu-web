@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Chingu",
+  "name": "Chingu is a remote 8-week program for web developers. You will build a project in a remote team and level-up with the technical and soft skills required in a professional software job.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#13e58c",
   "background_color": "#ffffff"
 }

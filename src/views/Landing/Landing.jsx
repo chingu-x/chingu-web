@@ -53,13 +53,13 @@ export default function Landing() {
               Register Now
             </Button>
             {/* </Link> */}
-            {/* <Paragraph size="small" className={styles.applySubtext}>
+            <Paragraph size="small" className={styles.applySubtext}>
               (23,374 Github activity notifications
               <span role="img" aria-label="Fire emoji">
                 🔥
               </span>
               from 560 Chingu teams in the past 5 months!)
-            </Paragraph> */}
+            </Paragraph>
           </div>
         </div>
         <img src={RacoonWithLaptop} alt="Chingu RacoonWithLaptop" />

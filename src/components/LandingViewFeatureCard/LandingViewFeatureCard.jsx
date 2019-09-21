@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paragraph } from '../Paragraph';
-import { card, imgArea } from './LandingViewFeatureCard.module.scss';
+import { card, imgArea, text } from './LandingViewFeatureCard.module.scss';
 
 export default function LandingViewFeatureCard({
   img,
@@ -14,10 +14,12 @@ export default function LandingViewFeatureCard({
       <div className={imgArea}>
         <img src={img} alt={imgAlt} style={imgStyle} />
       </div>
-      <Paragraph bold size="large">
-        {title}
-      </Paragraph>
-      <Paragraph>{body}</Paragraph>
+      <div class={text}>
+        <Paragraph bold size="large">
+          {title}
+        </Paragraph>
+        <Paragraph>{body}</Paragraph>
+      </div>
     </div>
   );
 }

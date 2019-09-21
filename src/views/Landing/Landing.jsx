@@ -87,23 +87,21 @@ export default function Landing() {
             img={ThreeAnimalsTogether}
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -12 }}
-            title="Build real projects in remote teams"
-            body="61% of full-time entry-level jobs now ask for 3 years or more of experience. Chingu provides you a way to get that experience."
+            title="Gain experience in a remote team"
+            body="61% of full-time entry-level jobs now ask for 3 years or more of experience."
           />
           <LandingViewFeatureCard
             img={RacoonYesPlease}
             imgAlt="Racoon holding up sign that says 'Yes, please'"
-            title="Get out of tutorial purgatory, finish projects"
+            title="Work on real projects"
             body="Sick of doing tutorial after tutorial with nothing to show for
-            them? Chingu helps you deliver real projects."
+            them?"
           />
           <LandingViewFeatureCard
             img={TwoAnimalsTogether}
             imgAlt="A cat and a dog hugging each other"
-            title="Join a global community who share your goals"
-            body="So many people struggle to learn alone. Here you will be
-            surrounded by friendly people from around the world who share your
-            goals."
+            title="Join a supportive community"
+            body="It can be hard to find someone to help you get unstuck."
           />
         </div>
       </Wrapper>

@@ -12,6 +12,13 @@
     img {
       height: 50px;
     }
+
+    @media screen and (max-width: 767px) {
+      img {
+        height: auto;
+        max-width: 40px;
+      }
+    }
   }
 
   .text {
@@ -26,5 +33,12 @@
     .title {
       text-transform: uppercase;
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .imgArea {
+    max-width: 60px;
+    padding: 0 10px !important;
   }
 }

@@ -14,13 +14,31 @@ h1.title {
   line-height: 52px;
 }
 
+@media screen and (max-width: 767px) {
+  h1.title {
+    font-size: 38px;
+  }
+}
+
 h2.title {
   font-size: 48px;
   font-weight: 600;
   line-height: 52px;
 }
 
+@media screen and (max-width: 767px) {
+  h2.title {
+    font-size: 30px;
+  }
+}
+
 h3.title {
   font-size: 28px;
   font-weight: 600;
+}
+
+@media screen and (max-width: 767px) {
+  h3.title {
+    font-size: 20px;
+  }
 }

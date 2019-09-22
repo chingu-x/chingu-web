@@ -31,11 +31,7 @@ export default function Landing() {
     <>
       <Wrapper contentAttributes={{ className: styles.racoonSection }}>
         <div className={styles.racoonText}>
-          <Title>
-            Build projects in teams,
-            <br />
-            gain the skills you need.
-          </Title>
+          <Title>Build projects in teams, gain the skills you need.</Title>
           <Paragraph>
             Chingu is a remote 8-week program for web developers. You will build
             a project in a remote team and level-up with the technical and soft

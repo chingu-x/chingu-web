@@ -12,7 +12,7 @@ export default function Header() {
         <div className={logo}>
           <Link to="/">
             <img src={Logo} alt="Chingu logo" />
-            Chingu
+            <span>Chingu</span>
           </Link>
         </div>
         <div className={links}>
@@ -34,7 +34,7 @@ export default function Header() {
             data-token="89f71a471de6a750cfa385e1ba4ffd00"
             onClick={e => window.mjOpenPopin(e, e.target)}
           >
-            Register Now
+            Register
           </Button>
           {/* </Link> */}
         </div>

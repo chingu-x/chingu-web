@@ -10,7 +10,7 @@
     align-items: center;
     justify-content: space-between;
     color: #000;
-    padding: 15px 0;
+    padding: 15px 16px;
 
     div.logo {
       display: flex;
@@ -32,4 +32,11 @@
 .offset {
   position: relative;
   height: 58px;
+}
+
+@media screen and (max-width: 360px) {
+  .links > * {
+    float: left !important;
+    margin-left: 10px !important;
+  }
 }

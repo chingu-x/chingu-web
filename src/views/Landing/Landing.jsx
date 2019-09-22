@@ -181,7 +181,7 @@ export default function Landing() {
         contentAttributes={{ className: styles.numberBlocks }}
       >
         <NumberStatBlock
-          number={8570}
+          number={1150}
           subject="Coders & Designers"
           description="Chingu has helped thousands of people learning in-demand skills accelerate their learning through collaboration and project-building."
         />
@@ -191,7 +191,7 @@ export default function Landing() {
           description="We love to optimally match learners from around the world. Whether in a team setting or for a one-time meeting to complete a challenge."
         />
         <NumberStatBlock
-          number={1320}
+          number={2000}
           subject="Developer Teams"
           description="We launch remote developer teams from all skill levels, from all timezones, and from most web dev languages & frameworks."
         />

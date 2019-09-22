@@ -76,6 +76,10 @@ div.intro {
 
     &.flipped {
       flex-direction: column-reverse;
+
+      .sectionText {
+        padding-left: 16px;
+      }
     }
   }
 }

@@ -53,14 +53,20 @@ export default function HowItWorks() {
             time zones, skill levels, tech-stack and time commitment.
             <br />
             <br />
-            <ul>
-              <li>
-                We form teams of coders of all levels (beginner to advanced)
-              </li>
-              <li>We form teams of coders from all timezones</li>
-              <li>You choose the tech-stack you want to use</li>
-              <li>Part-time & Full-time learners are accepted</li>
-            </ul>
+            {/* <ul> */}
+            <b>We form teams of coders of all levels (beginner to advanced)</b>
+            <br />
+            <br />
+            <b>We form teams of coders from all timezones</b>
+            <br />
+            <br />
+            <b>You choose the tech-stack you want to use</b>
+            <br />
+            <br />
+            <b>Part-time & Full-time learners are accepted</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={ApplyDuck} alt="A sharp duck" />
@@ -78,13 +84,23 @@ export default function HowItWorks() {
             and prepare you for your team project.
             <br />
             <br />
-            <ul>
-              <li>Join the community & coders with the same goals</li>
-              <li>Build a solo project for your portfolio</li>
-              <li>Determine your present skill level</li>
-              <li>Prepare for the voyage program</li>
-              <li>Use professional tools like Git & Github</li>
-            </ul>
+            {/* <ul> */}
+            <b>Join the community & coders with the same goals</b>
+            <br />
+            <br />
+            <b>Build a solo project for your portfolio</b>
+            <br />
+            <br />
+            <b>Determine your present skill level</b>
+            <br />
+            <br />
+            <b>Prepare for the voyage program</b>
+            <br />
+            <br />
+            <b>Use professional tools like Git & Github</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={PreworkingScreenshot} alt="A pre-work session screenshot" />
@@ -98,11 +114,17 @@ export default function HowItWorks() {
             and grow your network locally and globally.
             <br />
             <br />
-            <ul>
-              <li>Meet developers from around the world</li>
-              <li>Be surrounded by people who share your goals</li>
-              <li>Be inspired and motivated by your peers</li>
-            </ul>
+            {/* <ul> */}
+            <b>Meet developers from around the world</b>
+            <br />
+            <br />
+            <b>Be surrounded by people who share your goals</b>
+            <br />
+            <br />
+            <b>Be inspired and motivated by your peers</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={MakeFriends} alt="A cat and a dog hugging" />
@@ -120,14 +142,20 @@ export default function HowItWorks() {
             together to plan your project, set up the tasks, and start coding!
             <br />
             <br />
-            <ul>
-              <li>Participate in weekly team standups</li>
-              <li>Real-time messaging & async communication</li>
-              <li>
-                Participate in text / audio / video meetings (all depends on
-                your preference as a team)
-              </li>
-            </ul>
+            {/* <ul> */}
+            <b>Participate in weekly team standups</b>
+            <br />
+            <br />
+            <b>Real-time messaging & async communication</b>
+            <br />
+            <br />
+            <b>
+              Participate in text / audio / video meetings (all depends on your
+              preference as a team)
+            </b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={TeamScreenshot} alt="A team discussion screenshot" />
@@ -143,15 +171,23 @@ export default function HowItWorks() {
             management tools, audio / video meetings, etc.
             <br />
             <br />
-            <ul>
-              <li>Build & refine your Git & Github skills</li>
-              <li>Learn how to manage code using Git & Github as a team</li>
-              <li>Contribute fixes and features to a real project</li>
-              <li>
-                Participate in code reviews with teammates to ensure the quality
-                of your project
-              </li>
-            </ul>
+            {/* <ul> */}
+            <b>Build & refine your Git & Github skills</b>
+            <br />
+            <br />
+            <b>Learn how to manage code using Git & Github as a team</b>
+            <br />
+            <br />
+            <b>Contribute fixes and features to a real project</b>
+            <br />
+            <br />
+            <b>
+              Participate in code reviews with teammates to ensure the quality
+              of your project
+            </b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={FourAnimals} alt="Four animals" />
@@ -170,17 +206,22 @@ export default function HowItWorks() {
             opportunities.
             <br />
             <br />
-            <ul>
-              <li>Build and refine your Git skills</li>
-              <li>
-                Contribute fixes and features to the project using Git and
-                Github
-              </li>
-              <li>
-                Participate in code reviews with teammates to ensure the quality
-                of your project
-              </li>
-            </ul>
+            {/* <ul> */}
+            <b>Build and refine your Git skills</b>
+            <br />
+            <br />
+            <b>
+              Contribute fixes and features to the project using Git and Github
+            </b>
+            <br />
+            <br />
+            <b>
+              Participate in code reviews with teammates to ensure the quality
+              of your project
+            </b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={GithubWorkflowGraphic} alt="A github workflow" />
@@ -193,12 +234,14 @@ export default function HowItWorks() {
             push you out of your comfort zone and accelerate your learning.
             <br />
             <br />
-            <ul>
-              <li>Deadlines will make you actually finish your projects</li>
-              <li>
-                Our deadlines will give structure to your learning journey
-              </li>
-            </ul>
+            {/* <ul> */}
+            <b>Deadlines will make you actually finish your projects</b>
+            <br />
+            <br />
+            <b>Our deadlines will give structure to your learning journey</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img
@@ -219,15 +262,23 @@ export default function HowItWorks() {
             audio / video meetings, and Git / Github.
             <br />
             <br />
-            <ul>
-              <li>Participate in weekly team standups</li>
-              <li>Real-time messaging & async communication</li>
-              <li>
-                Participate in text / audio / video meetings (all depends on
-                your preference as a team)
-              </li>
-              <li>Learn how to manage code using Git / Github as a team</li>
-            </ul>
+            {/* <ul> */}
+            <b>Participate in weekly team standups</b>
+            <br />
+            <br />
+            <b>Real-time messaging & async communication</b>
+            <br />
+            <br />
+            <b>
+              Participate in text / audio / video meetings (all depends on your
+              preference as a team)
+            </b>
+            <br />
+            <br />
+            <b>Learn how to manage code using Git / Github as a team</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={RacoonAndSoftSkills} alt="A racoon with soft skills" />
@@ -242,16 +293,22 @@ export default function HowItWorks() {
             your resumeL
             <br />
             <br />
-            <ul>
-              <li>
-                Experience as a Project Manager for a team of remote developers
-              </li>
-              <li>Experience being a mentor to a team or individual</li>
-              <li>
-                Experience managing a program of hundreds of developers from
-                across the world
-              </li>
-            </ul>
+            {/* <ul> */}
+            <b>
+              Experience as a Project Manager for a team of remote developers
+            </b>
+            <br />
+            <br />
+            <b>Experience being a mentor to a team or individual</b>
+            <br />
+            <br />
+            <b>
+              Experience managing a program of hundreds of developers from
+              across the world
+            </b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={Racoon} alt="A racoon" />
@@ -270,14 +327,19 @@ export default function HowItWorks() {
             to overcome the obstacles to do this.
             <br />
             <br />
-            <ul>
-              <li>Talk about your experiences overcoming challenges</li>
-              <li>
-                Talk about working within a community and a remote developer
-                team
-              </li>
-              <li>Talk about utilizing soft skills</li>
-            </ul>
+            {/* <ul> */}
+            <b>Talk about your experiences overcoming challenges</b>
+            <br />
+            <br />
+            <b>
+              Talk about working within a community and a remote developer team
+            </b>
+            <br />
+            <br />
+            <b>Talk about utilizing soft skills</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={CertificateGraphic} alt="A certificate" />
@@ -291,15 +353,23 @@ export default function HowItWorks() {
             audio / video meetings, Git / Github.
             <br />
             <br />
-            <ul>
-              <li>Participate in weekly team standups</li>
-              <li>Real-time messaging & async communication</li>
-              <li>
-                Participate in text / audio / video meetings (all depends on
-                your preference as a team)
-              </li>
-              <li>Learn how to manage code using Git / Github as a team</li>
-            </ul>
+            {/* <ul> */}
+            <b>Participate in weekly team standups</b>
+            <br />
+            <br />
+            <b>Real-time messaging & async communication</b>
+            <br />
+            <br />
+            <b>
+              Participate in text / audio / video meetings (all depends on your
+              preference as a team)
+            </b>
+            <br />
+            <br />
+            <b>Learn how to manage code using Git / Github as a team</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={EnrolGraphic} alt="An arrow pointing up" />
@@ -322,14 +392,20 @@ export default function HowItWorks() {
             and how they think.
             <br />
             <br />
-            <ul>
-              <li>Meet a new coder every week to solve a coding challenge</li>
-              <li>
-                Take what you know to the next level by sharing your knowledge
-                with others
-              </li>
-              <li>Learn new technologies and techniques from your peers</li>
-            </ul>
+            {/* <ul> */}
+            <b>Meet a new coder every week to solve a coding challenge</b>
+            <br />
+            <br />
+            <b>
+              Take what you know to the next level by sharing your knowledge
+              with others
+            </b>
+            <br />
+            <br />
+            <b>Learn new technologies and techniques from your peers</b>
+            <br />
+            <br />
+            {/* </ul> */}
           </Paragraph>
         </div>
         <img src={PreworkingScreenshot} alt="An arrow pointing up" />

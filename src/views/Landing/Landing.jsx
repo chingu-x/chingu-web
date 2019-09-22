@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
@@ -27,6 +27,9 @@ import quotes from './quotes.json';
 import styles from './Landing.module.scss';
 
 export default function Landing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Wrapper contentAttributes={{ className: styles.racoonSection }}>

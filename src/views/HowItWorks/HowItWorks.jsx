@@ -301,6 +301,36 @@ export default function HowItWorks() {
         </div>
         <img src={EnrolGraphic} alt="An arrow pointing up" />
       </Wrapper>
+      <Wrapper>
+        <Title className={styles.centered} level={2}>
+          OPTIONAL BONUS
+        </Title>
+      </Wrapper>
+      <Wrapper
+        contentAttributes={{
+          className: classnames(styles.section, styles.flipped)
+        }}
+      >
+        <div className={styles.sectionText}>
+          <Title level={3}>Weekly Pair-programming Matching</Title>
+          <Paragraph>
+            Learn how to code with another developer and gain valuable
+            collaboration experience. Learn how other coders approach challenges
+            and how they think.
+            <br />
+            <br />
+            <ul>
+              <li>Meet a new coder every week to solve a coding challenge</li>
+              <li>
+                Take what you know to the next level by sharing your knowledge
+                with others
+              </li>
+              <li>Learn new technologies and techniques from your peers</li>
+            </ul>
+          </Paragraph>
+        </div>
+        <img src={PreworkingScreenshot} alt="An arrow pointing up" />
+      </Wrapper>
       <Wrapper className={styles.bottom}>
         <Title level={2}>Ready to level-up?</Title>
         {/* <Link to="/apply"> */}

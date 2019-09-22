@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
@@ -19,6 +19,9 @@ import TeamScreenshot from './assets/TeamScreenshot.png';
 import styles from './HowItWorks.module.scss';
 
 export default function HowItWorks() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Wrapper contentAttributes={{ className: styles.intro }}>

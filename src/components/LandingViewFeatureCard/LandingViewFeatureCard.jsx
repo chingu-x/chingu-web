@@ -14,7 +14,7 @@ export default function LandingViewFeatureCard({
       <div className={imgArea}>
         <img src={img} alt={imgAlt} style={imgStyle} />
       </div>
-      <div class={text}>
+      <div className={text}>
         <Paragraph bold size="large">
           {title}
         </Paragraph>

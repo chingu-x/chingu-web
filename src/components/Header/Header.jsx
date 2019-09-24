@@ -31,7 +31,7 @@ export default function Header() {
           {/* <Link to="/apply"> */}
           <Button
             type="primary"
-            data-token="89f71a471de6a750cfa385e1ba4ffd00"
+            data-token="2a1b5e9798fad9e9a4d11011cd21e55f"
             onClick={e => window.mjOpenPopin(e, e.target)}
           >
             Register

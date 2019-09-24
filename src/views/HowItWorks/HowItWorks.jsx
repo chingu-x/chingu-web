@@ -390,7 +390,7 @@ export default function HowItWorks() {
           type="primary"
           size="large"
           className={styles.bottomApply}
-          data-token="89f71a471de6a750cfa385e1ba4ffd00"
+          data-token="2a1b5e9798fad9e9a4d11011cd21e55f"
           onClick={e => window.mjOpenPopin(e, e.target)}
         >
           Register Now

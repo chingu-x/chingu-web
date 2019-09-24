@@ -15,6 +15,7 @@ import MakeFriends from './assets/MakeFriends.png';
 import PreworkingScreenshot from './assets/PreworkingScreenshot.png';
 import RacoonAndSoftSkills from './assets/RacoonAndSoftSkills.png';
 import TeamScreenshot from './assets/TeamScreenshot.png';
+import PairProgrammingScreenshot from './assets/PairProgrammingScreenshot.png';
 import styles from './HowItWorks.module.scss';
 
 export default function HowItWorks() {
@@ -377,7 +378,10 @@ export default function HowItWorks() {
             {/* </ul> */}
           </Paragraph>
         </div>
-        <img src={PreworkingScreenshot} alt="An arrow pointing up" />
+        <img
+          src={PairProgrammingScreenshot}
+          alt="A pair of programmers working together online"
+        />
       </Wrapper>
       <Wrapper className={styles.bottom}>
         <Title level={2}>Ready to level-up?</Title>

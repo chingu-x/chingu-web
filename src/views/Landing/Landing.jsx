@@ -184,7 +184,7 @@ export default function Landing() {
         contentAttributes={{ className: styles.numberBlocks }}
       >
         <NumberStatBlock
-          number={1150}
+          number={11000}
           subject="Coders & Designers"
           description="Chingu has helped thousands of people learning in-demand skills accelerate their learning through collaboration and project-building."
         />

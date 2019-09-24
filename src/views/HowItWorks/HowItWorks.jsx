@@ -4,7 +4,7 @@ import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
 import { Button } from '../../components/Button';
-import ApplyDuck from './assets/ApplyDuck.png';
+import ApplyAnimal from './assets/ApplyAnimal.png';
 // import ApplyFormIcon from "./assets/ApplyFormIcon.png";
 import CertificateGraphic from './assets/CertificateGraphic.png';
 import DeadlinesScreenshot from './assets/DeadlinesScreenshot.png';
@@ -14,7 +14,6 @@ import GithubWorkflowGraphic from './assets/GithubWorkflowGraphic.png';
 import MakeFriends from './assets/MakeFriends.png';
 import PreworkingScreenshot from './assets/PreworkingScreenshot.png';
 import RacoonAndSoftSkills from './assets/RacoonAndSoftSkills.png';
-import Racoon from './assets/Racoon.png';
 import TeamScreenshot from './assets/TeamScreenshot.png';
 import styles from './HowItWorks.module.scss';
 
@@ -48,9 +47,10 @@ export default function HowItWorks() {
         <div className={styles.sectionText}>
           <Title level={3}>Apply to a Chingu Voyage</Title>
           <Paragraph>
-            Not sure if you're ready to apply? Chingu is a 100% flexible. We
-            take in members and optimally organize them into teams based on your
-            time zones, skill levels, tech-stack and time commitment.
+            Not sure if you're ready to apply? Chingu is a 100% flexible
+            learning program. We take in members and optimally organize them
+            into teams based on their time zones, skill levels, tech-stack and
+            time commitment.
             <br />
             <br />
             {/* <ul> */}
@@ -69,7 +69,7 @@ export default function HowItWorks() {
             {/* </ul> */}
           </Paragraph>
         </div>
-        <img src={ApplyDuck} alt="A sharp duck" />
+        <img src={ApplyAnimal} alt="A sharp duck" />
       </Wrapper>
       <Wrapper
         contentAttributes={{
@@ -143,15 +143,14 @@ export default function HowItWorks() {
             <br />
             <br />
             {/* <ul> */}
-            <b>Participate in weekly team standups</b>
+            <b>Meet your new developer team-mates</b>
             <br />
             <br />
-            <b>Real-time messaging & async communication</b>
+            <b>Come together to choose a project and tech-stack</b>
             <br />
             <br />
             <b>
-              Participate in text / audio / video meetings (all depends on your
-              preference as a team)
+              Set up task management board and start coding on a real project
             </b>
             <br />
             <br />
@@ -172,19 +171,19 @@ export default function HowItWorks() {
             <br />
             <br />
             {/* <ul> */}
-            <b>Build & refine your Git & Github skills</b>
+            <b>Participate in weekly team standups</b>
             <br />
             <br />
-            <b>Learn how to manage code using Git & Github as a team</b>
-            <br />
-            <br />
-            <b>Contribute fixes and features to a real project</b>
+            <b>Real-time messaging & async communication</b>
             <br />
             <br />
             <b>
-              Participate in code reviews with teammates to ensure the quality
-              of your project
+              Participate in text / audio / video meetings (all depends on your
+              preference as a team)
             </b>
+            <br />
+            <br />
+            <b>Overcome real challenges developers face on the job</b>
             <br />
             <br />
             {/* </ul> */}
@@ -241,6 +240,9 @@ export default function HowItWorks() {
             <b>Our deadlines will give structure to your learning journey</b>
             <br />
             <br />
+            <b>Get out of tutorial purgatory</b>
+            <br />
+            <br />
             {/* </ul> */}
           </Paragraph>
         </div>
@@ -257,61 +259,30 @@ export default function HowItWorks() {
         <div className={styles.sectionText}>
           <Title level={3}>Learn the soft skills you need</Title>
           <Paragraph>
-            Gain experience using modern collaboration tools that are used in
-            modern tech companies. Real-time messaging, async communication,
-            audio / video meetings, and Git / Github.
+            Improving your soft skills is one of the best investments you can
+            make in your career. Technology is always changing, but the need for
+            soft skills does not change. Linkedin found that 57% of senior
+            leaders today say that soft skills are more important than hard
+            skills.
             <br />
             <br />
             {/* <ul> */}
-            <b>Participate in weekly team standups</b>
-            <br />
-            <br />
-            <b>Real-time messaging & async communication</b>
+            <b>Learn how to communicate your ideas in a professional setting</b>
             <br />
             <br />
             <b>
-              Participate in text / audio / video meetings (all depends on your
-              preference as a team)
+              Collaborate with people with different mindsets and from different
+              countries
             </b>
             <br />
             <br />
-            <b>Learn how to manage code using Git / Github as a team</b>
+            <b>Improve your time-management skills</b>
             <br />
             <br />
             {/* </ul> */}
           </Paragraph>
         </div>
         <img src={RacoonAndSoftSkills} alt="A racoon with soft skills" />
-      </Wrapper>
-      <Wrapper contentAttributes={{ className: styles.section }}>
-        <div className={styles.sectionText}>
-          <Title level={3}>Finish the project</Title>
-          <Paragraph>
-            We want to provide people opportunities to level-up that they
-            couldn't easily get elsewhere. Our members have the opportunity to
-            grow their careers with various leadership roles. Imagine these on
-            your resumeL
-            <br />
-            <br />
-            {/* <ul> */}
-            <b>
-              Experience as a Project Manager for a team of remote developers
-            </b>
-            <br />
-            <br />
-            <b>Experience being a mentor to a team or individual</b>
-            <br />
-            <br />
-            <b>
-              Experience managing a program of hundreds of developers from
-              across the world
-            </b>
-            <br />
-            <br />
-            {/* </ul> */}
-          </Paragraph>
-        </div>
-        <img src={Racoon} alt="A racoon" />
       </Wrapper>
       <Wrapper
         contentAttributes={{
@@ -348,25 +319,23 @@ export default function HowItWorks() {
         <div className={styles.sectionText}>
           <Title level={3}>Enroll in another Team</Title>
           <Paragraph>
-            Gain experience using modern collaboration tools that are used in
-            modern tech companies. Real-time messaging, async communication,
-            audio / video meetings, Git / Github.
+            Companies want people with more experience, and Chingu gives you
+            that opportunity. We organize teams into three main tiers based on
+            your current skill level. When you improve, you can join another
+            Voyage in a higher tiered team!
             <br />
             <br />
             {/* <ul> */}
-            <b>Participate in weekly team standups</b>
+            <b>After you finish a project, you can join another Voyage</b>
             <br />
             <br />
-            <b>Real-time messaging & async communication</b>
+            <b>Build upon your skills by doing another team project</b>
             <br />
             <br />
             <b>
-              Participate in text / audio / video meetings (all depends on your
-              preference as a team)
+              Gain months of experience by doing multiple Chingu Voyage team
+              projects
             </b>
-            <br />
-            <br />
-            <b>Learn how to manage code using Git / Github as a team</b>
             <br />
             <br />
             {/* </ul> */}

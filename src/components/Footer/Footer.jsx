@@ -27,7 +27,11 @@ export default function Footer() {
           </Link>
         </Col>
         <Col span={6}>
-          <a href="https://medium.com/chingu" rel="noopener noreferrer">
+          <a
+            href="https://medium.com/chingu"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <svg
               className={styles.socialIcon}
               aria-hidden="true"
@@ -46,6 +50,7 @@ export default function Footer() {
           </a>
           <a
             href="https://www.youtube.com/channel/UCS7zmJXbe7FgTC3sHlUf4jw"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <svg

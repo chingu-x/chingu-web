@@ -287,7 +287,7 @@ export default function HowItWorks() {
       </Wrapper>
       <Wrapper
         contentAttributes={{
-          className: classnames(styles.section, styles.flipped)
+          className: styles.section
         }}
       >
         <div className={styles.sectionText}>
@@ -316,7 +316,11 @@ export default function HowItWorks() {
         </div>
         <img src={CertificateGraphic} alt="A certificate" />
       </Wrapper>
-      <Wrapper contentAttributes={{ className: styles.section }}>
+      <Wrapper
+        contentAttributes={{
+          className: classnames(styles.section, styles.flipped)
+        }}
+      >
         <div className={styles.sectionText}>
           <Title level={3}>Enroll in another Team</Title>
           <Paragraph>

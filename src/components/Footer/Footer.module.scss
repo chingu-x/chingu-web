@@ -16,4 +16,14 @@
       text-decoration: underline;
     }
   }
+
+  .socialIcon {
+    display: block;
+    width: 24px;
+    margin: 5px;
+
+    &:hover {
+      color: $chingu-green;
+    }
+  }
 }

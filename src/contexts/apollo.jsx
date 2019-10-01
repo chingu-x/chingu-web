@@ -21,7 +21,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const httpLink = new HttpLink({
   uri: 'https://api.chingu.io/graphql',
   // uri: 'http://localhost:3000/graphql',
-  credentials: 'include'
+  credentials: 'same-origin'
 });
 
 const cache = new InMemoryCache();

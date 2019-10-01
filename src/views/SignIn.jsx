@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth0 } from '../contexts/auth';
 import LoadingView from '../components/LoadingView';
 
-function Login() {
+function SignIn() {
   const { loginWithRedirect, loading, isAuthenticated } = useAuth0();
 
   React.useEffect(() => {
@@ -19,4 +19,4 @@ function Login() {
   return <LoadingView />;
 }
 
-export default Login;
+export default SignIn;

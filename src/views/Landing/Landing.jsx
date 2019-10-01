@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
@@ -41,17 +41,11 @@ export default function Landing() {
             skills required in a professional software job.
           </Paragraph>
           <div className={styles.applyArea}>
-            {/* <Link to="/apply"> */}
-            <Button
-              type="primary"
-              size="large"
-              className={styles.apply}
-              data-token="2a1b5e9798fad9e9a4d11011cd21e55f"
-              onClick={e => window.mjOpenPopin(e, e.target)}
-            >
-              Register Now
-            </Button>
-            {/* </Link> */}
+            <Link to="/apply">
+              <Button type="primary" size="large" className={styles.apply}>
+                Apply Now
+              </Button>
+            </Link>
             <Paragraph size="small" className={styles.applySubtext}>
               (23,374 Github activity notifications
               <span role="img" aria-label="Fire emoji">
@@ -72,11 +66,6 @@ export default function Landing() {
           </span>
         </Title>
         <Paragraph className={styles.featuresSubtitle}>
-          {/* Here is what we do: put motivated people with similar goals together
-          in a structured
-          <br />
-          environment that gives them the opportunity to level-up in a way they
-          couldn't otherwise. */}
           We place motivated people with similar goals together in project teams
           <br />
           which allows them level-up in ways they couldn't otherwise
@@ -218,17 +207,11 @@ export default function Landing() {
           ))}
         </div>
         <Title level={2}>Ready to level-up?</Title>
-        {/* <Link to="/apply"> */}
-        <Button
-          type="primary"
-          size="large"
-          className={styles.bottomApply}
-          data-token="2a1b5e9798fad9e9a4d11011cd21e55f"
-          onClick={e => window.mjOpenPopin(e, e.target)}
-        >
-          Register Now
-        </Button>
-        {/* </Link> */}
+        <Link to="/apply">
+          <Button type="primary" size="large" className={styles.bottomApply}>
+            Apply Now
+          </Button>
+        </Link>
       </Wrapper>
     </>
   );

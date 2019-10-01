@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
 import { Button } from '../../components/Button';
 import ApplyAnimal from './assets/ApplyAnimal.png';
-// import ApplyFormIcon from "./assets/ApplyFormIcon.png";
 import CertificateGraphic from './assets/CertificateGraphic.png';
 import DeadlinesScreenshot from './assets/DeadlinesScreenshot.png';
 import EnrolGraphic from './assets/EnrolGraphic.png';
@@ -389,17 +389,11 @@ export default function HowItWorks() {
       </Wrapper>
       <Wrapper className={styles.bottom}>
         <Title level={2}>Ready to level-up?</Title>
-        {/* <Link to="/apply"> */}
-        <Button
-          type="primary"
-          size="large"
-          className={styles.bottomApply}
-          data-token="2a1b5e9798fad9e9a4d11011cd21e55f"
-          onClick={e => window.mjOpenPopin(e, e.target)}
-        >
-          Register Now
-        </Button>
-        {/* </Link> */}
+        <Link to="/apply">
+          <Button type="primary" size="large" className={styles.bottomApply}>
+            Apply Now
+          </Button>
+        </Link>
       </Wrapper>
     </>
   );

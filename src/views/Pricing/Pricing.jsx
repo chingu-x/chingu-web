@@ -4,7 +4,6 @@ import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
 import { OfferCard } from '../../components/OfferCard';
 import { wrapper, subtitle, offers } from './Pricing.module.scss';
-import HypedLionAndRaccoons from './HypedLionAndRaccoons.png';
 
 const currencyFormatter = new Intl.NumberFormat({
   style: 'currency',
@@ -18,7 +17,6 @@ const JOB_READY_PATH_COST = currencyFormatter.format(129);
 export default function Pricing() {
   return (
     <Wrapper contentAttributes={{ className: wrapper }}>
-      <img src={HypedLionAndRaccoons} alt="Hyped lion and raccoons" />
       <Title level={1}>
         Goodbye ${FORMATTED_BOOTCAMP_COST} coding bootcampts.
         <br />

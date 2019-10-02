@@ -3,11 +3,19 @@ import { Paragraph } from '../Paragraph';
 import { project, title as titleClass } from './ExampleProject.module.scss';
 
 export default function ExampleProject(props) {
-  const { img, imgAlt, title, description, tier, tech } = props;
+  const { imgs, imgAlt, title, description, tier, tech } = props;
+
+  let sources = [];
+  for (let i = 0; i < imgs.length; i++) {
+    sources.push(<source key={i} srcSet={imgs[i]} />);
+  }
 
   return (
     <div className={project}>
-      <img src={img} alt={imgAlt} />
+      <picture>
+        {sources}
+        <img src={imgs[imgs.length - 1]} alt={imgAlt} />
+      </picture>
       <Paragraph className={titleClass} bold size="large">
         {title}
       </Paragraph>

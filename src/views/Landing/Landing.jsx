@@ -23,6 +23,13 @@ import ProcessStep6 from './assets/ProcessStep6.png';
 import JobbaticalProject from './assets/JobbaticalProject.png';
 import BudgetBoardProject from './assets/BudgetBoardProject.png';
 import VolunteerAppProject from './assets/VolunteerAppProject.png';
+import RacoonWithLaptopWebp from './assets/RacoonWithLaptop.webp';
+import RacoonYesPleaseWebp from './assets/RacoonYesPlease.webp';
+import TwoAnimalsTogetherWebp from './assets/TwoAnimalsTogether.webp';
+import ThreeAnimalsTogetherWebp from './assets/ThreeAnimalsTogether.webp';
+import JobbaticalProjectWebp from './assets/JobbaticalProject.webp';
+import BudgetBoardProjectWebp from './assets/BudgetBoardProject.webp';
+import VolunteerAppProjectWebp from './assets/VolunteerAppProject.webp';
 import quotes from './quotes.json';
 import styles from './Landing.module.scss';
 
@@ -55,7 +62,11 @@ export default function Landing() {
             </Paragraph>
           </div>
         </div>
-        <img src={RacoonWithLaptop} alt="Chingu RacoonWithLaptop" />
+        <picture>
+          <source srcSet={RacoonWithLaptopWebp} type="image/webp" />
+          <source srcSet={RacoonWithLaptop} type="image/png" />
+          <img src={RacoonWithLaptop} alt="Chingu RacoonWithLaptop" />
+        </picture>
       </Wrapper>
       <Wrapper className={styles.features}>
         <Title level={3}>
@@ -72,21 +83,21 @@ export default function Landing() {
         </Paragraph>
         <div className={styles.featureCards}>
           <LandingViewFeatureCard
-            img={ThreeAnimalsTogether}
+            imgs={[ThreeAnimalsTogetherWebp, ThreeAnimalsTogether]}
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -12 }}
             title="Gain experience in a remote team"
             body="61% of full-time entry-level jobs now ask for 3 years or more of experience."
           />
           <LandingViewFeatureCard
-            img={RacoonYesPlease}
+            imgs={[RacoonYesPleaseWebp, RacoonYesPlease]}
             imgAlt="Racoon holding up sign that says 'Yes, please'"
             title="Work on real projects"
             body="Sick of doing tutorial after tutorial with nothing to show for
             them?"
           />
           <LandingViewFeatureCard
-            img={TwoAnimalsTogether}
+            imgs={[TwoAnimalsTogetherWebp, TwoAnimalsTogether]}
             imgAlt="A cat and a dog hugging each other"
             title="Join a supportive community"
             body="It can be hard to find someone to help you get unstuck."
@@ -143,7 +154,7 @@ export default function Landing() {
         </Paragraph>
         <div className={styles.projectExamples}>
           <ExampleProject
-            img={JobbaticalProject}
+            imgs={[JobbaticalProjectWebp, JobbaticalProject]}
             imgAlt="Jobbatical job listings project"
             title="Jobbatical Landing Page"
             description="A job listings and job application app for working abroad."
@@ -151,7 +162,7 @@ export default function Landing() {
             tech="HTML, CSS, Flexbox, Javascript"
           />
           <ExampleProject
-            img={BudgetBoardProject}
+            imgs={[BudgetBoardProjectWebp, BudgetBoardProject]}
             imgAlt="BudgetBoard Chrome extension project"
             title="BudgetBoard Chrome Extension"
             description="A finance app to add income & expense categories with individual items with graph rendering."
@@ -159,7 +170,7 @@ export default function Landing() {
             tech="Javascript, SCSS, D3.js, Chrome Storage Sync"
           />
           <ExampleProject
-            img={VolunteerAppProject}
+            imgs={[VolunteerAppProjectWebp, VolunteerAppProject]}
             imgAlt="Volunteer manager project"
             title="Volunteer Manager App"
             description="Helps people to recruit and manage volunteers for a non-profit project."

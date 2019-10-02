@@ -3,16 +3,24 @@ import { Paragraph } from '../Paragraph';
 import { card, imgArea, text } from './LandingViewFeatureCard.module.scss';
 
 export default function LandingViewFeatureCard({
-  img,
+  imgs,
   imgAlt,
   imgStyle,
   title,
   body
 }) {
+  let sources = [];
+  for (let i = 0; i < imgs.length; i++) {
+    sources.push(<source key={i} srcSet={imgs[i]} />);
+  }
+
   return (
     <div className={card}>
       <div className={imgArea}>
-        <img src={img} alt={imgAlt} style={imgStyle} />
+        <picture style={imgStyle}>
+          {sources}
+          <img src={imgs[imgs.length - 1]} alt={imgAlt} style={imgStyle} />
+        </picture>
       </div>
       <div className={text}>
         <Paragraph bold size="large">

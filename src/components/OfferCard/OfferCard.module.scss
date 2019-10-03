@@ -1,7 +1,7 @@
 @import '../../styles/base';
 
 .offer {
-  width: 400px;
+  max-width: 400px;
   padding-top: 45px;
   background-color: #fff;
   position: relative;
@@ -16,6 +16,15 @@
 
   &:last-of-type {
     border-right: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    border: none;
+    margin-bottom: 70px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   &::before {

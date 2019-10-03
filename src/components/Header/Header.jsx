@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth0 } from '../../contexts/auth';
+// import { useAuth0 } from '../../contexts/auth';
 import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
@@ -7,7 +7,7 @@ import { container, header, logo, links, offset } from './Header.module.scss';
 import Logo from './Logo.png';
 
 export default function Header() {
-  const { isAuthenticated } = useAuth0();
+  // const { isAuthenticated } = useAuth0();
   return (
     <>
       <Wrapper className={container} contentAttributes={{ className: header }}>
@@ -24,7 +24,7 @@ export default function Header() {
           <Link to="/pricing">
             <Button type="link">Pricing</Button>
           </Link>
-          {isAuthenticated ? (
+          {/* {isAuthenticated ? (
             <Link to="/signout">
               <Button>Sign out</Button>
             </Link>
@@ -32,7 +32,7 @@ export default function Header() {
             <Link to="/signin">
               <Button>Sign in</Button>
             </Link>
-          )}
+          )} */}
           <Link to="/apply">
             <Button type="primary">Apply Now</Button>
           </Link>

@@ -15,7 +15,7 @@ const CREATE_CHECKOUT_SESSION = gql`
 `;
 
 function Form({ stripe }) {
-  const [createCheckoutSession, { loading, error, data }] = useMutation(
+  const [createCheckoutSession, { error }] = useMutation(
     CREATE_CHECKOUT_SESSION,
     {
       onCompleted: data => {

@@ -91,7 +91,6 @@ export default function Apply() {
           <span>First Name</span>
           <input
             type="text"
-            placeholder="Mary"
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
           />
@@ -100,7 +99,6 @@ export default function Apply() {
           <span>Last Name</span>
           <input
             type="text"
-            placeholder="Jane"
             value={lastName}
             onChange={e => setLastName(e.target.value)}
           />
@@ -114,59 +112,6 @@ export default function Apply() {
             placeholder="Email"
           />
         </label>
-      </div>
-      <div className={styles.question}>
-        <Title level={3}>What do you identify as?</Title>
-        <div className={styles.radioGroup}>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="FEMALE"
-              checked={gender === 'FEMALE'}
-              onChange={() => setGender('FEMALE')}
-            />
-            Female
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="MALE"
-              checked={gender === 'MALE'}
-              onChange={() => setGender('MALE')}
-            />
-            Male
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="OTHER"
-              checked={gender === 'OTHER'}
-              onChange={() => setGender('OTHER')}
-            />
-            Other
-            {gender === 'OTHER' && (
-              <input
-                type="text"
-                placeholder="Please specify"
-                value={otherGender}
-                onChange={e => setOtherGender(e.target.value)}
-              />
-            )}
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="gender"
-              value="PREFER_NOT_TO_DISCLOSE"
-              checked={gender === 'PREFER_NOT_TO_DISCLOSE'}
-              onChange={() => setGender('PREFER_NOT_TO_DISCLOSE')}
-            />
-            Prefer not to say
-          </label>
-        </div>
       </div>
       <div className={styles.question}>
         <Title level={3}>Have you been in a Chingu cohort before?</Title>
@@ -321,6 +266,59 @@ export default function Apply() {
             />
           </Col>
         </Row>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>What is your gender?</Title>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="FEMALE"
+              checked={gender === 'FEMALE'}
+              onChange={() => setGender('FEMALE')}
+            />
+            Female
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="MALE"
+              checked={gender === 'MALE'}
+              onChange={() => setGender('MALE')}
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="OTHER"
+              checked={gender === 'OTHER'}
+              onChange={() => setGender('OTHER')}
+            />
+            Other
+            {gender === 'OTHER' && (
+              <input
+                type="text"
+                placeholder="Please specify"
+                value={otherGender}
+                onChange={e => setOtherGender(e.target.value)}
+              />
+            )}
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="PREFER_NOT_TO_DISCLOSE"
+              checked={gender === 'PREFER_NOT_TO_DISCLOSE'}
+              onChange={() => setGender('PREFER_NOT_TO_DISCLOSE')}
+            />
+            Prefer not to say
+          </label>
+        </div>
       </div>
       {desiredRole === 'DEVELOPER' && (
         <div className={styles.question}>

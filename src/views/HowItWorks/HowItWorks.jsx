@@ -89,7 +89,7 @@ export default function HowItWorks() {
             <b>Join the community & coders with the same goals</b>
             <br />
             <br />
-            <b>Build a solo project for your portfolio</b>
+            <b>Build a project for your portfolio</b>
             <br />
             <br />
             <b>Determine your present skill level</b>

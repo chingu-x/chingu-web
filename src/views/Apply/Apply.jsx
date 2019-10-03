@@ -106,7 +106,7 @@ export default function Apply() {
         <label>
           <span>Email</span>
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="Email"

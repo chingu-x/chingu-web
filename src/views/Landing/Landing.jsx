@@ -36,7 +36,7 @@ export default function Landing() {
         <div className={styles.racoonText}>
           <Title>Build projects in teams, gain the skills you need.</Title>
           <Paragraph>
-            Chingu is a remote 8-week program for web developers. You will build
+            Chingu is a remote 6-week program for web developers. You will build
             a project in a remote team and level-up with the technical and soft
             skills required in a professional software job.
           </Paragraph>
@@ -105,8 +105,8 @@ export default function Landing() {
           <LandingViewChinguProcessStep
             icon={ProcessStep2}
             iconAlt="Toolset icon"
-            title="2. Build the pre-work project"
-            description="Finish a solo project to make sure you're prepared for the program."
+            title="2. Validate your expertise through a pre-work project"
+            description="Finish or submit a project to make sure you're prepared for the program."
           />
           <LandingViewChinguProcessStep
             icon={ProcessStep3}

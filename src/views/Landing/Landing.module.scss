@@ -48,13 +48,15 @@ div.racoonSection {
   }
 
   @media screen and (max-width: 767px) {
+    flex-direction: column;
     div.racoonText {
       width: 100%;
       padding: 0 15px;
     }
 
     img {
-      display: none;
+      // display: none;
+      height: 50%;
     }
   }
 }

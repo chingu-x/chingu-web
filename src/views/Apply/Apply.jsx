@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 import { Row, Col, Input } from 'antd';
@@ -17,6 +17,9 @@ const CREATE_APPLICATION = gql`
 `;
 
 export default function Apply() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { loginWithRedirect } = useAuth0();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');

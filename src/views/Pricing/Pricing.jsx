@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
@@ -22,6 +22,9 @@ const VOYAGE_COHORT_COST = currencyFormatter.format(29);
 const JOB_READY_PATH_COST = currencyFormatter.format(129);
 
 export default function Pricing() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Wrapper contentAttributes={{ className: wrapper }}>
       <Title level={1}>

@@ -35,9 +35,11 @@
 
     @media screen and (max-width: 500px) {
       div.links {
+        margin-left: 15px;
         width: 270px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
 
       div.links > * {
@@ -50,11 +52,4 @@
 .offset {
   position: relative;
   height: 58px;
-}
-
-@media screen and (max-width: 360px) {
-  .links > * {
-    float: left !important;
-    margin-left: 10px !important;
-  }
 }

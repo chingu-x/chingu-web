@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
 import { container, header, logo, links, offset } from './Header.module.scss';
-import Logo from './Logo.png';
+import Logo from './Logo.webp';
 
 export default function Header() {
   // const { isAuthenticated } = useAuth0();

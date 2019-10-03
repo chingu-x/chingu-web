@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import { Row, Col, Input } from 'antd';
 import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
@@ -112,7 +111,6 @@ export default function Apply() {
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="Email"
           />
         </label>
       </div>
@@ -242,33 +240,23 @@ export default function Apply() {
       </div>
       <div className={styles.question}>
         <Title level={3}>Where are you joining from?</Title>
-        <Row type="flex" style={{ marginBottom: 16 }}>
-          <Col span={12}>
-            <CountrySelect
-              value={countryCode}
-              onChange={v => setCountryCode(v)}
-            />
-          </Col>
-        </Row>
-        <Row type="flex" style={{ marginBottom: 16 }}>
-          <Col span={12}>
-            <Input
-              className={styles.textInput}
-              placeholder="City"
-              value={city}
-              onChange={e => setCity(e.target.value)}
-            />
-          </Col>
-        </Row>
-        <Row type="flex">
-          <Col span={12}>
-            <TimeZoneSelect
-              countryCode={countryCode}
-              value={timeZone}
-              onChange={v => setTimeZone(v)}
-            />
-          </Col>
-        </Row>
+        <div className={styles.location}>
+          <CountrySelect
+            value={countryCode}
+            onChange={v => setCountryCode(v)}
+          />
+          <input
+            className={styles.textInput}
+            placeholder="City"
+            value={city}
+            onChange={e => setCity(e.target.value)}
+          />
+          <TimeZoneSelect
+            countryCode={countryCode}
+            value={timeZone}
+            onChange={v => setTimeZone(v)}
+          />
+        </div>
       </div>
       <div className={styles.question}>
         <Title level={3}>What is your gender?</Title>

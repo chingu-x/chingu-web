@@ -16,16 +16,12 @@
       display: flex;
       align-items: center;
       font-weight: bold;
+      position: relative;
+      top: 1px;
 
       img {
         margin-right: 5px;
         height: 25px;
-      }
-
-      @media screen and (max-width: 460px) {
-        span {
-          display: none;
-        }
       }
     }
 
@@ -36,14 +32,24 @@
     @media screen and (max-width: 500px) {
       div.links {
         margin-left: 15px;
-        width: 270px;
+        // width: 270px;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+
+        & > * {
+          margin: 0 10px;
+        }
+
+        .apply {
+          display: none;
+        }
       }
 
-      div.links > * {
-        margin-left: 0;
+      div.logo {
+        // span {
+        //   display: none;
+        // }
       }
     }
   }

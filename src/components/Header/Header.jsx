@@ -3,7 +3,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
-import { container, header, logo, links, offset } from './Header.module.scss';
+import {
+  container,
+  header,
+  logo,
+  links,
+  offset,
+  apply
+} from './Header.module.scss';
 import Logo from './Logo.webp';
 
 export default function Header() {
@@ -33,7 +40,7 @@ export default function Header() {
               <Button>Sign in</Button>
             </Link>
           )} */}
-          <Link to="/apply">
+          <Link className={apply} to="/apply">
             <Button type="primary">Apply Now</Button>
           </Link>
         </div>

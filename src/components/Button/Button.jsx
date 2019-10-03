@@ -1,6 +1,12 @@
 import React, { useMemo } from 'react';
 import classnames from 'classnames';
-import { button, primary, link, large } from './Button.module.scss';
+import {
+  button,
+  primary,
+  link,
+  linkPrimary,
+  large
+} from './Button.module.scss';
 
 export default function Button(props) {
   const { children, type, size, className, ...rest } = props;
@@ -11,6 +17,8 @@ export default function Button(props) {
         return primary;
       case 'link':
         return link;
+      case 'link-primary':
+        return linkPrimary;
       default:
         return false;
     }

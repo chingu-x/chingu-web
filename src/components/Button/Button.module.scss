@@ -21,11 +21,19 @@
     }
   }
 
-  &.link {
+  &.link,
+  &.linkPrimary {
     display: inline;
     padding: 0;
     border: none;
     background: none;
+  }
+
+  &.linkPrimary {
+    color: $chingu-green;
+    font-size: inherit;
+    font-weight: inherit;
+    border: none;
   }
 
   &.large {

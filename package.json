@@ -11,6 +11,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.0.0",
     "@auth0/auth0-spa-js": "^1.2.4",
+    "@n8tb1t/use-scroll-position": "^1.0.38",
     "antd": "^3.20.6",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",

@@ -1187,6 +1187,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@n8tb1t/use-scroll-position@^1.0.38":
+  version "1.0.38"
+  resolved "https://registry.yarnpkg.com/@n8tb1t/use-scroll-position/-/use-scroll-position-1.0.38.tgz#981d3af6a59345dcac06434758a85b7ac6664a70"
+  integrity sha512-ASp8mMzg0qOgRK8ms3+RJsmkIeUaoF/uX9QqhjJC1bfWqa0nRuB7+Dnkc+/XUD+YLL7cZb2bcnlntyvSc48i4Q==
+
 "@nodelib/fs.scandir@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.1.tgz#7fa8fed654939e1a39753d286b48b4836d00e0eb"

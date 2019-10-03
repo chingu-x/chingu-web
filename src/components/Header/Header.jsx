@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { useAuth0 } from '../../contexts/auth';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
@@ -15,6 +16,7 @@ import Logo from './Logo.webp';
 
 export default function Header() {
   // const { isAuthenticated } = useAuth0();
+
   return (
     <>
       <Wrapper className={container} contentAttributes={{ className: header }}>
@@ -40,8 +42,8 @@ export default function Header() {
               <Button>Sign in</Button>
             </Link>
           )} */}
-          <Link className={apply} to="/apply">
-            <Button type="primary">Apply Now</Button>
+          <Link to="/apply">
+            <Button type="primary">Apply</Button>
           </Link>
         </div>
       </Wrapper>

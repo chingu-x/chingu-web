@@ -46,7 +46,8 @@
         height: 32px;
       }
 
-      input[type='text'] {
+      input[type='text'],
+      input[type='email'] {
         margin: 0;
         margin-left: 5px;
         flex: 11;

@@ -10,7 +10,15 @@ import {
   features as featuresClass
 } from './OfferCard.module.scss';
 
-export default function OfferCard({ title, subtitle, price, features = [] }) {
+export default function OfferCard({
+  title,
+  subtitle,
+  price,
+  features = [],
+  actionText = 'Apply Now',
+  action,
+  loading
+}) {
   return (
     <div className={offer}>
       <Title level={3}>{title}</Title>
@@ -18,11 +26,17 @@ export default function OfferCard({ title, subtitle, price, features = [] }) {
       <Paragraph className={priceClass} size="large">
         ${price}
       </Paragraph>
-      <Link to="/apply">
-        <Button type="primary" size="large">
-          Apply Now
+      {action ? (
+        <Button type="primary" size="large" onClick={action} disabled={loading}>
+          {loading ? 'Loading...' : actionText}
         </Button>
-      </Link>
+      ) : (
+        <Link to="/apply">
+          <Button type="primary" size="large">
+            {actionText}
+          </Button>
+        </Link>
+      )}
       <div className={featuresClass}>
         <ul>
           {features.map(feature => (

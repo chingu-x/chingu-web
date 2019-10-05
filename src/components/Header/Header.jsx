@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
 import { container, header, logo, links, offset } from './Header.module.scss';
-import Logo from './Logo.webp';
+import LogoWebp from './Logo.webp';
+import Logo from './Logo.png';
 
 export default function Header() {
   // const { isAuthenticated } = useAuth0();
@@ -14,7 +15,11 @@ export default function Header() {
       <Wrapper className={container} contentAttributes={{ className: header }}>
         <div className={logo}>
           <Link to="/">
-            <img src={Logo} alt="Chingu logo" />
+            <picture>
+              <source srcSet={LogoWebp} type="image/webp" />
+              <source srcSet={Logo} type="image/png" />
+              <img src={Logo} alt="Chingu logo" />
+            </picture>
             <span>Chingu</span>
           </Link>
         </div>

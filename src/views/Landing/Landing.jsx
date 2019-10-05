@@ -83,21 +83,30 @@ export default function Landing() {
         </Paragraph>
         <div className={styles.featureCards}>
           <LandingViewFeatureCard
-            imgs={[ThreeAnimalsTogetherWebp, ThreeAnimalsTogether]}
+            imgs={[
+              [ThreeAnimalsTogetherWebp, 'image/webp'],
+              [ThreeAnimalsTogether, 'image/png']
+            ]}
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -6 }}
             title="Gain experience in a remote team"
             body="61% of full-time entry-level jobs now ask for 3 years or more of experience."
           />
           <LandingViewFeatureCard
-            imgs={[RacoonYesPleaseWebp, RacoonYesPlease]}
+            imgs={[
+              [RacoonYesPleaseWebp, 'image/webp'],
+              [RacoonYesPlease, 'image/png']
+            ]}
             imgAlt="Racoon holding up sign that says 'Yes, please'"
             title="Work on real projects"
             body="Sick of doing tutorial after tutorial with nothing to show for
             them?"
           />
           <LandingViewFeatureCard
-            imgs={[TwoAnimalsTogetherWebp, TwoAnimalsTogether]}
+            imgs={[
+              [TwoAnimalsTogetherWebp, 'image/webp'],
+              [TwoAnimalsTogether, 'image/png']
+            ]}
             imgAlt="A cat and a dog hugging each other"
             title="Join a supportive community"
             body="It can be hard to find someone to help you get unstuck."
@@ -154,7 +163,10 @@ export default function Landing() {
         </Paragraph>
         <div className={styles.projectExamples}>
           <ExampleProject
-            imgs={[JobbaticalProjectWebp, JobbaticalProject]}
+            imgs={[
+              [JobbaticalProjectWebp, 'image/webp'],
+              [JobbaticalProject, 'image/png']
+            ]}
             imgAlt="Jobbatical job listings project"
             title="Jobbatical Landing Page"
             description="A job listings and job application app for working abroad."
@@ -162,7 +174,10 @@ export default function Landing() {
             tech="HTML, CSS, Flexbox, Javascript"
           />
           <ExampleProject
-            imgs={[BudgetBoardProjectWebp, BudgetBoardProject]}
+            imgs={[
+              [BudgetBoardProjectWebp, 'image/webp'],
+              [BudgetBoardProject, 'image/png']
+            ]}
             imgAlt="BudgetBoard Chrome extension project"
             title="BudgetBoard Chrome Extension"
             description="A finance app to add income & expense categories with individual items with graph rendering."
@@ -170,7 +185,10 @@ export default function Landing() {
             tech="Javascript, SCSS, D3.js, Chrome Storage Sync"
           />
           <ExampleProject
-            imgs={[VolunteerAppProjectWebp, VolunteerAppProject]}
+            imgs={[
+              [VolunteerAppProjectWebp, 'image/webp'],
+              [VolunteerAppProject, 'image/png']
+            ]}
             imgAlt="Volunteer manager project"
             title="Volunteer Manager App"
             description="Helps people to recruit and manage volunteers for a non-profit project."

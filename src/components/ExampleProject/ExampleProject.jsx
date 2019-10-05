@@ -7,7 +7,7 @@ export default function ExampleProject(props) {
 
   let sources = [];
   for (let i = 0; i < imgs.length; i++) {
-    sources.push(<source key={i} srcSet={imgs[i]} />);
+    sources.push(<source key={i} srcSet={imgs[i][0]} type={imgs[i][1]} />);
   }
 
   return (

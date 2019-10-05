@@ -28,7 +28,7 @@ export default function Pricing() {
   return (
     <Wrapper contentAttributes={{ className: wrapper }}>
       <Title level={1}>
-        Goodbye ${FORMATTED_BOOTCAMP_COST} coding bootcampts.
+        Goodbye ${FORMATTED_BOOTCAMP_COST} coding bootcamps.
         <br />
         Hello Chingu coding adventures.
       </Title>

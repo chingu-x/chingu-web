@@ -18,9 +18,12 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+const {
+  REACT_APP_API_URI: API_URI = 'https://api.staging.chingu.io/graphql'
+} = process.env;
+
 const httpLink = new HttpLink({
-  uri: 'https://api.chingu.io/graphql',
-  // uri: 'http://localhost:3000/graphql',
+  uri: API_URI,
   credentials: 'same-origin'
 });
 

@@ -8,6 +8,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import config from './config/auth.json';
 
+const { REACT_APP_AUTH_ENV: AUTH_ENV = 'staging' } = process.env;
+
 const Shell = ({ children, history }) => {
   // A function that routes the user to the right place after login
   const onRedirectCallback = appState => {
@@ -21,9 +23,9 @@ const Shell = ({ children, history }) => {
   return (
     <>
       <Auth0Provider
-        domain={config.domain}
-        client_id={config.clientId}
-        audience={config.audience}
+        domain={config[AUTH_ENV].domain}
+        client_id={config[AUTH_ENV].clientId}
+        audience={config[AUTH_ENV].audience}
         redirect_uri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
       >

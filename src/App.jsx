@@ -9,6 +9,7 @@ import Pricing from './views/Pricing';
 import Apply from './views/Apply';
 import SignIn from './views/SignIn';
 import Payment from './views/Payment';
+import Success from './views/Success';
 import SignOut from './views/SignOut';
 import NotFound from './views/NotFound';
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/apply" component={Apply} />
           <Route exact path="/signin" component={SignIn} />
           <Route secure exact path="/payment" component={Payment} />
+          <Route secure exact path="/success" component={Success} />
           <Route secure exact path="/signout" component={SignOut} />
           <Route component={NotFound} />
         </Switch>

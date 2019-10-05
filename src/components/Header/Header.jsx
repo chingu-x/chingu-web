@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-// import { useAuth0 } from '../../contexts/auth';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position';
+import React from 'react';
+// import { useAuth0 } from '../../contexts/auth'
 import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
-import {
-  container,
-  header,
-  logo,
-  links,
-  offset,
-  apply
-} from './Header.module.scss';
+import { container, header, logo, links, offset } from './Header.module.scss';
 import Logo from './Logo.webp';
 
 export default function Header() {

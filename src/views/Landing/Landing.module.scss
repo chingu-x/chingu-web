@@ -39,7 +39,7 @@ div.racoonSection {
     }
   }
 
-  img {
+  picture {
     /*width: 357px;
     height: 499px; */
     width: 100%;
@@ -48,12 +48,15 @@ div.racoonSection {
   }
 
   @media screen and (max-width: 767px) {
+    padding-top: 0;
+    flex-direction: column;
+    align-items: center;
     div.racoonText {
       width: 100%;
       padding: 0 15px;
     }
 
-    img {
+    picture {
       display: none;
     }
   }
@@ -69,7 +72,7 @@ div.racoonSection {
     span.anywhereText {
       position: relative;
 
-      & > img {
+      & > picture {
         position: absolute;
         bottom: -12px;
         width: 110%;
@@ -99,7 +102,7 @@ div.racoonSection {
   }
 
   .steps {
-    width: 100%;
+    max-width: 750px;
     margin: 35px auto;
   }
 }

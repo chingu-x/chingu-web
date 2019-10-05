@@ -10,21 +10,44 @@
     align-items: center;
     justify-content: space-between;
     color: #000;
-    padding: 15px 16px;
+    padding: 15px 0;
 
     div.logo {
       display: flex;
       align-items: center;
       font-weight: bold;
+      position: relative;
+      top: 1px;
 
       img {
         margin-right: 5px;
         height: 25px;
       }
+
+      @media screen and (max-width: 380px) {
+        span {
+          display: none;
+        }
+      }
     }
 
     div.links > * {
       margin-left: 25px;
+    }
+
+    @media screen and (max-width: 500px) {
+      div.links {
+        margin-left: 15px;
+        width: 240px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        & > * {
+          margin: 0;
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
@@ -32,11 +55,4 @@
 .offset {
   position: relative;
   height: 58px;
-}
-
-@media screen and (max-width: 360px) {
-  .links > * {
-    float: left !important;
-    margin-left: 10px !important;
-  }
 }

@@ -1,361 +1,439 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
-import { Row, Col, Button, Input, Radio } from 'antd';
 import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
+import { Button } from '../../components/Button';
 import CountrySelect from '../../components/CountrySelect';
 import TimeZoneSelect from '../../components/TimeZoneSelect';
 import styles from './Apply.module.scss';
 
-const QUESTION_GAP = 45;
-
 const CREATE_APPLICATION = gql`
-  mutation createApplication($application: CohortApplicationInput!) {
-    createCohortApplication(application: $application)
+  mutation createApplication($applicationInput: VoyageApplicationInput!) {
+    createVoyageApplication(applicationInput: $applicationInput)
   }
 `;
 
 export default function Apply() {
-  const { loginWithRedirect, loading, isAuthenticated } = useAuth0();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const { loginWithRedirect } = useAuth0();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [gender, setGender] = useState();
+  const [otherGender, setOtherGender] = useState('');
+  const [email, setEmail] = useState('');
   const [desiredRole, setDesiredRole] = useState('DEVELOPER');
   const [countryCode, setCountryCode] = useState();
-  const [city, setCity] = useState();
+  const [city, setCity] = useState('');
   const [timeZone, setTimeZone] = useState();
   const [isPreviousMember, setIsPreviousMember] = useState(false);
   const [excitedTo, setExcitedTo] = useState();
-  const [gender, setGender] = useState();
-  const [otherGender, setOtherGender] = useState();
+  const [otherExcitedTo, setOtherExcitedTo] = useState('');
   const [source, setSource] = useState();
+  const [otherSource, setOtherSource] = useState('');
   const [tier, setTier] = useState();
 
   const [createApplication, { loading: creatingApplication }] = useMutation(
-    CREATE_APPLICATION
+    CREATE_APPLICATION,
+    {
+      onCompleted: () => {
+        loginWithRedirect({
+          redirect_uri: `${window.location.origin}/payment`,
+          login_hint: email
+        });
+      }
+    }
   );
 
-  const blockRadioStyle = {
-    display: 'block',
-    height: '32px',
-    lineHeight: '32px'
-  };
-
   async function submitApplication() {
-    if (!loading && !isAuthenticated) {
-      await loginWithRedirect({
-        redirect_uri: `${window.location.origin}/`
-      });
-    } else {
-      createApplication({
-        variables: {
-          application: {
-            firstName,
-            lastName,
-            gender,
-            otherGender,
-            isPreviousMember,
-            excitedTo,
-            desiredRole,
-            countryCode,
-            city
-          }
-        }
-      });
+    const applicationInput = {
+      firstName,
+      lastName,
+      email,
+      gender,
+      isPreviousMember,
+      reasonForApplying: excitedTo,
+      desiredRole,
+      desiredTier: tier,
+      countryCode,
+      cityName: city,
+      source,
+      timezoneName: timeZone
+    };
+
+    if (gender === 'OTHER' && otherGender.length) {
+      applicationInput.otherGender = otherGender;
     }
+    if (source === 'OTHER' && otherSource.length) {
+      applicationInput.otherSource = otherSource;
+    }
+    if (excitedTo === 'OTHER' && otherExcitedTo.length) {
+      applicationInput.otherReasonForApplying = otherExcitedTo;
+    }
+
+    createApplication({
+      variables: {
+        applicationInput
+      }
+    });
   }
 
   return (
-    <Wrapper className={styles.top}>
-      <Row
-        style={{ marginTop: 75, marginBottom: 30 }}
-        type="flex"
-        justify="center"
-        align="middle"
-      >
-        <Col xs={24}>
-          <h1>
-            Apply to join the <span style={{ color: '#15cf89' }}>October</span>{' '}
-            cohort!
-          </h1>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={12}>
-          <Title className={styles.midTitle} level={3}>
-            What's your name?
-          </Title>
-          <Row type="flex" gutter={16}>
-            <Col span={12}>
-              <Input
-                className={styles.textInput}
-                placeholder="First Name"
-                value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-                autoFocus
-              />
-            </Col>
-            <Col span={12}>
-              <Input
-                className={styles.textInput}
-                placeholder="Last Name"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-              />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={12}>
-          <Title className={styles.midTitle} level={3}>
-            What's your gender?
-          </Title>
-          <Radio.Group
-            name="gender"
-            value={gender}
-            onChange={e => setGender(e.target.value)}
-          >
-            <Radio style={blockRadioStyle} value="FEMALE">
-              Female
-            </Radio>
-            <Radio style={blockRadioStyle} value="MALE">
-              Male
-            </Radio>
-            <Radio style={blockRadioStyle} value="OTHER">
-              Other{' '}
-              {gender === 'OTHER' && (
-                <Input
-                  placeholder="Please specify"
-                  style={{ width: 159, marginLeft: 10 }}
-                  value={otherGender}
-                  onChange={e => setOtherGender(e.target.value)}
-                />
-              )}
-            </Radio>
-            <Radio style={blockRadioStyle} value="PREFER_NOT_TO_SAY">
-              Prefer not to say
-            </Radio>
-          </Radio.Group>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={14}>
-          <Title className={styles.midTitle} level={3}>
-            Have you been in a Chingu cohort before?
-          </Title>
-          <Radio.Group
-            name="isMember"
-            defaultValue={false}
-            value={isPreviousMember}
-            onChange={e => setIsPreviousMember(e.target.value)}
-          >
-            <Radio style={blockRadioStyle} value={true}>
-              Yes
-            </Radio>
-            <Radio style={blockRadioStyle} value={false}>
-              No
-            </Radio>
-          </Radio.Group>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={14}>
-          <Title className={styles.midTitle} level={3}>
-            What opportunity in Chingu most excites you?
-          </Title>
-          <Radio.Group
-            name="opportunity"
-            value={excitedTo}
-            onChange={e => setExcitedTo(e.target.value)}
-          >
-            <Radio style={blockRadioStyle} value="NETWORK_WITH_SHARED_GOALS">
-              To join a friendly group of learners who share my goals and meet
-              new friends
-            </Radio>
-            <Radio
-              style={blockRadioStyle}
+    <Wrapper>
+      <Title className={styles.title}>
+        Apply to join the <span style={{ color: '#15cf89' }}>October</span>{' '}
+        cohort!
+      </Title>
+      <div className={styles.question}>
+        <Title level={3}>Tell us a little about yourself</Title>
+        <label>
+          <span>First Name</span>
+          <input
+            type="text"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+        </label>
+        <label>
+          <span>Last Name</span>
+          <input
+            type="text"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+        </label>
+        <label>
+          <span>Email</span>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+        </label>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>Have you been in a Chingu cohort before?</Title>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="is-previous-member"
+              value={true}
+              checked={isPreviousMember}
+              onChange={() => setIsPreviousMember(true)}
+            />
+            Yes
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="is-previous-member"
+              value={false}
+              checked={!isPreviousMember}
+              onChange={() => setIsPreviousMember(false)}
+            />
+            No
+          </label>
+        </div>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>What opportunity in Chingu most excites you?</Title>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="excited-to"
+              value="NETWORK_WITH_SHARED_GOALS"
+              checked={excitedTo === 'NETWORK_WITH_SHARED_GOALS'}
+              onChange={() => setExcitedTo('NETWORK_WITH_SHARED_GOALS')}
+            />
+            To join a friendly group of learners who share my goals and meet new
+            friends
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="excited-to"
               value="GET_OUT_OF_TUTORIAL_PURGATORY"
-            >
-              To get out of "tutorial purgatory" and actually build projects
-            </Radio>
-            <Radio style={blockRadioStyle} value="GAIN_EXPERIENCE">
-              To gain experience building projects in remote teams
-            </Radio>
-            <Radio style={blockRadioStyle} value="ACCELERATE_LEARNING">
-              To get out of my comfort zone and accelerate my learning
-            </Radio>
-            <Radio style={blockRadioStyle} value="OTHER">
-              Other{' '}
-              {excitedTo === 'OTHER' && (
-                <Input
-                  placeholder="Please specify"
-                  style={{ width: 400, marginLeft: 10 }}
-                />
-              )}
-            </Radio>
-          </Radio.Group>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={12}>
-          <Title className={styles.midTitle} level={3}>
-            What's would you like to join as?
-          </Title>
-          <Radio.Group
-            name="role"
-            defaultValue="DEVELOPER"
-            value={desiredRole}
-            onChange={e => setDesiredRole(e.target.value)}
-          >
-            <Radio style={blockRadioStyle} value="DEVELOPER">
-              Developer
-            </Radio>
-            <Radio style={blockRadioStyle} value="DESIGNER">
-              Designer
-            </Radio>
-            <Radio style={blockRadioStyle} value="DATA_SCIENTIST">
-              Data Scientist
-            </Radio>
-          </Radio.Group>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={12}>
-          <Title className={styles.midTitle} level={3}>
-            Where are you joining from?
-          </Title>
-          <Row type="flex" style={{ marginBottom: 16 }}>
-            <Col span={12}>
-              <CountrySelect value={countryCode} onChange={setCountryCode} />
-            </Col>
-          </Row>
-          <Row type="flex" style={{ marginBottom: 16 }}>
-            <Col span={12}>
-              <Input
-                className={styles.textInput}
-                placeholder="City"
-                value={city}
-                onChange={e => setCity(e.target.value)}
+              checked={excitedTo === 'GET_OUT_OF_TUTORIAL_PURGATORY'}
+              onChange={() => setExcitedTo('GET_OUT_OF_TUTORIAL_PURGATORY')}
+            />
+            To get out of "tutorial purgatory" and actually build projects
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="excited-to"
+              value="GAIN_EXPERIENCE"
+              checked={excitedTo === 'GAIN_EXPERIENCE'}
+              onChange={() => setExcitedTo('GAIN_EXPERIENCE')}
+            />
+            To gain experience building projects in remote teams
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="excited-to"
+              value="ACCELERATE_LEARNING"
+              checked={excitedTo === 'ACCELERATE_LEARNING'}
+              onChange={() => setExcitedTo('ACCELERATE_LEARNING')}
+            />
+            To get out of my comfort zone and accelerate my learning
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="excited-to"
+              value="OTHER"
+              checked={excitedTo === 'OTHER'}
+              onChange={() => setExcitedTo('OTHER')}
+            />
+            Other
+            {excitedTo === 'OTHER' && (
+              <input
+                type="text"
+                placeholder="Please specify"
+                value={otherExcitedTo}
+                onChange={e => setOtherExcitedTo(e.target.value)}
               />
-            </Col>
-          </Row>
-          <Row type="flex">
-            <Col span={12}>
-              <TimeZoneSelect
-                countryCode={countryCode}
-                value={timeZone}
-                onChange={setTimeZone}
+            )}
+          </label>
+        </div>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>What would you like to join as?</Title>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="desired-role"
+              value="DEVELOPER"
+              checked={desiredRole === 'DEVELOPER'}
+              onChange={() => setDesiredRole('DEVELOPER')}
+            />
+            Developer
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="desired-role"
+              value="DESIGNER"
+              checked={desiredRole === 'DESIGNER'}
+              onChange={() => setDesiredRole('DESIGNER')}
+            />
+            Designer
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="desired-role"
+              value="DATA_SCIENTIST"
+              checked={desiredRole === 'DATA_SCIENTIST'}
+              onChange={() => setDesiredRole('DATA_SCIENTIST')}
+            />
+            Data Scientist
+          </label>
+        </div>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>Where are you joining from?</Title>
+        <div className={styles.location}>
+          <CountrySelect
+            value={countryCode}
+            onChange={v => setCountryCode(v)}
+          />
+          <input
+            className={styles.textInput}
+            placeholder="City"
+            value={city}
+            onChange={e => setCity(e.target.value)}
+          />
+          <TimeZoneSelect
+            countryCode={countryCode}
+            value={timeZone}
+            onChange={v => setTimeZone(v)}
+          />
+        </div>
+      </div>
+      <div className={styles.question}>
+        <Title level={3}>What is your gender?</Title>
+        <div className={styles.radioGroup}>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="FEMALE"
+              checked={gender === 'FEMALE'}
+              onChange={() => setGender('FEMALE')}
+            />
+            Female
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="MALE"
+              checked={gender === 'MALE'}
+              onChange={() => setGender('MALE')}
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="OTHER"
+              checked={gender === 'OTHER'}
+              onChange={() => setGender('OTHER')}
+            />
+            Other
+            {gender === 'OTHER' && (
+              <input
+                type="text"
+                placeholder="Please specify"
+                value={otherGender}
+                onChange={e => setOtherGender(e.target.value)}
               />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-      <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-        <Col className={styles.middleTop} span={12}>
-          <Title className={styles.midTitle} level={3}>
-            What's your email?
-          </Title>
-          <Row type="flex">
-            <Col span={12}>
-              <Input className={styles.textInput} placeholder="Email" />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+            )}
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="PREFER_NOT_TO_DISCLOSE"
+              checked={gender === 'PREFER_NOT_TO_DISCLOSE'}
+              onChange={() => setGender('PREFER_NOT_TO_DISCLOSE')}
+            />
+            Prefer not to say
+          </label>
+        </div>
+      </div>
       {desiredRole === 'DEVELOPER' && (
-        <>
-          <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-            <Col className={styles.middleTop} span={12}>
-              <Title className={styles.midTitle} level={3}>
-                What's your Github username?
-              </Title>
-              <Row type="flex">
-                <Col span={12}>
-                  <Input
-                    className={styles.textInput}
-                    placeholder="Github username"
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-            <Col className={styles.middleTop} span={14}>
-              <Title className={styles.midTitle} level={3}>
-                Which tier and project type best suits you?
-              </Title>
-              <Radio.Group
-                name="tier"
-                value={tier}
-                onChange={e => setTier(e.target.value)}
-              >
-                <Radio style={blockRadioStyle} value="TIER_3">
-                  Tier 3 - Advanced Projects - Data Visualization - Back-end
-                  (FULL STACK)
-                </Radio>
-                <Radio style={blockRadioStyle} value="TIER_2">
-                  Tier 2 - Intermediate Algorithms - Front-end Projects
-                  (FRONT-END)
-                </Radio>
-                <Radio style={blockRadioStyle} value="TIER_1">
-                  Tier 1 - HTML - Basic Javascript - Basic Algorithms (LANDING
-                  PAGES)
-                </Radio>
-              </Radio.Group>
-            </Col>
-          </Row>
-        </>
+        <div className={styles.question}>
+          <Title level={3}>Which tier and project type best suits you?</Title>
+          <div className={styles.radioGroup}>
+            <label>
+              <input
+                type="radio"
+                name="disired-tier"
+                value="TIER_3"
+                checked={tier === 'TIER_3'}
+                onChange={() => setTier('TIER_3')}
+              />
+              Tier 3 - Advanced Projects - Data Visualization - Back-end (FULL
+              STACK)
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="disired-tier"
+                value="TIER_2"
+                checked={tier === 'TIER_2'}
+                onChange={() => setTier('TIER_2')}
+              />
+              Tier 2 - Intermediate Algorithms - Front-end Projects (FRONT-END)
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="disired-tier"
+                value="TIER_1"
+                checked={tier === 'TIER_1'}
+                onChange={() => setTier('TIER_1')}
+              />
+              Tier 1 - HTML - Basic Javascript - Basic Algorithms (LANDING
+              PAGES)
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="disired-tier"
+                value="OTHER"
+                checked={tier === 'OTHER'}
+                onChange={() => setTier('OTHER')}
+              />
+              Other
+            </label>
+          </div>
+        </div>
       )}
       {!isPreviousMember && (
-        <Row type="flex" style={{ marginBottom: QUESTION_GAP }}>
-          <Col className={styles.middleTop} span={12}>
-            <Title className={styles.midTitle} level={3}>
-              Where did you hear about Chingu?
-            </Title>
-            <Radio.Group
-              name="source"
-              value={source}
-              onChange={e => setSource(e.target.value)}
-            >
-              <Radio style={blockRadioStyle} value="MEDIUM">
-                On Medium
-              </Radio>
-              <Radio style={blockRadioStyle} value="PERSONAL_NETWORK">
-                From a friend/someone I know
-              </Radio>
-              <Radio style={blockRadioStyle} value="FREE_CODE_CAMP_FORUM">
-                The FreeCodeCamp Forum
-              </Radio>
-              <Radio style={blockRadioStyle} value="GOOGLE_SEARCH">
-                Google Search
-              </Radio>
-              <Radio style={blockRadioStyle} value="OTHER">
-                Other{' '}
-                {source === 'OTHER' && (
-                  <Input
-                    placeholder="Please specify"
-                    style={{ width: 160, marginLeft: 10 }}
-                  />
-                )}
-              </Radio>
-            </Radio.Group>
-          </Col>
-        </Row>
+        <div className={styles.question}>
+          <Title level={3}>Where did you hear about Chingu?</Title>
+          <div className={styles.radioGroup}>
+            <label>
+              <input
+                type="radio"
+                name="source"
+                value="MEDIUM"
+                checked={source === 'MEDIUM'}
+                onChange={() => setSource('MEDIUM')}
+              />
+              On Medium
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="source"
+                value="PERSONAL_NETWORK"
+                checked={source === 'PERSONAL_NETWORK'}
+                onChange={() => setSource('PERSONAL_NETWORK')}
+              />
+              From a friend/someone I know
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="source"
+                value="FREE_CODE_CAMP_FORUM"
+                checked={source === 'FREE_CODE_CAMP_FORUM'}
+                onChange={() => setSource('FREE_CODE_CAMP_FORUM')}
+              />
+              The FreeCodeCamp Forum
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="source"
+                value="GOOGLE_SEARCH"
+                checked={source === 'GOOGLE_SEARCH'}
+                onChange={() => setSource('GOOGLE_SEARCH')}
+              />
+              Google Search
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="source"
+                value="OTHER"
+                checked={source === 'OTHER'}
+                onChange={() => setSource('OTHER')}
+              />
+              Other
+              {source === 'OTHER' && (
+                <input
+                  type="text"
+                  placeholder="Please specify"
+                  value={otherSource}
+                  onChange={e => setOtherSource(e.target.value)}
+                />
+              )}
+            </label>
+          </div>
+        </div>
       )}
-      <Row type="flex">
-        <Col className={styles.middleTop} span={12}>
-          <Button
-            type="primary"
-            onClick={submitApplication}
-            disabled={creatingApplication}
-            ghost
-          >
-            Submit
-          </Button>
-        </Col>
-      </Row>
+      <Button
+        type="primary"
+        className={styles.submit}
+        onClick={submitApplication}
+        disabled={creatingApplication}
+        size="large"
+      >
+        Submit
+      </Button>
     </Wrapper>
   );
 }

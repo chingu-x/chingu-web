@@ -1,12 +1,14 @@
 @import '../../styles/base';
 
 .offer {
-  width: 400px;
+  max-width: 400px;
   padding-top: 45px;
   background-color: #fff;
   position: relative;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
 
   &:first-of-type {
     border-left: none;
@@ -14,6 +16,15 @@
 
   &:last-of-type {
     border-right: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    border: none;
+    margin-bottom: 70px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 
   &::before {
@@ -52,7 +63,7 @@
   div.features {
     margin-top: 70px;
     background-color: $light-grey-background;
-    height: 310px;
+    flex: 1;
     text-align: left;
     padding: 40px 20px;
 

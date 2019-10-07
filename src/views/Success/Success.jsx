@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
-import { wrapper, subtitle } from './Success.module.scss';
+import { wrapper, subtitle, nextLink } from './Success.module.scss';
 
 export default function Success() {
   useEffect(() => {
@@ -22,11 +23,10 @@ export default function Success() {
         <br />
         You're now signed up for a Chingu Voyage. Congratulations on taking this
         step towards fighting Tutorial Purgatory.
-        <br />
-        <br />
-        We will send you an email shortly with the next steps so please keep
-        your eyes open for that.
       </Paragraph>
+      <Link className={nextLink} to="/profile">
+        Next Steps
+      </Link>
     </Wrapper>
   );
 }

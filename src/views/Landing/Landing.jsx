@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
@@ -34,9 +35,15 @@ import quotes from './quotes.json';
 import styles from './Landing.module.scss';
 
 export default function Landing() {
+  const { isAuthenticated } = useAuth0();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (isAuthenticated) {
+    return <Redirect to="/profile" />;
+  }
+
   return (
     <>
       <Wrapper contentAttributes={{ className: styles.racoonSection }}>

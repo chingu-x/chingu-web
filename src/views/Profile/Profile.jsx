@@ -114,7 +114,14 @@ export default function Privacy() {
                 accountable and as a tool to support teams that need assistance.
                 <br />
                 <br />
-                Here is an article that shows you how to do this.
+                <a
+                  href="https://www.lifewire.com/how-to-whitelist-email-addresses-4588603"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Here is an article
+                </a>{' '}
+                that shows you how to do this.
               </Paragraph>
             </li>
             <li>
@@ -138,21 +145,51 @@ export default function Privacy() {
               </Paragraph>
             </li>
             <li>
-              <Title level={3}>Go through the Chingu Handbook</Title>
+              <Title level={3}>
+                Go through{' '}
+                <a
+                  href="https://docs.chingu.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  the Chingu Handbook
+                </a>
+              </Title>
               <Paragraph>
                 There’s a lot of useful material here. Below you can find the
                 key sections to read before your session starts so you can be
                 ready.
                 <br />
                 <br />
-                A) Learn and/or review how to use Git/Github (trust me, this is
-                a big one)
+                A){' '}
+                <a
+                  href="https://techres.docs.chingu.io/git/workflow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn and/or review how to use Git/Github{' '}
+                </a>{' '}
+                (trust me, this is a big one)
                 <br />
                 <br />
-                B) Here are the basic To-dos to get started & prepare
+                B){' '}
+                <a
+                  href="https://voyage.docs.chingu.io/prep/getprepared/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Here are the basic To-dos to get started & prepare
+                </a>
                 <br />
                 <br />
-                C) Submit your Prework project
+                C){' '}
+                <a
+                  href="https://voyage.docs.chingu.io/prework/submitprework/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Submit your Prework project
+                </a>
               </Paragraph>
             </li>
             <li>

@@ -73,4 +73,12 @@
   li {
     margin-bottom: 40px;
   }
+
+  a {
+    color: $chingu-green;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

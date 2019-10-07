@@ -92,7 +92,15 @@ export default function Privacy() {
           <ol>
             <li>
               <Title level={3}>
-                Read the Chingu Voyage Preview & extra info article
+                Read the{' '}
+                <a
+                  href="https://medium.com/chingu/chingu-voyage-teaser-extra-info-1c9abc0472c7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Chingu Voyage Preview & extra info
+                </a>{' '}
+                article
                 <Paragraph size="small">(5 minutes)</Paragraph>
               </Title>
 
@@ -189,6 +197,15 @@ export default function Privacy() {
                   rel="noopener noreferrer"
                 >
                   Submit your Prework project
+                </a>
+                <br />
+                <br />D{' '}
+                <a
+                  href="https://chingu.docs.chingu.io/intro/schedule#cohort-13-schedule"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Here is the schedule for your Voyage
                 </a>
               </Paragraph>
             </li>

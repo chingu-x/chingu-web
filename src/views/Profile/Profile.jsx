@@ -174,6 +174,19 @@ export default function Privacy() {
               </Paragraph>
             </li>
           </ol>
+          <br />
+          <Paragraph style={{ textAlign: 'center' }} size="large" bold>
+            If you have any questions or feedback, feel free to reach out to us
+            at{' '}
+            <a
+              href="mailto:support@chingu.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              support@chingu.io
+            </a>
+          </Paragraph>
+          <br />
         </div>
       </Wrapper>
     </>

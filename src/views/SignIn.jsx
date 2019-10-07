@@ -9,7 +9,7 @@ function SignIn() {
     const fn = async () => {
       if (!loading && !isAuthenticated) {
         await loginWithRedirect({
-          redirect_uri: `${window.location.origin}/`
+          redirect_uri: `${window.location.origin}/profile`
         });
       }
     };

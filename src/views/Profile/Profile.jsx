@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import gql from 'graphql-tag';
 import { Redirect } from 'react-router-dom';
-import { useUser } from '../../contexts/user';
+import { useQuery } from '@apollo/react-hooks';
 import LoadingView from '../../components/LoadingView';
 import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
@@ -20,25 +21,37 @@ import {
 import GoatGlassesWebp from './GoatGlasses.webp';
 import GoatGlassesPNG from './GoatGlasses.png';
 
+const GET_EXISTING_APPLICATION = gql`
+  query getExistingApplication {
+    application {
+      id
+      status
+    }
+  }
+`;
+
 export default function Profile() {
-  const { data: userData = {}, loading: loadingUser } = useUser();
+  const { data: applicationData = {}, loading: loadingApplication } = useQuery(
+    GET_EXISTING_APPLICATION,
+    { fetchPolicy: 'network-only' }
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const { user } = useAuth0();
 
-  if (loadingUser) {
+  if (loadingApplication) {
     return <LoadingView />;
   }
 
-  if (!loadingUser && userData) {
-    const { status } = userData.application || {};
+  if (applicationData.application) {
+    const { status } = applicationData.application;
 
     if (status === 'PENDING_PAYMENT') {
       return <Redirect to="/payment" />;
-    } else if (status !== 'PENDING_REVIEW') {
-      return <Redirect to="/apply" />;
     }
+  } else {
+    return <Redirect to="/apply" />;
   }
 
   return (

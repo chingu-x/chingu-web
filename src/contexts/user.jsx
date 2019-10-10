@@ -18,7 +18,7 @@ const GET_CURRENT_USER = gql`
 export default function CurrentUserProvider({ children }) {
   const { isAuthenticated } = useAuth0();
   const { data, loading } = useQuery(GET_CURRENT_USER, {
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
     skip: !isAuthenticated
   });
 

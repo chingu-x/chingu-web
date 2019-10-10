@@ -49,7 +49,7 @@ export default function Apply({ history }) {
     return <LoadingView />;
   }
 
-  if (!loadingUser && userData.application) {
+  if (!loadingUser && userData) {
     const { status } = userData.application || {};
 
     if (status === 'PENDING_PAYMENT') {

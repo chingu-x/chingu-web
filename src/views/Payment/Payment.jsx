@@ -50,7 +50,7 @@ function Form({ stripe }) {
     return <LoadingView />;
   }
 
-  if (!loadingUser && userData.application) {
+  if (!loadingUser && userData) {
     const { status } = userData.application || {};
 
     if (status === 'PENDING_REVIEW') {

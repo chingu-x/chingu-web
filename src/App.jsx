@@ -23,8 +23,8 @@ const App = () => {
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/howitworks" component={HowItWorks} />
           <Route exact path="/pricing" component={Pricing} />
-          <Route exact path="/apply" component={Apply} />
           <Route exact path="/signin" component={SignIn} />
+          <Route secure exact path="/apply" component={Apply} />
           <Route secure exact path="/payment" component={Payment} />
           <Route secure exact path="/success" component={Success} />
           <Route secure exact path="/profile" component={Profile} />

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { useUser } from '../../contexts/user';
+import LoadingView from '../../components/LoadingView';
 import { useAuth0 } from '../../contexts/auth';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
@@ -18,11 +20,26 @@ import {
 import GoatGlassesWebp from './GoatGlasses.webp';
 import GoatGlassesPNG from './GoatGlasses.png';
 
-export default function Privacy() {
+export default function Profile() {
+  const { data: userData = {}, loading: loadingUser } = useUser();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const { user } = useAuth0();
+
+  if (loadingUser) {
+    return <LoadingView />;
+  }
+
+  if (!loadingUser && userData.application) {
+    const { status } = userData.application || {};
+
+    if (status === 'PENDING_PAYMENT') {
+      return <Redirect to="/payment" />;
+    } else if (status !== 'PENDING_REVIEW') {
+      return <Redirect to="/apply" />;
+    }
+  }
 
   return (
     <>

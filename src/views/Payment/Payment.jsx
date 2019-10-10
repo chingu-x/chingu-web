@@ -1,7 +1,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
 import { injectStripe, Elements } from 'react-stripe-elements';
 import { useMutation } from '@apollo/react-hooks';
+import { useUser } from '../../contexts/user';
+import LoadingView from '../../components/LoadingView';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Paragraph } from '../../components/Paragraph';
@@ -25,6 +28,7 @@ const CREATE_CHECKOUT_SESSION = gql`
 `;
 
 function Form({ stripe }) {
+  const { data: userData = {}, loading: loadingUser } = useUser();
   const [createCheckoutSession, { loading }] = useMutation(
     CREATE_CHECKOUT_SESSION,
     {
@@ -41,6 +45,20 @@ function Form({ stripe }) {
       }
     }
   );
+
+  if (loadingUser) {
+    return <LoadingView />;
+  }
+
+  if (!loadingUser && userData.application) {
+    const { status } = userData.application || {};
+
+    if (status === 'PENDING_REVIEW') {
+      return <Redirect to="/profile" />;
+    } else if (status !== 'PENDING_PAYMENT') {
+      return <Redirect to="/apply" />;
+    }
+  }
 
   return (
     <>

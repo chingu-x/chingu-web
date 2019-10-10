@@ -35,9 +35,10 @@ export default function TimeZoneSelect({ countryCode, ...rest }) {
     >
       {!loading &&
         timezones.map(timezone => (
-          <Select.Option key={timezone.name} value={timezone.name}>{`${
-            timezone.name
-          } ${countryCode ? `(${timezone.abbreviation})` : ''}`}</Select.Option>
+          <Select.Option
+            key={timezone.name}
+            value={timezone.name}
+          >{`${timezone.name}`}</Select.Option>
         ))}
     </Select>
   );

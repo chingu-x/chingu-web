@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
+import { Redirect } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
-import { useAuth0 } from '../../contexts/auth';
+import { useUser } from '../../contexts/user';
+import LoadingView from '../../components/LoadingView';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Button } from '../../components/Button';
@@ -15,16 +17,15 @@ const CREATE_APPLICATION = gql`
   }
 `;
 
-export default function Apply() {
+export default function Apply({ history }) {
+  const { data: userData = {}, loading: loadingUser } = useUser();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const { loginWithRedirect } = useAuth0();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState();
   const [otherGender, setOtherGender] = useState('');
-  const [email, setEmail] = useState('');
   const [desiredRole, setDesiredRole] = useState('DEVELOPER');
   const [countryCode, setCountryCode] = useState();
   const [city, setCity] = useState('');
@@ -35,24 +36,33 @@ export default function Apply() {
   const [source, setSource] = useState();
   const [otherSource, setOtherSource] = useState('');
   const [tier, setTier] = useState();
-
   const [createApplication, { loading: creatingApplication }] = useMutation(
     CREATE_APPLICATION,
     {
       onCompleted: () => {
-        loginWithRedirect({
-          redirect_uri: `${window.location.origin}/payment`,
-          login_hint: email
-        });
+        history.push('/payment');
       }
     }
   );
+
+  if (loadingUser) {
+    return <LoadingView />;
+  }
+
+  if (!loadingUser && userData.application) {
+    const { status } = userData.application || {};
+
+    if (status === 'PENDING_PAYMENT') {
+      return <Redirect to="/payment" />;
+    } else if (status === 'PENDING_REVIEW') {
+      return <Redirect to="/profile" />;
+    }
+  }
 
   async function submitApplication() {
     const applicationInput = {
       firstName,
       lastName,
-      email,
       gender,
       isPreviousMember,
       reasonForApplying: excitedTo,
@@ -153,14 +163,6 @@ export default function Apply() {
                 type="text"
                 value={lastName}
                 onChange={e => setLastName(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Email</span>
-              <input
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
               />
             </label>
           </div>

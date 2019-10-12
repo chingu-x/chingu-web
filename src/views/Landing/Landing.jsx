@@ -97,7 +97,7 @@ export default function Landing() {
             imgAlt="A goat, a duck, and a dog coding together"
             imgStyle={{ position: 'relative', left: -6 }}
             title="Gain experience in a remote team"
-            body="61% of full-time entry-level jobs now ask for 3 years or more of experience."
+            body="57% of full-time entry-level jobs now ask for 3 years or more of experience."
           />
           <LandingViewFeatureCard
             imgs={[

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 import { Title } from '../Title';
 import { Paragraph } from '../Paragraph';
 import { Button } from '../Button';
@@ -17,14 +18,16 @@ export default function OfferCard({
   features = [],
   actionText = 'Apply Now',
   action,
-  loading
+  loading,
+  className,
+  ...rest
 }) {
   return (
-    <div className={offer}>
+    <div {...rest} className={classnames(offer, className)}>
       <Title level={3}>{title}</Title>
       <Paragraph className={description}>{subtitle}</Paragraph>
       <Paragraph className={priceClass} size="large">
-        ${price}
+        {price === 'Free' ? price : `$${price}`}
       </Paragraph>
       {action ? (
         <Button type="primary" size="large" onClick={action} disabled={loading}>

@@ -27,9 +27,9 @@ export default function Header() {
           <Link to="/howitworks">
             <Button type="link">How it works</Button>
           </Link>
-          <Link to="/pricing">
+          {/* <Link to="/pricing">
             <Button type="link">Pricing</Button>
-          </Link>
+          </Link> */}
           {isAuthenticated ? (
             <Link to="/signout">
               <Button>Sign out</Button>

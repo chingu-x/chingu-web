@@ -61,17 +61,18 @@ function Form({ stripe }) {
     return <LoadingView />;
   }
 
-  if (applicationData.application) {
-    const { status } = applicationData.application;
-    if (status === 'PENDING_REVIEW') {
-      return <Redirect to="/profile" />;
-    }
-  }
+  // if (applicationData.application) {
+  //   const { status } = applicationData.application;
+  //   if (status === 'PENDING_REVIEW') {
+  //     return <Redirect to="/profile" />;
+  //   }
+  // }
 
   return (
     <>
       <div className={styles.offers}>
         <OfferCard
+          className={styles.offer}
           title="Voyage Cohort"
           subtitle="For those who want to level-up."
           price={VOYAGE_COHORT_COST}
@@ -91,6 +92,7 @@ function Form({ stripe }) {
           loading={loading}
         />
         <OfferCard
+          className={styles.offer}
           title="Job-Ready Path"
           subtitle="For those who wants to get a job within a year."
           price={JOB_READY_PATH_COST}
@@ -104,6 +106,23 @@ function Form({ stripe }) {
           actionText="Pay Now"
           action={() =>
             createCheckoutSession({ variables: { choice: 'JOB_READY_PATH' } })
+          }
+          loading={loading}
+        />
+        <OfferCard
+          className={styles.offer}
+          title="SOLO"
+          subtitle="For those who want to build a solo project"
+          price="Free"
+          features={[
+            'Build a project from start to finish',
+            'Gain confidence as a developer',
+            'Prep to be a team developer',
+            'Support from Chingu community'
+          ]}
+          actionText="Sign Up"
+          action={() =>
+            createCheckoutSession({ variables: { choice: 'SOLO' } })
           }
           loading={loading}
         />

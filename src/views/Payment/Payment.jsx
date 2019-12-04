@@ -54,21 +54,23 @@ function Form({ stripe }) {
     CREATE_CHECKOUT_SESSION,
     {
       onCompleted: data => {
-        if (data.application.paymentStatus === 'NOT_REQURIED') {
+        if (data.application.paymentStatus === 'NOT_REQUIRED') {
           history.push('/profile');
           return;
         }
-        stripe
-          .redirectToCheckout({
-            sessionId: data.application.checkoutSession.checkoutSessionId
-          })
-          .then(result => {
-            // If `redirectToCheckout` fails due to a browser or network
-            // error, display the localized error message to your customer
-            // using `result.error.message`.
-          });
+        if (data.application.checkoutSession) {
+          stripe
+            .redirectToCheckout({
+              sessionId: data.application.checkoutSession.checkoutSessionId
+            })
+            .then(result => {
+              // If `redirectToCheckout` fails due to a browser or network
+              // error, display the localized error message to your customer
+              // using `result.error.message`.
+            });
+        }
       },
-      fetchPolicy: 'network-only'
+      fetchPolicy: 'no-cache'
     }
   );
 

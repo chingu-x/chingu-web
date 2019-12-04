@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { injectStripe, Elements } from 'react-stripe-elements';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import LoadingView from '../../components/LoadingView';
@@ -45,6 +45,7 @@ const GET_EXISTING_APPLICATION = gql`
 `;
 
 function Form({ stripe }) {
+  const history = useHistory();
   const { data: applicationData = {}, loading: loadingApplication } = useQuery(
     GET_EXISTING_APPLICATION,
     { fetchPolicy: 'network-only' }
@@ -53,6 +54,10 @@ function Form({ stripe }) {
     CREATE_CHECKOUT_SESSION,
     {
       onCompleted: data => {
+        if (data.application.paymentStatus === 'NOT_REQURIED') {
+          history.push('/profile');
+          return;
+        }
         stripe
           .redirectToCheckout({
             sessionId: data.application.checkoutSession.checkoutSessionId
@@ -62,7 +67,8 @@ function Form({ stripe }) {
             // error, display the localized error message to your customer
             // using `result.error.message`.
           });
-      }
+      },
+      fetchPolicy: 'network-only'
     }
   );
 

@@ -27,7 +27,7 @@ const GET_EXISTING_APPLICATION = gql`
 `;
 
 export default function Apply({ history }) {
-  const { data: applicationData = {}, loading: loadingApplication } = useQuery(
+  const { data: applicationData, loading: loadingApplication } = useQuery(
     GET_EXISTING_APPLICATION,
     { fetchPolicy: 'network-only' }
   );
@@ -61,7 +61,7 @@ export default function Apply({ history }) {
     return <LoadingView />;
   }
 
-  if (applicationData.application) {
+  if (applicationData && applicationData.application) {
     const { status, paymentStatus } = applicationData.application;
 
     if (

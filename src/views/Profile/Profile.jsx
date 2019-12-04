@@ -26,6 +26,7 @@ const GET_EXISTING_APPLICATION = gql`
     application {
       id
       status
+      paymentStatus
     }
   }
 `;
@@ -45,9 +46,12 @@ export default function Profile() {
   }
 
   if (applicationData.application) {
-    const { status } = applicationData.application;
+    const { status, paymentStatus } = applicationData.application;
 
-    if (status === 'PENDING_PAYMENT') {
+    if (
+      !['NOT_REQUIRED', 'PAID'].includes(paymentStatus) &&
+      status === 'PENDING_PAYMENT'
+    ) {
       return <Redirect to="/payment" />;
     }
   } else {

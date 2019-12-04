@@ -20,8 +20,13 @@ const JOB_READY_PATH_COST = currencyFormatter.format(129);
 
 const CREATE_CHECKOUT_SESSION = gql`
   mutation createVoyageCheckoutSession($choice: VoyagePathChoice!) {
-    checkoutSession: createVoyageCheckoutSession(choice: $choice) {
-      checkoutSessionId
+    application: createVoyageCheckoutSession(choice: $choice) {
+      id
+      status
+      paymentStatus
+      checkoutSession {
+        checkoutSessionId
+      }
     }
   }
 `;
@@ -31,6 +36,10 @@ const GET_EXISTING_APPLICATION = gql`
     application {
       id
       status
+      paymentStatus
+      checkoutSession {
+        checkoutSessionId
+      }
     }
   }
 `;
@@ -46,7 +55,7 @@ function Form({ stripe }) {
       onCompleted: data => {
         stripe
           .redirectToCheckout({
-            sessionId: data.checkoutSession.checkoutSessionId
+            sessionId: data.application.checkoutSession.checkoutSessionId
           })
           .then(result => {
             // If `redirectToCheckout` fails due to a browser or network
@@ -61,12 +70,15 @@ function Form({ stripe }) {
     return <LoadingView />;
   }
 
-  // if (applicationData.application) {
-  //   const { status } = applicationData.application;
-  //   if (status === 'PENDING_REVIEW') {
-  //     return <Redirect to="/profile" />;
-  //   }
-  // }
+  if (applicationData.application) {
+    const { status, paymentStatus } = applicationData.application;
+    if (
+      status === 'PENDING_REVIEW' ||
+      ['NOT_REQUIRED', 'PAID'].includes(paymentStatus)
+    ) {
+      return <Redirect to="/profile" />;
+    }
+  }
 
   return (
     <>

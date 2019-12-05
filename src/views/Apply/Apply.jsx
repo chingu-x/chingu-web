@@ -109,7 +109,7 @@ export default function Apply({ history }) {
   return (
     <Wrapper className={styles.wrapper}>
       <Title className={styles.title}>
-        Apply to join the <span style={{ color: '#15cf89' }}>October</span>{' '}
+        Apply to join the <span style={{ color: '#15cf89' }}>December</span>{' '}
         cohort!
       </Title>
       <div className={styles.question}>

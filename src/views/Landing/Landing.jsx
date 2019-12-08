@@ -203,7 +203,7 @@ export default function Landing() {
           <LandingViewChinguProcessStep
             icon={ProcessStep2}
             iconAlt="Toolset icon"
-            title="2. Validate your expertise through a pre-work project"
+            title="2. Determine placement & prepare"
             description="Finish or submit a project to make sure you're prepared for the program."
           />
           <LandingViewChinguProcessStep

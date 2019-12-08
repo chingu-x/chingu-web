@@ -173,7 +173,7 @@ export default function Landing() {
               [BudgetBoardProject, 'image/png']
             ]}
             imgAlt="BudgetBoard Chrome extension project"
-            title="BudgetBoard Chrome Extension"
+            title="Chrome Extension App"
             description="A finance app to add income & expense categories with individual items with graph rendering."
             tier="Tier 2 (intermediate)"
             tech="Javascript, SCSS, D3.js, Chrome Storage Sync"

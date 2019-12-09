@@ -2,7 +2,7 @@
 
 .wrapper {
   text-align: center;
-  padding: 50px 0;
+  padding: 50px 0 0 0;
 
   @media screen and (max-width: 767px) {
     padding: 0 0 50px 0;
@@ -42,5 +42,27 @@
 
   a.mailLink {
     color: $chingu-green;
+  }
+}
+
+.experience {
+  max-width: 700px;
+  text-align: center;
+
+  .experienceList {
+    display: flex;
+    margin-bottom: 60px;
+
+    .experienceItem {
+      text-align: left;
+      margin: 20px;
+      span {
+        color: #000;
+        font-size: 32px;
+      }
+      b {
+        background-color: #fffd54;
+      }
+    }
   }
 }

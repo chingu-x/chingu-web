@@ -79,11 +79,8 @@ function Form({ stripe }) {
   }
 
   if (applicationData.application) {
-    const { status, paymentStatus } = applicationData.application;
-    if (
-      status === 'PENDING_REVIEW' ||
-      ['NOT_REQUIRED', 'PAID'].includes(paymentStatus)
-    ) {
+    const { paymentStatus } = applicationData.application;
+    if (paymentStatus === 'PAID') {
       return <Redirect to="/profile" />;
     }
   }
@@ -155,18 +152,82 @@ const FormWithStripe = injectStripe(Form);
 
 export default function Payment() {
   return (
-    <Wrapper contentAttributes={{ className: styles.wrapper }}>
-      <Title level={1} className={styles.title}>
-        Complete Payment
-      </Title>
-      <Paragraph className={styles.subtitle} size="large">
-        Chingu offers you several core features of a traditional coding
-        bootcamp, but for a fraction of the cost.
-      </Paragraph>
-      <Title level={3}>Save thousands with Chingu.</Title>
-      <Elements>
-        <FormWithStripe />
-      </Elements>
-    </Wrapper>
+    <>
+      <Wrapper contentAttributes={{ className: styles.wrapper }}>
+        <Title level={1} className={styles.title}>
+          Complete Payment
+        </Title>
+        <Paragraph className={styles.subtitle} size="large">
+          Chingu offers you several core features of a traditional coding
+          bootcamp, but for a fraction of the cost.
+        </Paragraph>
+        <Title level={3}>Save thousands with Chingu.</Title>
+        <Elements>
+          <FormWithStripe />
+        </Elements>
+      </Wrapper>
+      <Wrapper contentAttributes={{ className: styles.experience }}>
+        <div className={styles.experienceList}>
+          <div style={{ flex: 1 }}>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A laptop emoji">
+                💻
+              </span>
+              <Paragraph>
+                <b>Build with other software developers in a team</b> & gain
+                vital developer experience.
+              </Paragraph>
+            </div>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A party popper emoji">
+                🎉
+              </span>
+              <Paragraph>
+                <b>Be pushed outside your comfort zone</b> and make progress
+                beyond what you would on your own.
+              </Paragraph>
+            </div>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A brain emoji">
+                🧠
+              </span>
+              <Paragraph>
+                <b>Gain in-demand soft skills</b> that all companies in the 21st
+                century need and look for.
+              </Paragraph>
+            </div>
+          </div>
+          <div style={{ flex: 1 }}>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A laptop emoji">
+                💯
+              </span>
+              <Paragraph>
+                <b>Finally get out of Tutorial Purgatory</b> and solidify your
+                skills with real projects.
+              </Paragraph>
+            </div>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A party popper emoji">
+                🌍
+              </span>
+              <Paragraph>
+                <b>Collaborate with like-minded coders</b> who share your goals
+                from around the world.
+              </Paragraph>
+            </div>
+            <div className={styles.experienceItem}>
+              <span role="img" aria-label="A brain emoji">
+                💎
+              </span>
+              <Paragraph>
+                <b>Boost your portfolio with finished projects</b> and earn
+                Completion Certificates.
+              </Paragraph>
+            </div>
+          </div>
+        </div>
+      </Wrapper>
+    </>
   );
 }

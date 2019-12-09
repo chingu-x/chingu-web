@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import { Redirect } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
@@ -41,6 +42,16 @@ export default function Profile() {
   }, []);
   const { user } = useAuth0();
 
+  const { application } = applicationData;
+
+  const isSolo = useMemo(() => {
+    if (application && application.paymentStatus === 'NOT_REQUIRED') {
+      return true;
+    }
+
+    return false;
+  }, [application]);
+
   if (loadingApplication) {
     return <LoadingView />;
   }
@@ -73,12 +84,19 @@ export default function Profile() {
               <Paragraph size="large" bold>
                 {user.email}
               </Paragraph>
-              <Paragraph size="small">Voyage Member</Paragraph>
+              <Paragraph size="small">
+                {isSolo ? 'Solo Project Path' : 'Voyage Member'}
+              </Paragraph>
+              {isSolo && (
+                <Paragraph size="small">
+                  Want to join a team? <Link to="/payment">Enroll here!</Link>
+                </Paragraph>
+              )}
             </>
           )}
         </div>
         <span style={{ flex: 1 }}></span>
-        <div className={dates}>
+        {/* <div className={dates}>
           <Paragraph>
             <span role="img" aria-label="calendar emoji">
               🗓️
@@ -91,33 +109,41 @@ export default function Profile() {
             </span>{' '}
             <b>Voyage-13 start date</b>: November 4
           </Paragraph>
-        </div>
+        </div> */}
       </Wrapper>
       <Wrapper>
         <div className={top}>
           <div className={topText}>
             <Title level={1}>
-              Hello, hungry learner!
-              <span role="img" aria-label="fire emoji">
-                🔥
-              </span>
-              <br />
-              Welcome to Chingu.
+              {isSolo ? 'Hello there.' : "It's time to build"}
             </Title>
-            <Paragraph>
-              Are you ready to code, collaborate and level-up your skills?!
-              <br />
-              <br />
-              See below for the next steps and all you need to know before we
-              get started.
-            </Paragraph>
-          </div>
-          <div className={heroImg}>
-            <picture>
-              <source srcSet={GoatGlassesWebp} type="image/webp" />
-              <source srcSet={GoatGlassesPNG} type="image/png" />
-              <img src={GoatGlassesPNG} alt="Goat in glasses" />
-            </picture>
+            {!isSolo && (
+              <div className={heroImg}>
+                <picture>
+                  <source srcSet={GoatGlassesWebp} type="image/webp" />
+                  <source srcSet={GoatGlassesPNG} type="image/png" />
+                  <img src={GoatGlassesPNG} alt="Goat in glasses" />
+                </picture>
+              </div>
+            )}
+            <Title level={3}>What's next?</Title>
+            {isSolo ? (
+              <ol>
+                <li>Review the 'Getting Started' resources below.</li>
+                <li>
+                  Within 48 hours we'll add you to your project Github repo
+                  (more info in #2 below).
+                </li>
+                <li>
+                  Join the Chingu Discord and add your intro to the
+                  #add-intro-here channel
+                </li>
+              </ol>
+            ) : (
+              <ol>
+                <li>Review the 'Getting Started' resources below.</li>
+              </ol>
+            )}
           </div>
         </div>
         <div className={steps}>

@@ -173,7 +173,7 @@ export default function Landing() {
               [BudgetBoardProject, 'image/png']
             ]}
             imgAlt="BudgetBoard Chrome extension project"
-            title="BudgetBoard Chrome Extension"
+            title="Chrome Extension App"
             description="A finance app to add income & expense categories with individual items with graph rendering."
             tier="Tier 2 (intermediate)"
             tech="Javascript, SCSS, D3.js, Chrome Storage Sync"
@@ -203,7 +203,7 @@ export default function Landing() {
           <LandingViewChinguProcessStep
             icon={ProcessStep2}
             iconAlt="Toolset icon"
-            title="2. Validate your expertise through a pre-work project"
+            title="2. Determine placement & prepare"
             description="Finish or submit a project to make sure you're prepared for the program."
           />
           <LandingViewChinguProcessStep

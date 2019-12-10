@@ -155,15 +155,16 @@ div.racoonSection {
     margin-top: 30px;
     margin-bottom: 60px;
   }
+}
 
+.bottomApply {
+  margin: 45px auto 15px auto;
+  width: 300px;
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
   .bottomApply {
-    margin: 45px 0 15px 0;
-    width: 300px;
-  }
-
-  @media screen and (max-width: 767px) {
-    .bottomApply {
-      width: 90%;
-    }
+    width: 90%;
   }
 }

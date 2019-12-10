@@ -5,7 +5,6 @@ import Route from './components/Route';
 import Landing from './views/Landing';
 import Privacy from './views/Privacy';
 import HowItWorks from './views/HowItWorks';
-import Pricing from './views/Pricing';
 import Apply from './views/Apply';
 import SignIn from './views/SignIn';
 import Payment from './views/Payment';
@@ -22,7 +21,6 @@ const App = () => {
           <Route exact path="/" component={Landing} />
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/howitworks" component={HowItWorks} />
-          <Route exact path="/pricing" component={Pricing} />
           <Route exact path="/signin" component={SignIn} />
           <Route secure exact path="/apply" component={Apply} />
           <Route secure exact path="/payment" component={Payment} />

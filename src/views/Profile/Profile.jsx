@@ -200,6 +200,7 @@ export default function Profile() {
                   title="What will I build first and when do I start?"
                   body="Build this and then we’ll give you something else to build."
                   color="#000"
+                  link="https://solofree.docs.chingu.io/"
                 />
                 <ArticleCard
                   number={3}

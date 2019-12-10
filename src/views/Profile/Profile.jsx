@@ -177,6 +177,12 @@ export default function Profile() {
             ) : (
               <ol>
                 <li>Review the 'Getting Started' resources below.</li>
+                <li>
+                  Join the Chingu Community Discord if you haven’t already.
+                </li>
+                <li>
+                  Submit a Pre-work project (more information in #2 below).
+                </li>
               </ol>
             )}
           </div>

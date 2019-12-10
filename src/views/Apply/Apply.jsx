@@ -8,6 +8,9 @@ import { Title } from '../../components/Title';
 import { Button } from '../../components/Button';
 import CountrySelect from '../../components/CountrySelect';
 import TimeZoneSelect from '../../components/TimeZoneSelect';
+import CatShouldLearnJavaScript from './assets/CatShouldLearnJavaScript.png';
+import GoatQuote from './assets/GoatQuote.png';
+import DuckQuote from './assets/DuckQuote.png';
 import styles from './Apply.module.scss';
 
 const CREATE_APPLICATION = gql`
@@ -109,9 +112,13 @@ export default function Apply({ history }) {
   return (
     <Wrapper className={styles.wrapper}>
       <Title className={styles.title}>
-        Apply to join the <span style={{ color: '#15cf89' }}>December</span>{' '}
-        cohort!
+        Apply to join a <span style={{ color: '#15cf89' }}>Chingu Voyage!</span>{' '}
       </Title>
+      <img
+        className={styles.funImage}
+        src={CatShouldLearnJavaScript}
+        alt="A cat holding a newspaper and thinking about learning javascript"
+      />
       <div className={styles.question}>
         <Title level={3}>What would you like to join as?</Title>
         <div className={styles.radioGroup}>
@@ -272,6 +279,11 @@ export default function Apply({ history }) {
               </label>
             </div>
           </div>
+          <img
+            className={styles.funImage}
+            src={GoatQuote}
+            alt="A goat with a quote"
+          />
           <div className={styles.question}>
             <Title level={3}>Where are you joining from?</Title>
             <div className={styles.location}>
@@ -345,6 +357,11 @@ export default function Apply({ history }) {
               </label>
             </div>
           </div>
+          <img
+            className={styles.funImage}
+            src={DuckQuote}
+            alt="A duck with a quote"
+          />
           {desiredRole === 'DEVELOPER' && (
             <div className={styles.question}>
               <Title level={3}>

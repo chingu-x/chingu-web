@@ -41,7 +41,7 @@ function SignUp() {
   const { user } = useUser();
   const history = useHistory();
   const [returnTo] = useQueryParam('returnTo', StringParam);
-  const [signUpComplete, setSignUpComplete] = useState(true);
+  const [signUpComplete, setSignUpComplete] = useState(false);
   const [signUpState, signUpDispatch] = useReducer(
     (state, action) => {
       switch (action.type) {

@@ -17,7 +17,7 @@ export default function useApplication({ statusRequired } = {}) {
         case 'PENDING_PAYMENT':
           return '/payment';
         case 'PENDING_REVIEW':
-          return '/profile';
+          return '/dashboard';
         default:
           return '/apply';
       }

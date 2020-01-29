@@ -6,51 +6,71 @@ import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink, Observable } from 'apollo-link';
-import { useAuth0 } from './auth';
-
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors)
-    graphQLErrors.map(({ message, locations, path }) =>
-      console.log(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      )
-    );
-  if (networkError) console.log(`[Network error]: ${networkError}`);
-});
 
 const {
   REACT_APP_API_URI: API_URI = 'https://api.staging.chingu.io/graphql'
 } = process.env;
 
+let tokenRefreshCall;
+
+const errorLink = onError(
+  ({ graphQLErrors, networkError, forward, operation }) => {
+    if (graphQLErrors)
+      graphQLErrors.forEach(({ message, locations, path, extensions }) => {
+        switch (extensions.code) {
+          case 'UNAUTHENTICATED':
+            if (!tokenRefreshCall) {
+              tokenRefreshCall = fetch(API_URI, {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  operationName: 'refreshTokens',
+                  query: 'mutation refreshTokens { refreshTokens { id } }',
+                  variables: {}
+                })
+              })
+                .then(resp => {
+                  if (resp.data && resp.data.refreshTokens) {
+                    tokenRefreshCall = null;
+                    forward(operation);
+                  } else {
+                    localStorage.removeItem('me');
+                  }
+                })
+                .catch(() => {
+                  localStorage.removeItem('me');
+                });
+            } else {
+              localStorage.removeItem('me');
+            }
+            break;
+          default:
+            console.log(
+              `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+            );
+            break;
+        }
+      });
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  }
+);
+
 const httpLink = new HttpLink({
   uri: API_URI,
-  credentials: 'same-origin'
+  credentials: 'include'
 });
 
 const cache = new InMemoryCache();
 
 export default function ChinguAPIProvider({ children }) {
-  const { isAuthenticated, getTokenSilently } = useAuth0();
-
-  const request = async operation => {
-    if (!isAuthenticated) {
-      return operation;
-    }
-
-    const token = await getTokenSilently();
-    operation.setContext({
-      headers: {
-        authorization: `Bearer ${token}`
-      }
-    });
-  };
-
   const requestLink = new ApolloLink(
     (operation, forward) =>
       new Observable(observer => {
         let handle;
         Promise.resolve(operation)
-          .then(oper => request(oper))
           .then(() => {
             handle =
               forward &&

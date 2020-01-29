@@ -1,31 +1,24 @@
 import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Route as RouterRoute } from 'react-router-dom';
-import { useAuth0 } from '../contexts/auth';
-import LoadingView from './LoadingView';
+import { Route as RouterRoute, useHistory } from 'react-router-dom';
 
 const Route = ({ component: Component, secure = false, path, ...rest }) => {
-  const { isAuthenticated, loginWithRedirect, loading } = useAuth0();
+  const isAuthenticated = !!localStorage.getItem('me');
+  const history = useHistory();
 
   useEffect(() => {
     const fn = async () => {
-      if (!loading && secure && !isAuthenticated) {
-        await loginWithRedirect({
-          appState: { targetUrl: path }
-        });
+      if (secure && !isAuthenticated) {
+        history.push(`/signin?returnTo=${path}`);
       }
     };
     fn();
-  }, [loading, secure, isAuthenticated, loginWithRedirect, path]);
+  }, [secure, history, isAuthenticated, path]);
 
   return (
     <RouterRoute
       path={path}
       render={props => {
-        if (loading) {
-          return <LoadingView />;
-        }
-
         if (!secure || isAuthenticated === true) {
           return <Component {...props} />;
         }

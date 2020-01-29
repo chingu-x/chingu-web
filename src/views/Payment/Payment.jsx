@@ -31,9 +31,9 @@ const CREATE_CHECKOUT_SESSION = gql`
   }
 `;
 
-const GET_EXISTING_APPLICATION = gql`
-  query getExistingApplication {
-    application {
+const GET_EXISTING_APPLICATIONS = gql`
+  query getExistingApplications {
+    applications {
       id
       status
       paymentStatus
@@ -46,16 +46,16 @@ const GET_EXISTING_APPLICATION = gql`
 
 function Form({ stripe }) {
   const history = useHistory();
-  const { data: applicationData = {}, loading: loadingApplication } = useQuery(
-    GET_EXISTING_APPLICATION,
-    { fetchPolicy: 'network-only' }
-  );
+  const {
+    data: applicationsData = {},
+    loading: loadingApplications
+  } = useQuery(GET_EXISTING_APPLICATIONS, { fetchPolicy: 'network-only' });
   const [createCheckoutSession, { loading }] = useMutation(
     CREATE_CHECKOUT_SESSION,
     {
       onCompleted: data => {
         if (data.application.paymentStatus === 'NOT_REQUIRED') {
-          history.push('/profile');
+          history.push('/dashboard');
           return;
         }
         if (data.application.checkoutSession) {
@@ -74,14 +74,14 @@ function Form({ stripe }) {
     }
   );
 
-  if (loadingApplication) {
+  if (loadingApplications) {
     return <LoadingView />;
   }
 
-  if (applicationData.application) {
-    const { paymentStatus } = applicationData.application;
+  if (applicationsData.applications && applicationsData.applications.length) {
+    const { paymentStatus } = applicationsData.applications[0];
     if (paymentStatus === 'PAID') {
-      return <Redirect to="/profile" />;
+      return <Redirect to="/dashboard" />;
     }
   }
 

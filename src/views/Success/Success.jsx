@@ -24,7 +24,7 @@ export default function Success() {
         You're now signed up for a Chingu Voyage. Congratulations on taking this
         step towards fighting Tutorial Purgatory.
       </Paragraph>
-      <Link className={nextLink} to="/profile">
+      <Link className={nextLink} to="/dashboard">
         Next Steps
       </Link>
     </Wrapper>

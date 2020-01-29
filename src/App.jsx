@@ -7,9 +7,10 @@ import Privacy from './views/Privacy';
 import HowItWorks from './views/HowItWorks';
 import Apply from './views/Apply';
 import SignIn from './views/SignIn';
+import SignUp from './views/SignUp';
 import Payment from './views/Payment';
 import Success from './views/Success';
-import Profile from './views/Profile';
+import Dashboard from './views/Dashboard';
 import SignOut from './views/SignOut';
 import NotFound from './views/NotFound';
 
@@ -22,10 +23,11 @@ const App = () => {
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/howitworks" component={HowItWorks} />
           <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={SignUp} />
           <Route secure exact path="/apply" component={Apply} />
           <Route secure exact path="/payment" component={Payment} />
           <Route secure exact path="/success" component={Success} />
-          <Route secure exact path="/profile" component={Profile} />
+          <Route secure exact path="/dashboard" component={Dashboard} />
           <Route secure exact path="/signout" component={SignOut} />
           <Route component={NotFound} />
         </Switch>

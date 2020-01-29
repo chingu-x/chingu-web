@@ -1,23 +1,10 @@
 import React from 'react';
-import { useAuth0 } from '../contexts/auth';
-import LoadingView from '../components/LoadingView';
+import { Redirect } from 'react-router-dom';
 
 function SignOut() {
-  const { loading, logout } = useAuth0();
+  localStorage.removeItem('me');
 
-  React.useEffect(() => {
-    const fn = async () => {
-      if (!loading) {
-        await logout({
-          returnTo: `${window.location.origin}/`,
-          appState: { targetUrl: '/' }
-        });
-      }
-    };
-    fn();
-  }, [loading, logout]);
-
-  return <LoadingView />;
+  return <Redirect to="/" />;
 }
 
 export default SignOut;

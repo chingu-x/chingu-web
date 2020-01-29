@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
-import { Redirect } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import LoadingView from '../../components/LoadingView';
 import { Wrapper } from '../../components/Wrapper';
 import { Title } from '../../components/Title';
 import { Button } from '../../components/Button';
-import CountrySelect from '../../components/CountrySelect';
-import TimeZoneSelect from '../../components/TimeZoneSelect';
 import CatShouldLearnJavaScript from './assets/CatShouldLearnJavaScript.png';
 import GoatQuote from './assets/GoatQuote.png';
 import DuckQuote from './assets/DuckQuote.png';
@@ -19,9 +16,9 @@ const CREATE_APPLICATION = gql`
   }
 `;
 
-const GET_EXISTING_APPLICATION = gql`
-  query getExistingApplication {
-    application {
+const GET_EXISTING_APPLICATIONS = gql`
+  query getExistingApplications {
+    applications {
       id
       status
       paymentStatus
@@ -29,27 +26,23 @@ const GET_EXISTING_APPLICATION = gql`
   }
 `;
 
+const VOYAGES = [
+  { id: 'VOYAGE_15', optionText: 'Voyage 15 (Starts in January)' },
+  { id: 'VOYAGE_16', optionText: 'Voyage 16 (Starts in February)' }
+];
+
 export default function Apply({ history }) {
-  const { data: applicationData, loading: loadingApplication } = useQuery(
-    GET_EXISTING_APPLICATION,
+  const { data: applicationsData, loading: loadingApplication } = useQuery(
+    GET_EXISTING_APPLICATIONS,
     { fetchPolicy: 'network-only' }
   );
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [gender, setGender] = useState();
-  const [otherGender, setOtherGender] = useState('');
+  const [voyage, setVoyage] = useState('');
   const [desiredRole, setDesiredRole] = useState('DEVELOPER');
-  const [countryCode, setCountryCode] = useState();
-  const [city, setCity] = useState('');
-  const [timeZone, setTimeZone] = useState();
-  const [isPreviousMember, setIsPreviousMember] = useState(false);
   const [excitedTo, setExcitedTo] = useState();
   const [otherExcitedTo, setOtherExcitedTo] = useState('');
-  const [source, setSource] = useState();
-  const [otherSource, setOtherSource] = useState('');
   const [tier, setTier] = useState();
   const [createApplication, { loading: creatingApplication }] = useMutation(
     CREATE_APPLICATION,
@@ -64,40 +57,14 @@ export default function Apply({ history }) {
     return <LoadingView />;
   }
 
-  if (applicationData && applicationData.application) {
-    const { status, paymentStatus } = applicationData.application;
-
-    if (
-      status === 'PENDING_PAYMENT' &&
-      !['NOT_REQUIRED', 'PAID'].includes(paymentStatus)
-    ) {
-      return <Redirect to="/payment" />;
-    } else {
-      return <Redirect to="/profile" />;
-    }
-  }
-
   async function submitApplication() {
     const applicationInput = {
-      firstName,
-      lastName,
-      gender,
-      isPreviousMember,
       reasonForApplying: excitedTo,
       desiredRole,
       desiredTier: tier,
-      countryCode,
-      cityName: city,
-      source,
-      timezoneName: timeZone
+      voyage
     };
 
-    if (gender === 'OTHER' && otherGender.length) {
-      applicationInput.otherGender = otherGender;
-    }
-    if (source === 'OTHER' && otherSource.length) {
-      applicationInput.otherSource = otherSource;
-    }
     if (excitedTo === 'OTHER' && otherExcitedTo.length) {
       applicationInput.otherReasonForApplying = otherExcitedTo;
     }
@@ -119,6 +86,27 @@ export default function Apply({ history }) {
         src={CatShouldLearnJavaScript}
         alt="A cat holding a newspaper and thinking about learning javascript"
       />
+      <div className={styles.question}>
+        <Title level={3}>Which voyage are you applying for?</Title>
+        <div className={styles.radioGroup}>
+          {VOYAGES.filter(v =>
+            applicationsData && applicationsData.applications
+              ? !applicationsData.applications.find(a => a.voyage === v.id)
+              : true
+          ).map(v => (
+            <label key={v.id}>
+              <input
+                type="radio"
+                name="desired-voyage"
+                value={v.id}
+                checked={voyage === v.id}
+                onChange={() => setVoyage(v.id)}
+              />
+              {v.optionText}
+            </label>
+          ))}
+        </div>
+      </div>
       <div className={styles.question}>
         <Title level={3}>What would you like to join as?</Title>
         <div className={styles.radioGroup}>
@@ -169,50 +157,6 @@ export default function Apply({ history }) {
         </div>
       ) : (
         <>
-          <div className={styles.question}>
-            <Title level={3}>Tell us a little about yourself</Title>
-            <label>
-              <span>First Name</span>
-              <input
-                type="text"
-                value={firstName}
-                onChange={e => setFirstName(e.target.value)}
-              />
-            </label>
-            <label>
-              <span>Last Name</span>
-              <input
-                type="text"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-              />
-            </label>
-          </div>
-          <div className={styles.question}>
-            <Title level={3}>Have you been in a Chingu cohort before?</Title>
-            <div className={styles.radioGroup}>
-              <label>
-                <input
-                  type="radio"
-                  name="is-previous-member"
-                  value={true}
-                  checked={isPreviousMember}
-                  onChange={() => setIsPreviousMember(true)}
-                />
-                Yes
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="is-previous-member"
-                  value={false}
-                  checked={!isPreviousMember}
-                  onChange={() => setIsPreviousMember(false)}
-                />
-                No
-              </label>
-            </div>
-          </div>
           <div className={styles.question}>
             <Title level={3}>
               What opportunity in Chingu most excites you?
@@ -284,79 +228,6 @@ export default function Apply({ history }) {
             src={GoatQuote}
             alt="A goat with a quote"
           />
-          <div className={styles.question}>
-            <Title level={3}>Where are you joining from?</Title>
-            <div className={styles.location}>
-              <CountrySelect
-                value={countryCode}
-                onChange={v => setCountryCode(v)}
-              />
-              <input
-                className={styles.textInput}
-                placeholder="City"
-                value={city}
-                onChange={e => setCity(e.target.value)}
-              />
-              <TimeZoneSelect
-                countryCode={countryCode}
-                value={timeZone}
-                onChange={v => setTimeZone(v)}
-              />
-            </div>
-          </div>
-          <div className={styles.question}>
-            <Title level={3}>What is your gender?</Title>
-            <div className={styles.radioGroup}>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="FEMALE"
-                  checked={gender === 'FEMALE'}
-                  onChange={() => setGender('FEMALE')}
-                />
-                Female
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="MALE"
-                  checked={gender === 'MALE'}
-                  onChange={() => setGender('MALE')}
-                />
-                Male
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="OTHER"
-                  checked={gender === 'OTHER'}
-                  onChange={() => setGender('OTHER')}
-                />
-                Other
-                {gender === 'OTHER' && (
-                  <input
-                    type="text"
-                    placeholder="Please specify"
-                    value={otherGender}
-                    onChange={e => setOtherGender(e.target.value)}
-                  />
-                )}
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="PREFER_NOT_TO_DISCLOSE"
-                  checked={gender === 'PREFER_NOT_TO_DISCLOSE'}
-                  onChange={() => setGender('PREFER_NOT_TO_DISCLOSE')}
-                />
-                Prefer not to say
-              </label>
-            </div>
-          </div>
           <img
             className={styles.funImage}
             src={DuckQuote}
@@ -410,71 +281,6 @@ export default function Apply({ history }) {
                     onChange={() => setTier('OTHER')}
                   />
                   Other
-                </label>
-              </div>
-            </div>
-          )}
-          {!isPreviousMember && (
-            <div className={styles.question}>
-              <Title level={3}>Where did you hear about Chingu?</Title>
-              <div className={styles.radioGroup}>
-                <label>
-                  <input
-                    type="radio"
-                    name="source"
-                    value="MEDIUM"
-                    checked={source === 'MEDIUM'}
-                    onChange={() => setSource('MEDIUM')}
-                  />
-                  On Medium
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="source"
-                    value="PERSONAL_NETWORK"
-                    checked={source === 'PERSONAL_NETWORK'}
-                    onChange={() => setSource('PERSONAL_NETWORK')}
-                  />
-                  From a friend/someone I know
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="source"
-                    value="FREE_CODE_CAMP_FORUM"
-                    checked={source === 'FREE_CODE_CAMP_FORUM'}
-                    onChange={() => setSource('FREE_CODE_CAMP_FORUM')}
-                  />
-                  The FreeCodeCamp Forum
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="source"
-                    value="GOOGLE_SEARCH"
-                    checked={source === 'GOOGLE_SEARCH'}
-                    onChange={() => setSource('GOOGLE_SEARCH')}
-                  />
-                  Google Search
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="source"
-                    value="OTHER"
-                    checked={source === 'OTHER'}
-                    onChange={() => setSource('OTHER')}
-                  />
-                  Other
-                  {source === 'OTHER' && (
-                    <input
-                      type="text"
-                      placeholder="Please specify"
-                      value={otherSource}
-                      onChange={e => setOtherSource(e.target.value)}
-                    />
-                  )}
                 </label>
               </div>
             </div>

@@ -22,9 +22,11 @@ export default function CurrentUserProvider({ children }) {
   //   skip: !isAuthenticated
   // });
 
+  const user = localStorage.getItem('me');
+
   // if (!isAuthenticated) {
   return (
-    <UserContext.Provider value={{ user: null, loading: false }}>
+    <UserContext.Provider value={{ user, loading: false }}>
       {children}
     </UserContext.Provider>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAuth0 } from '../../contexts/auth';
 import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper';
 import { Button } from '../Button';
@@ -8,7 +7,7 @@ import LogoWebp from './Logo.webp';
 import Logo from './Logo.png';
 
 export default function Header() {
-  const { isAuthenticated } = useAuth0();
+  const isAuthenticated = localStorage.getItem('me');
 
   return (
     <>
@@ -31,9 +30,14 @@ export default function Header() {
             <Button type="link">Pricing</Button>
           </Link> */}
           {isAuthenticated ? (
-            <Link to="/signout">
-              <Button>Sign out</Button>
-            </Link>
+            <>
+              <Link to="/dashboard">
+                <Button>Dashboard</Button>
+              </Link>
+              <Link to="/signout">
+                <Button>Sign out</Button>
+              </Link>
+            </>
           ) : (
             <Link to="/signin">
               <Button>Sign in</Button>

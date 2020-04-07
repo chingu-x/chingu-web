@@ -68,10 +68,10 @@ function ArticleCard({ subtitle, title, body, number, color, link }) {
 }
 
 export default function Profile() {
-  const { data: applicationData = {}, loading: loadingApplication } = useQuery(
-    GET_EXISTING_APPLICATION,
-    { fetchPolicy: 'network-only' }
-  );
+  const {
+    data: applicationData = {},
+    loading: loadingApplication
+  } = useQuery(GET_EXISTING_APPLICATION, { fetchPolicy: 'network-only' });
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -171,7 +171,7 @@ export default function Profile() {
                 </li>
                 <li>
                   Join the Chingu Discord and add your intro to the
-                  #add-intro-here channel
+                  #your-intros-here channel
                 </li>
               </ol>
             ) : (
@@ -233,7 +233,7 @@ export default function Profile() {
                   title="Pre-work Requirements: Submit a Solo Project"
                   body="To maintain quality, we require members to submit a completed project before being placed in a team."
                   color="#000"
-                  link="https://voyage.docs.chingu.io/prework/howwork"
+                  link="https://docs.chingu.io/voyage/soloproj/howwork"
                 />
                 <ArticleCard
                   number={3}
@@ -266,7 +266,7 @@ export default function Profile() {
               subtitle="Read"
               title="Learn about Git workflow & Github"
               body="Everything you need to know about using Git & Github in Chingu."
-              link="https://techres.docs.chingu.io/git/workflow"
+              link="https://docs.chingu.io/techres/gitworkflow"
             />
           </div>
         </div>

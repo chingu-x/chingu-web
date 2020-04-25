@@ -14,10 +14,11 @@ const GET_COUNTRIES = gql`
 `;
 
 export default function CountrySelect({ ...rest }) {
-  const {
-    loading,
-    data: { countries }
-  } = useQuery(GET_COUNTRIES, { fetchPolicy: 'cache-first' });
+  const { loading, data = {} } = useQuery(GET_COUNTRIES, {
+    fetchPolicy: 'cache-first'
+  });
+
+  const { countries } = data;
 
   return (
     <Select

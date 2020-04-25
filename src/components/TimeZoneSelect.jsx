@@ -15,13 +15,12 @@ const GET_TIMEZONES = gql`
 `;
 
 export default function TimeZoneSelect({ countryCode, ...rest }) {
-  const {
-    loading,
-    data: { timezones }
-  } = useQuery(GET_TIMEZONES, {
+  const { loading, data = {} } = useQuery(GET_TIMEZONES, {
     variables: { countryCode },
     fetchPolicy: 'cache-first'
   });
+
+  const { timezones } = data;
 
   return (
     <Select

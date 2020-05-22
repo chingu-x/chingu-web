@@ -327,9 +327,9 @@ export default function HowItWorks() {
         <Title level={2}>Upcoming Voyage Sessions</Title>
         <Paragraph>We launch teams at the start of every month.</Paragraph>
         <Paragraph size="large">
-          Voyage 19 starts <b>May 4th</b>
-          <br />
           Voyage 20 starts <b>June 1st</b>
+          <br />
+          Voyage 21 starts <b>June 29th</b>
         </Paragraph>
       </Wrapper>
       <Wrapper contentAttributes={{ className: styles.pricing }}>

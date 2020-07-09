@@ -14,24 +14,7 @@ import SignOut from './views/SignOut';
 import NotFound from './views/NotFound';
 
 const App = () => {
-  return (
-    <Router>
-      <Shell>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/privacy" component={Privacy} />
-          <Route exact path="/howitworks" component={HowItWorks} />
-          <Route exact path="/signin" component={SignIn} />
-          <Route secure exact path="/apply" component={Apply} />
-          <Route secure exact path="/payment" component={Payment} />
-          <Route secure exact path="/success" component={Success} />
-          <Route secure exact path="/profile" component={Profile} />
-          <Route secure exact path="/signout" component={SignOut} />
-          <Route component={NotFound} />
-        </Switch>
-      </Shell>
-    </Router>
-  );
+  return <div>Undergoing maintenance</div>;
 };
 
 export default App;
